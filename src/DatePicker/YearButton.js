@@ -33,7 +33,7 @@ function getStyles(props, context, state) {
 class YearButton extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    /**
+    /*
      * The css class name of the root element.
      */
     className: PropTypes.string,

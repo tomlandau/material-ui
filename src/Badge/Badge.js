@@ -49,34 +49,100 @@ function getStyles(props, context) {
   };
 }
 
+/**
+ * This component generates a small badge to the top-right of its child(ren).
+ * 
+ * &nbsp;
+ * # Examples
+ * 
+ * ## Simple examples
+ * Two examples of badges containing text, using primary and secondary colors. The badge is applied to its children - an icon for the first example, and an [Icon Button](https://bitsrc.io/materialui/react-material-ui/buttons/icon-button) with tooltip for the second.
+ * ```js
+ * import React from 'react';
+ * import Badge from 'material-ui/Badge';
+ * import IconButton from 'material-ui/IconButton';
+ * import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
+ * 
+ * const BadgeExampleSimple = () => (
+ *   <div>
+ *     <Badge
+ *       badgeContent={4}
+ *       primary={true}
+ *     >
+ *       <NotificationsIcon />
+ *     </Badge>
+ *     <Badge
+ *       badgeContent={10}
+ *       secondary={true}
+ *       badgeStyle={{top: 12, right: 12}}
+ *     >
+ *       <IconButton tooltip="Notifications">
+ *         <NotificationsIcon />
+ *       </IconButton>
+ *     </Badge>
+ *   </div>
+ * );
+ * 
+ * export default BadgeExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ## Further examples
+ * Badges containing an [Icon Button](https://bitsrc.io/materialui/react-material-ui/buttons/icon-button) and text, applied to an icon, and text.
+ * ```js
+ * import React from 'react';
+ * import Badge from 'material-ui/Badge';
+ * import IconButton from 'material-ui/IconButton';
+ * import UploadIcon from 'material-ui/svg-icons/file/cloud-upload';
+ * import FolderIcon from 'material-ui/svg-icons/file/folder-open';
+ * 
+ * const BadgeExampleContent = () => (
+ *   <div>
+ *     <Badge
+ *       badgeContent={<IconButton tooltip="Backup"><UploadIcon /></IconButton>}
+ *     >
+ *       <FolderIcon />
+ *     </Badge>
+ *     <Badge
+ *       badgeContent="&copy;"
+ *       badgeStyle={{fontSize: 20}}
+ *     >
+ *       Company Name
+ *     </Badge>
+ *   </div>
+ * );
+ * 
+ * export default BadgeExampleContent;
+ * ```
+ */
 class Badge extends Component {
   static propTypes = {
     /**
-     * This is the content rendered within the badge.
+     * @property {PropTypes.node.isRequired} badgeContent - This is the content rendered within the badge.
      */
     badgeContent: PropTypes.node.isRequired,
     /**
-     * Override the inline-styles of the badge element.
+     * @property {PropTypes.object} badgeStyle - Override the inline-styles of the badge element.
      */
     badgeStyle: PropTypes.object,
     /**
-     * The badge will be added relativelty to this node.
+     * @property {PropTypes.node} children - The badge will be added relativelty to this node.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * If true, the badge will use the primary badge colors.
+     * @property {PropTypes.bool} primary - If true, the badge will use the primary badge colors.
      */
     primary: PropTypes.bool,
     /**
-     * If true, the badge will use the secondary badge colors.
+     * @property {PropTypes.bool} secondary - If true, the badge will use the secondary badge colors.
      */
     secondary: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

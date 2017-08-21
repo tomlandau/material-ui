@@ -1,5 +1,8 @@
 import merge from 'lodash.merge';
-import {darken, fade, emphasize, lighten} from '../utils/colorManipulator';
+import darken from '../utils/colors/manipulation/darken';
+import fade from '../utils/colors/manipulation/fade';
+import emphasize from '../utils/colors/manipulation/emphasize';
+import lighten from '../utils/colors/manipulation/lighten';
 import lightBaseTheme from './baseThemes/lightBaseTheme';
 import zIndex from './zIndex';
 import autoprefixer from '../utils/autoprefixer';

@@ -18,23 +18,23 @@ class CardText extends Component {
 
   static propTypes = {
     /**
-     * If true, a click on this card component expands the card.
+     * @property {PropTypes.bool} actAsExpander - If true, a click on this card component expands the card.
      */
     actAsExpander: PropTypes.bool,
     /**
-     * Can be used to render elements inside the Card Text.
+     * @property {PropTypes.node} children - Can be used to render elements inside the Card Text.
      */
     children: PropTypes.node,
     /**
-     * Override the CardText color.
+     * @property {PropTypes.string} color - Override the CardText color.
      */
-    color: PropTypes.string,
+    color: PropTypes.bool,
     /**
-     * If true, this card component is expandable.
+     * @property {PropTypes.bool} expandable - If true, this card component is expandable.
      */
     expandable: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

@@ -40,69 +40,69 @@ class CardHeader extends Component {
 
   static propTypes = {
     /**
-     * If true, a click on this card component expands the card.
+     * @property {PropTypes.bool} actAsExpander - If true, a click on this card component expands the card.
      */
     actAsExpander: PropTypes.bool,
     /**
-     * This is the [Avatar](/#/components/avatar) element to be displayed on the Card Header.
+     * @property {PropTypes.node} avatar - This is the [Avatar](/#/components/avatar) element to be displayed on the Card Header.
      * If `avatar` is an `Avatar` or other element, it will be rendered.
      * If `avatar` is a string, it will be used as the image `src` for an `Avatar`.
      */
     avatar: PropTypes.node,
     /**
-     * Can be used to render elements inside the Card Header.
+     * @property {PropTypes.node} children - Can be used to render elements inside the Card Header.
      */
     children: PropTypes.node,
     /**
-     * Can be used to pass a closeIcon if you don't like the default expandable close Icon.
+     * @property {PropTypes.node} closeIcon - Can be used to pass a closeIcon if you don't like the default expandable close Icon.
      */
     closeIcon: PropTypes.node,
     /**
-     * If true, this card component is expandable.
+     * @property {PropTypes.bool} expandable - If true, this card component is expandable.
      */
     expandable: PropTypes.bool,
     /**
-     * Override the iconStyle of the Icon Button.
+     * @property {PropTypes.object} iconStyle - Override the iconStyle of the Icon Button.
      */
     iconStyle: PropTypes.object,
     /**
-     * Can be used to pass a openIcon if you don't like the default expandable open Icon.
+     * @property {PropTypes.node} openIcon - Can be used to pass a openIcon if you don't like the default expandable open Icon.
      */
     openIcon: PropTypes.node,
     /**
-     * If true, this card component will include a button to expand the card.
+     * @property {PropTypes.bool} showExpandableButton - If true, this card component will include a button to expand the card.
      */
     showExpandableButton: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Can be used to render a subtitle in Card Header.
+     * @property {PropTypes.node} subtitle - Can be used to render a subtitle in Card Header.
      */
     subtitle: PropTypes.node,
     /**
-     * Override the subtitle color.
+     * @property {PropTypes.string} subtitleColor - Override the subtitle color.
      */
     subtitleColor: PropTypes.string,
     /**
-     * Override the inline-styles of the subtitle.
+     * @property {PropTypes.object} subtitleStyle - Override the inline-styles of the subtitle.
      */
     subtitleStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the text.
+     * @property {PropTypes.object} textStyle - Override the inline-styles of the text.
      */
     textStyle: PropTypes.object,
     /**
-     * Can be used to render a title in Card Header.
+     * @property {PropTypes.node} title - Can be used to render a title in Card Header.
      */
     title: PropTypes.node,
     /**
-     * Override the title color.
+     * @property {PropTypes.string} titleColor - Override the title color.
      */
     titleColor: PropTypes.string,
     /**
-     * Override the inline-styles of the title.
+     * @property {PropTypes.object} titleStyle - Override the inline-styles of the title.
      */
     titleStyle: PropTypes.object,
   };

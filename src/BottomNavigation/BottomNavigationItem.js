@@ -72,11 +72,11 @@ const BottomNavigationItem = (props, context) => {
 
 BottomNavigationItem.propTypes = {
   /**
-   * Set the icon representing the view for this item.
+   * @property {PropTypes.node} icon - Set the icon representing the view for this item.
    */
   icon: PropTypes.node,
   /**
-   * Set the label describing the view for this item.
+   * @property {PropTypes.node} label - Set the label describing the view for this item.
    */
   label: PropTypes.node,
   /**

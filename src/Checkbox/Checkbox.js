@@ -54,62 +54,147 @@ function getStyles(props, context) {
   };
 }
 
+/**
+ * A [checkbox](https://www.google.com/design/spec/components/selection-controls.html#selection-controls-checkbox) is used to verify which options you want selected from a group.
+ * 
+ * &nbsp;
+ * ## Examples
+ * The second example is selected by default using the `defaultChecked` property. The third example is disabled using the `disabled` property. The fourth example uses custom icons through the `checkedIcon` and `uncheckedIcon` properties. The final example uses the `labelPosition` property to position the label on the left.
+ * ```js
+ * import React from 'react';
+ * import Checkbox from 'material-ui/Checkbox';
+ * import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+ * import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+ * import Visibility from 'material-ui/svg-icons/action/visibility';
+ * import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
+ * 
+ * const styles = {
+ *   block: {
+ *     maxWidth: 250,
+ *   },
+ *   checkbox: {
+ *     marginBottom: 16,
+ *   },
+ * };
+ * 
+ * class CheckboxExampleSimple extends React.Component {
+ *   state = {
+ *     checked: false,
+ *   }
+ * 
+ *   updateCheck() {
+ *     this.setState((oldState) => {
+ *       return {
+ *         checked: !oldState.checked,
+ *       };
+ *     });
+ *   }
+ * 
+ *   render() {
+ *     return (
+ *       <div style={styles.block}>
+ *         <Checkbox
+ *           label="Simple"
+ *           style={styles.checkbox}
+ *         />
+ *         <Checkbox
+ *           label="Simple with controlled value"
+ *           checked={this.state.checked}
+ *           onCheck={this.updateCheck.bind(this)}
+ *           style={styles.checkbox}
+ *         />
+ *         <Checkbox
+ *           checkedIcon={<ActionFavorite />}
+ *           uncheckedIcon={<ActionFavoriteBorder />}
+ *           label="Custom icon"
+ *           style={styles.checkbox}
+ *         />
+ *         <Checkbox
+ *           checkedIcon={<Visibility />}
+ *           uncheckedIcon={<VisibilityOff />}
+ *           label="Custom icon of different shapes"
+ *           style={styles.checkbox}
+ *         />
+ *         <Checkbox
+ *           label="Disabled unchecked"
+ *           disabled={true}
+ *           style={styles.checkbox}
+ *         />
+ *         <Checkbox
+ *           label="Disabled checked"
+ *           checked={true}
+ *           disabled={true}
+ *           style={styles.checkbox}
+ *         />
+ *         <Checkbox
+ *           label="Label on the left"
+ *           labelPosition="left"
+ *           style={styles.checkbox}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * 
+ * export default CheckboxExampleSimple;
+ * ```
+ */
 class Checkbox extends Component {
   static propTypes = {
     /**
-     * Checkbox is checked if true.
+     * @property {PropTypes.bool} checked - Checkbox is checked if true.
      */
     checked: PropTypes.bool,
     /**
-     * The SvgIcon to use for the checked state.
+     * @property {PropTypes.element} checkedIcon - The SvgIcon to use for the checked state.
      * This is useful to create icon toggles.
      */
     checkedIcon: PropTypes.element,
     /**
-     * The default state of our checkbox component.
+     * @property {PropTypes.bool} defaultChecked - The default state of our checkbox component.
      * **Warning:** This cannot be used in conjunction with `checked`.
      * Decide between using a controlled or uncontrolled input element and remove one of these props.
      * More info: https://fb.me/react-controlled-components
      */
     defaultChecked: PropTypes.bool,
     /**
-     * Disabled if true.
+     * @property {PropTypes.bool} disabled - Disabled if true.
      */
     disabled: PropTypes.bool,
     /**
-     * Overrides the inline-styles of the icon element.
+     * @property {PropTypes.object} iconStyle - Overrides the inline-styles of the icon element.
      */
     iconStyle: PropTypes.object,
     /**
-     * Overrides the inline-styles of the input element.
+     * @property {PropTypes.object} inputStyle - Overrides the inline-styles of the input element.
      */
     inputStyle: PropTypes.object,
     /**
-     * Where the label will be placed next to the checkbox.
+     * @property {PropTypes.oneOf(['left', 'right'])} labelPosition - Where the label will be placed next to the checkbox.
      */
     labelPosition: PropTypes.oneOf(['left', 'right']),
     /**
-     * Overrides the inline-styles of the Checkbox element label.
+     * @property {PropTypes.object} labelStyle - Overrides the inline-styles of the Checkbox element label.
      */
     labelStyle: PropTypes.object,
     /**
-     * Callback function that is fired when the checkbox is checked.
+     * @property {PropTypes.func} onCheck - Callback function that is fired when the checkbox is checked.
      *
      * @param {object} event `change` event targeting the underlying checkbox `input`.
      * @param {boolean} isInputChecked The `checked` value of the underlying checkbox `input`.
      */
     onCheck: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The SvgIcon to use for the unchecked state.
+     * @property {PropTypes.element} uncheckedIcon - The SvgIcon to use for the unchecked state.
      * This is useful to create icon toggles.
      */
     uncheckedIcon: PropTypes.element,
     /**
-     * ValueLink for when using controlled checkbox.
+     * @property {PropTypes.object} valueLink - ValueLink for when using controlled checkbox.
      */
     valueLink: PropTypes.object,
   };

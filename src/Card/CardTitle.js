@@ -28,51 +28,51 @@ class CardTitle extends Component {
 
   static propTypes = {
     /**
-     * If true, a click on this card component expands the card.
+     * @property {PropTypes.bool} actAsExpander - If true, a click on this card component expands the card.
      */
     actAsExpander: PropTypes.bool,
     /**
-     * Can be used to render elements inside the Card Title.
+     * @property {PropTypes.node} children - Can be used to render elements inside the Card Title.
      */
     children: PropTypes.node,
     /**
-     * Can be used to pass a closeIcon if you don't like the default expandable close Icon.
+     * @property {PropTypes.node} closeIcon - Can be used to pass a closeIcon if you don't like the default expandable close Icon.
      */
     closeIcon: PropTypes.node,
     /**
-     * If true, this card component is expandable.
+     * @property {PropTypes.bool} expandable - If true, this card component is expandable.
      */
     expandable: PropTypes.bool,
     /**
-     * If true, this card component will include a button to expand the card.
+     * @property {PropTypes.bool} showExpandableButton - If true, this card component will include a button to expand the card.
      */
     showExpandableButton: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Can be used to render a subtitle in the Card Title.
+     * @property {PropTypes.node} subtitle - Can be used to render a subtitle in the Card Title.
      */
     subtitle: PropTypes.node,
     /**
-     * Override the subtitle color.
+     * @property {PropTypes.string} subtitleColor - Override the subtitle color.
      */
     subtitleColor: PropTypes.string,
     /**
-     * Override the inline-styles of the subtitle.
+     * @property {PropTypes.object} subtitleStyle - Override the inline-styles of the subtitle.
      */
     subtitleStyle: PropTypes.object,
     /**
-     * Can be used to render a title in the Card Title.
+     * @property {PropTypes.node} title - Can be used to render a title in the Card Title.
      */
     title: PropTypes.node,
     /**
-     * Override the title color.
+     * @property {PropTypes.string} titleColor - Override the title color.
      */
     titleColor: PropTypes.string,
     /**
-     * Override the inline-styles of the title.
+     * @property {PropTypes.object} titleStyle - Override the inline-styles of the title.
      */
     titleStyle: PropTypes.object,
   };

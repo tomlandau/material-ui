@@ -1,3 +1,130 @@
+/**
+ * # Avatars can be used to represent people or object.
+ * 
+ * ## Examples
+ * Examples of `Avatar` using an image, [Font Icon](https://bitsrc.io/materialui/react-material-ui/icons/font-icon), [SVG Icon](https://bitsrc.io/materialui/react-material-ui/icons/svg-icon)
+ * and "Letter" (string), with and without custom colors at the default size (`40dp`) and an alternate size (`30dp`).
+ * ```js
+ * import React from 'react';
+ * import Avatar from 'material-ui/Avatar';
+ * import FileFolder from 'material-ui/svg-icons/file/folder';
+ * import FontIcon from 'material-ui/FontIcon';
+ * import List from 'material-ui/List/List';
+ * import ListItem from 'material-ui/List/ListItem';
+ * 
+ * import {
+ *   blue300,
+ *   indigo900,
+ *   orange200,
+ *   deepOrange300,
+ *   pink400,
+ *   purple500,
+ * } from 'material-ui/styles/colors';
+ * 
+ * const style = {margin: 5};
+ * 
+ * const AvatarExampleSimple = () => (
+ *   <List>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={
+ *         <Avatar src="images/uxceo-128.jpg" />
+ *       }
+ *     >
+ *       Image Avatar
+ *     </ListItem>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={
+ *         <Avatar
+ *           src="images/uxceo-128.jpg"
+ *           size={30}
+ *           style={style}
+ *         />
+ *       }
+ *     >
+ *       Image Avatar with custom size
+ *     </ListItem>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={
+ *         <Avatar icon={<FontIcon className="muidocs-icon-communication-voicemail" />} />
+ *       }
+ *     >
+ *       FontIcon Avatar
+ *     </ListItem>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={
+ *         <Avatar
+ *           icon={<FontIcon className="muidocs-icon-communication-voicemail" />}
+ *           color={blue300}
+ *           backgroundColor={indigo900}
+ *           size={30}
+ *           style={style}
+ *         />
+ *       }
+ *     >
+ *       FontIcon Avatar with custom colors and size
+ *     </ListItem>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={
+ *         <Avatar icon={<FileFolder />} />
+ *       }
+ *     >
+ *       SvgIcon Avatar
+ *     </ListItem>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={
+ *         <Avatar
+ *           icon={<FileFolder />}
+ *           color={orange200}
+ *           backgroundColor={pink400}
+ *           size={30}
+ *           style={style}
+ *         />
+ *       }
+ *     >
+ *       SvgIcon Avatar with custom colors and size
+ *     </ListItem>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={<Avatar>A</Avatar>}
+ *     >
+ *       Letter Avatar
+ *     </ListItem>
+ *     <ListItem
+ *       disabled={true}
+ *       leftAvatar={
+ *         <Avatar
+ *           color={deepOrange300}
+ *           backgroundColor={purple500}
+ *           size={30}
+ *           style={style}
+ *         >
+ *           A
+ *         </Avatar>
+ *       }
+ *     >
+ *       Letter Avatar with custom colors and size
+ *     </ListItem>
+ *   </List>
+ * );
+ * 
+ * export default AvatarExampleSimple;
+ * ``` 
+ * @property {string} backgroundColor - The backgroundColor of the avatar. Does not apply to image avatars.
+ * @property {node} children - Can be used, for instance, to render a letter inside the avatar.
+ * @property {string} className - The css class name of the root div or img element.
+ * @property {string} color - The icon or letter's color.
+ * @property {element} icon - This is the SvgIcon or FontIcon to be used inside the avatar.
+ * @property {number} [size=40] This is the size of the avatar in pixels.
+ * @property {string} src - If passed in, this component will render an img element. Otherwise, a div will be rendered.
+ * @property {object} style - Override the inline-styles of the root element.
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 

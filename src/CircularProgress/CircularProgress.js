@@ -57,43 +57,126 @@ function getStyles(props, context) {
   return styles;
 }
 
+/**
+ * [Circular Progress](https://www.google.com/design/spec/components/progress-activity.html#progress-activity-types-of-indicators) will rotate to show the progress of a task or that there is a wait for a task to complete.
+ * 
+ * &nbsp;
+ * # Examples
+ * 
+ * ## Indeterminate progress
+ * By default, the indicator animates continuously.
+ * ```js
+ * import React from 'react';
+ * import CircularProgress from 'material-ui/CircularProgress';
+ * 
+ * const CircularProgressExampleSimple = () => (
+ *   <div>
+ *     <CircularProgress />
+ *     <CircularProgress size={60} thickness={7} />
+ *     <CircularProgress size={80} thickness={5} />
+ *   </div>
+ * );
+ * 
+ * export default CircularProgressExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ## Determinate progress
+ * In determinate mode, the indicator adjusts to show the percentage complete, as a ratio of `value`: `max-min`.
+ * ```js
+ * import React from 'react';
+ * import CircularProgress from 'material-ui/CircularProgress';
+ * 
+ * export default class CircularProgressExampleDeterminate extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ * 
+ *     this.state = {
+ *       completed: 0,
+ *     };
+ *   }
+ * 
+ *   componentDidMount() {
+ *     this.timer = setTimeout(() => this.progress(5), 1000);
+ *   }
+ * 
+ *   componentWillUnmount() {
+ *     clearTimeout(this.timer);
+ *   }
+ * 
+ *   progress(completed) {
+ *     if (completed > 100) {
+ *       this.setState({completed: 100});
+ *     } else {
+ *       this.setState({completed});
+ *       const diff = Math.random() * 10;
+ *       this.timer = setTimeout(() => this.progress(completed + diff), 1000);
+ *     }
+ *   }
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <CircularProgress
+ *           mode="determinate"
+ *           value={this.state.completed}
+ *         />
+ *         <CircularProgress
+ *           mode="determinate"
+ *           value={this.state.completed}
+ *           size={60}
+ *           thickness={7}
+ *         />
+ *         <CircularProgress
+ *           mode="determinate"
+ *           value={this.state.completed}
+ *           size={80}
+ *           thickness={5}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ */
 class CircularProgress extends Component {
   static propTypes = {
     /**
-     * Override the progress's color.
+     *  @property {PropTypes.string} color - Override the progress's color.
      */
     color: PropTypes.string,
     /**
-     * Style for inner wrapper div.
+     *  @property {PropTypes.object} innerStyle - Style for inner wrapper div.
      */
     innerStyle: PropTypes.object,
     /**
-     * The max value of progress, only works in determinate mode.
+     *  @property {PropTypes.number} max - The max value of progress, only works in determinate mode.
      */
     max: PropTypes.number,
     /**
-     * The min value of progress, only works in determinate mode.
+     *  @property {PropTypes.number} min - The min value of progress, only works in determinate mode.
      */
     min: PropTypes.number,
     /**
-     * The mode of show your progress, indeterminate
+     *  @property {PropTypes.oneOf(['determinate', 'indeterminate'])} mode - The mode of show your progress, indeterminate
      * for when there is no value for progress.
      */
     mode: PropTypes.oneOf(['determinate', 'indeterminate']),
     /**
-     * The diameter of the progress in pixels.
+     *  @property {PropTypes.number} size - The diameter of the progress in pixels.
      */
     size: PropTypes.number,
     /**
-     * Override the inline-styles of the root element.
+     *  @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Stroke width in pixels.
+     *  @property {PropTypes.number} thickness - Stroke width in pixels.
      */
     thickness: PropTypes.number,
     /**
-     * The value of progress, only works in determinate mode.
+     *  @property {PropTypes.number} value - The value of progress, only works in determinate mode.
      */
     value: PropTypes.number,
   };

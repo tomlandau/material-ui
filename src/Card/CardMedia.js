@@ -40,39 +40,39 @@ function getStyles(props, context) {
 class CardMedia extends Component {
   static propTypes = {
     /**
-     * If true, a click on this card component expands the card.
+     * @property {PropTypes.bool} actAsExpander - If true, a click on this card component expands the card.
      */
     actAsExpander: PropTypes.bool,
     /**
-     * Can be used to render elements inside the Card Media.
+     * @property {PropTypes.node} children - Can be used to render elements inside the Card Media.
      */
     children: PropTypes.node,
     /**
-     * If true, this card component is expandable.
+     * @property {PropTypes.bool} expandable - If true, this card component is expandable.
      */
     expandable: PropTypes.bool,
     /**
-     * Override the inline-styles of the Card Media.
+     * @property {PropTypes.object} mediaStyle - Override the inline-styles of the Card Media.
      */
     mediaStyle: PropTypes.object,
     /**
-     * Can be used to render overlay element in Card Media.
+     * @property {PropTypes.node} overlay - Can be used to render overlay element in Card Media.
      */
     overlay: PropTypes.node,
     /**
-     * Override the inline-styles of the overlay container.
+     * @property {PropTypes.object} overlayContainerStyle - Override the inline-styles of the overlay container.
      */
     overlayContainerStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the overlay content.
+     * @property {PropTypes.object} overlayContentStyle - Override the inline-styles of the overlay content.
      */
     overlayContentStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the overlay element.
+     * @property {PropTypes.object} overlayStyle - Override the inline-styles of the overlay element.
      */
     overlayStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

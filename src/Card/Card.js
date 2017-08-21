@@ -3,45 +3,205 @@ import PropTypes from 'prop-types';
 import Paper from '../Paper';
 import CardExpandable from './CardExpandable';
 
+/**
+ * A card is a piece of paper with unique related data that serves as an entry point to more detailed information. 
+ * For example, a card could contain a photo, text, and a link about a single subject.
+ * 
+ * &nbsp;
+ * Cards have a constant width and variable height. 
+ * The maximum height is limited to the height of the available space on a platform, but it can temporarily expand (for example, to display a comment field). 
+ * Cards do not flip over to reveal information on the back.
+ * 
+ * &nbsp;
+ * `Card` expansion can be controlled (use `expanded` and `onExpandChange` properties) or uncontrolled (use `initiallyExpanded` property). 
+ * Use the `expandable` property to control whether an element will react to expansion or not. 
+ * Use `actAsExpander` on `CardTitle` or `CardHeader` to let them have an expander button.
+ * 
+ * &nbsp;
+ * # Examples
+ * 
+ * ## Card components example
+ * A `Card` containing each of the card components: `CardHeader` (with avatar), `CardMedia` (with overlay), `CardTitle`, `CardText` & `CardActions`.
+ * ```js
+ * import React from 'react';
+ * import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+ * import FlatButton from 'material-ui/FlatButton';
+ * 
+ * const CardExampleWithAvatar = () => (
+ *   <Card>
+ *     <CardHeader
+ *       title="URL Avatar"
+ *       subtitle="Subtitle"
+ *       avatar="images/jsa-128.jpg"
+ *     />
+ *     <CardMedia
+ *       overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+ *     >
+ *       <img src="images/nature-600-337.jpg" alt="" />
+ *     </CardMedia>
+ *     <CardTitle title="Card title" subtitle="Card subtitle" />
+ *     <CardText>
+ *       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ *       Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+ *       Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+ *       Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+ *     </CardText>
+ *     <CardActions>
+ *       <FlatButton label="Action1" />
+ *       <FlatButton label="Action2" />
+ *     </CardActions>
+ *   </Card>
+ * );
+ * 
+ * export default CardExampleWithAvatar;
+ * ```
+ * 
+ * &nbsp;
+ * ## Exapandable example
+ * An expandable `Card` with `CardHeader`, `CardText` and `CardActions`. Use the icon to expand the card.
+ * ```js
+ * import React from 'react';
+ * import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+ * import FlatButton from 'material-ui/FlatButton';
+ * 
+ * const CardExampleExpandable = () => (
+ *   <Card>
+ *     <CardHeader
+ *       title="Without Avatar"
+ *       subtitle="Subtitle"
+ *       actAsExpander={true}
+ *       showExpandableButton={true}
+ *     />
+ *     <CardActions>
+ *       <FlatButton label="Action1" />
+ *       <FlatButton label="Action2" />
+ *     </CardActions>
+ *     <CardText expandable={true}>
+ *       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ *       Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+ *       Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+ *       Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+ *     </CardText>
+ *   </Card>
+ * );
+ * 
+ * export default CardExampleExpandable;
+ * ```
+ * 
+ * &nbsp;
+ * ## Controlled example
+ * A controlled expandable `Card`. Use the icon, the toggle or the buttons to control the expanded state of the card.
+ * ```js
+ * import React from 'react';
+ * import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import Toggle from 'material-ui/Toggle';
+ * 
+ * export default class CardExampleControlled extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {
+ *       expanded: false,
+ *     };
+ *   }
+ * 
+ *   handleExpandChange = (expanded) => {
+ *     this.setState({expanded: expanded});
+ *   };
+ * 
+ *   handleToggle = (event, toggle) => {
+ *     this.setState({expanded: toggle});
+ *   };
+ * 
+ *   handleExpand = () => {
+ *     this.setState({expanded: true});
+ *   };
+ * 
+ *   handleReduce = () => {
+ *     this.setState({expanded: false});
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+ *         <CardHeader
+ *           title="URL Avatar"
+ *           subtitle="Subtitle"
+ *           avatar="images/ok-128.jpg"
+ *           actAsExpander={true}
+ *           showExpandableButton={true}
+ *         />
+ *         <CardText>
+ *           <Toggle
+ *             toggled={this.state.expanded}
+ *             onToggle={this.handleToggle}
+ *             labelPosition="right"
+ *             label="This toggle controls the expanded state of the component."
+ *           />
+ *         </CardText>
+ *         <CardMedia
+ *           expandable={true}
+ *           overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
+ *         >
+ *           <img src="images/nature-600-337.jpg" alt="" />
+ *         </CardMedia>
+ *         <CardTitle title="Card title" subtitle="Card subtitle" expandable={true} />
+ *         <CardText expandable={true}>
+ *           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ *           Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+ *           Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+ *           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+ *         </CardText>
+ *         <CardActions>
+ *           <FlatButton label="Expand" onClick={this.handleExpand} />
+ *           <FlatButton label="Reduce" onClick={this.handleReduce} />
+ *         </CardActions>
+ *       </Card>
+ *     );
+ *   }
+ * }
+ * ```
+ */
 class Card extends Component {
   static propTypes = {
     /**
-     * Can be used to render elements inside the Card.
+     * @property {node} children - Can be used to render elements inside the Card.
      */
     children: PropTypes.node,
     /**
-     * Override the inline-styles of the container element.
+     * @property {object} containerStyle - Override the inline-styles of the container element.
      */
     containerStyle: PropTypes.object,
     /**
-     * If true, this card component is expandable. Can be set on any child of the `Card` component.
+     * @property {bool} expandable - If true, this card component is expandable. Can be set on any child of the `Card` component.
      */
     expandable: PropTypes.bool,
     /**
-     * Whether this card is expanded.
+     * @property {bool} expanded - Whether this card is expanded.
      * If `true` or `false` the component is controlled.
      * if `null` the component is uncontrolled.
      */
     expanded: PropTypes.bool,
     /**
-     * Whether this card is initially expanded.
+     * @property {bool} initiallyExpanded - Whether this card is initially expanded.
      */
     initiallyExpanded: PropTypes.bool,
     /**
-     * Callback function fired when the `expandable` state of the card has changed.
+     * @property {bool} onExpandChange - Callback function fired when the `expandable` state of the card has changed.
      *
      * @param {boolean} newExpandedState Represents the new `expanded` state of the card.
      */
     onExpandChange: PropTypes.func,
     /**
-     * If true, this card component will include a button to expand the card. `CardTitle`,
+     * @property {bool} showExpandableButton - If true, this card component will include a button to expand the card. `CardTitle`,
      * `CardHeader` and `CardActions` implement `showExpandableButton`. Any child component
      * of `Card` can implements `showExpandableButton` or forwards the property to a child
      * component supporting it.
      */
     showExpandableButton: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

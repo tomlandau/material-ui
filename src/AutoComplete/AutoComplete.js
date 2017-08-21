@@ -1,3 +1,275 @@
+/**
+ * React Auto-complete is an extension of a regular text-field that will auto-complete the input dynamically.
+ * It can take different auto-complete filters and uses a menu to display suggestions.
+ * More information at [material-ui.com](http://www.material-ui.com/#/components/auto-complete)
+ * 
+ * &nbsp;
+ * # Examples
+ * 
+ * ## Simple example
+ * The input is used to create the `dataSource`, so the input always matches three entries.
+ * ```js
+ * import React, {Component} from 'react';
+ * import AutoComplete from 'material-ui/AutoComplete';
+ * 
+ * export default class AutoCompleteExampleSimple extends Component {
+ *   state = {
+ *     dataSource: [],
+ *   };
+ * 
+ *   handleUpdateInput = (value) => {
+ *     this.setState({
+ *       dataSource: [
+ *         value,
+ *         value + value,
+ *         value + value + value,
+ *       ],
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <AutoComplete
+ *           hintText="Type anything"
+ *           dataSource={this.state.dataSource}
+ *           onUpdateInput={this.handleUpdateInput}
+ *         />
+ *         <AutoComplete
+ *           hintText="Type anything"
+ *           dataSource={this.state.dataSource}
+ *           onUpdateInput={this.handleUpdateInput}
+ *           floatingLabelText="Full width"
+ *           fullWidth={true}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ## Data sources
+ * The first example has `MenuItems` in its data source that display on data entry. The second example uses an array of values as its dataSource, and updates on focus. Both examples have filtering disabled.
+ * ```js
+ * import React from 'react';
+ * import AutoComplete from 'material-ui/AutoComplete';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * const dataSource1 = [
+ *   {
+ *     text: 'text-value1',
+ *     value: (
+ *       <MenuItem
+ *         primaryText="text-value1"
+ *         secondaryText="&#9786;"
+ *       />
+ *     ),
+ *   },
+ *   {
+ *     text: 'text-value2',
+ *     value: (
+ *       <MenuItem
+ *         primaryText="text-value2"
+ *         secondaryText="&#9786;"
+ *       />
+ *     ),
+ *   },
+ * ];
+ * 
+ * const dataSource2 = ['12345', '23456', '34567'];
+ * 
+ * const dataSource3 = [
+ *   {textKey: 'Some Text', valueKey: 'someFirstValue'},
+ *   {textKey: 'Some Text', valueKey: 'someSecondValue'},
+ * ];
+ * const dataSourceConfig = {
+ *   text: 'textKey',
+ *   value: 'valueKey',
+ * };
+ * 
+ * const AutoCompleteExampleDataSource = () => (
+ *   <div>
+ *     <AutoComplete
+ *       hintText="text-value data"
+ *       filter={AutoComplete.noFilter}
+ *       dataSource={dataSource1}
+ *     /><br />
+ *     <AutoComplete
+ *       floatingLabelText="showAllItems"
+ *       filter={AutoComplete.noFilter}
+ *       openOnFocus={true}
+ *       dataSource={dataSource2}
+ *     /><br />
+ *     <AutoComplete
+ *       floatingLabelText="Same text, different values"
+ *       filter={AutoComplete.noFilter}
+ *       openOnFocus={true}
+ *       dataSource={dataSource3}
+ *       dataSourceConfig={dataSourceConfig}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default AutoCompleteExampleDataSource;
+ * ```
+ * 
+ * &nbsp;
+ * ## Filters
+ * Two examples of filtering. The first uses `caseInsensitiveFilter`, the second uses fuzzyFilter, and limits the number of results displayed using the `maxSearchResults` property.
+ * ```js
+ * import React from 'react';
+ * import AutoComplete from 'material-ui/AutoComplete';
+ * 
+ * const colors = [
+ *   'Red',
+ *   'Orange',
+ *   'Yellow',
+ *   'Green',
+ *   'Blue',
+ *   'Purple',
+ *   'Black',
+ *   'White',
+ * ];
+ * 
+ * const fruit = [
+ *   'Apple', 'Apricot', 'Avocado',
+ *   'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry',
+ *   'Boysenberry', 'Blood Orange',
+ *   'Cantaloupe', 'Currant', 'Cherry', 'Cherimoya', 'Cloudberry',
+ *   'Coconut', 'Cranberry', 'Clementine',
+ *   'Damson', 'Date', 'Dragonfruit', 'Durian',
+ *   'Elderberry',
+ *   'Feijoa', 'Fig',
+ *   'Goji berry', 'Gooseberry', 'Grape', 'Grapefruit', 'Guava',
+ *   'Honeydew', 'Huckleberry',
+ *   'Jabouticaba', 'Jackfruit', 'Jambul', 'Jujube', 'Juniper berry',
+ *   'Kiwi fruit', 'Kumquat',
+ *   'Lemon', 'Lime', 'Loquat', 'Lychee',
+ *   'Nectarine',
+ *   'Mango', 'Marion berry', 'Melon', 'Miracle fruit', 'Mulberry', 'Mandarine',
+ *   'Olive', 'Orange',
+ *   'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Physalis', 'Plum', 'Pineapple',
+ *   'Pumpkin', 'Pomegranate', 'Pomelo', 'Purple Mangosteen',
+ *   'Quince',
+ *   'Raspberry', 'Raisin', 'Rambutan', 'Redcurrant',
+ *   'Salal berry', 'Satsuma', 'Star fruit', 'Strawberry', 'Squash', 'Salmonberry',
+ *   'Tamarillo', 'Tamarind', 'Tomato', 'Tangerine',
+ *   'Ugli fruit',
+ *   'Watermelon',
+ * ];
+ * 
+ * const AutoCompleteExampleFilters = () => (
+ *   <div>
+ *     <AutoComplete
+ *       floatingLabelText="Type 'r', case insensitive"
+ *       filter={AutoComplete.caseInsensitiveFilter}
+ *       dataSource={colors}
+ *     />
+ *     <br />
+ *     <AutoComplete
+ *       floatingLabelText="Type 'peah', fuzzy search"
+ *       filter={AutoComplete.fuzzyFilter}
+ *       dataSource={fruit}
+ *       maxSearchResults={5}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default AutoCompleteExampleFilters;
+ * ```
+ * 
+ * &nbsp;
+ * ## Controlled example
+ * `AutoComplete` search text can be implemented as a controlled value, where `searchText` is handled by state in the parent component. This value is reset with the `onNewRequest` callback.
+ * ```js
+ * import React, {Component} from 'react';
+ * import AutoComplete from 'material-ui/AutoComplete';
+ * 
+ * const colors = [
+ *   'Red',
+ *   'Orange',
+ *   'Yellow',
+ *   'Green',
+ *   'Blue',
+ *   'Purple',
+ *   'Black',
+ *   'White',
+ * ];
+ * 
+ * export default class AutoCompleteExampleControlled extends Component {
+ *   state = {
+ *     searchText: '',
+ *   };
+ * 
+ *   handleUpdateInput = (searchText) => {
+ *     this.setState({
+ *       searchText: searchText,
+ *     });
+ *   };
+ * 
+ *   handleNewRequest = () => {
+ *     this.setState({
+ *       searchText: '',
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <AutoComplete
+ *           hintText="Type 'r', case insensitive"
+ *           searchText={this.state.searchText}
+ *           onUpdateInput={this.handleUpdateInput}
+ *           onNewRequest={this.handleNewRequest}
+ *           dataSource={colors}
+ *           filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+ *           openOnFocus={true}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ## MenuProps example
+ * Provide props to be passed into the Menu component.
+ * ```js
+ * import React, {Component} from 'react';
+ * import AutoComplete from 'material-ui/AutoComplete';
+ * 
+ * const colors = [
+ *   'Red',
+ *   'Orange',
+ *   'Yellow',
+ *   'Green',
+ *   'Blue',
+ *   'Purple',
+ *   'Black',
+ *   'White',
+ * ];
+ * 
+ * const menuProps = {
+ *   desktop: true,
+ *   disableAutoFocus: true,
+ * };
+ * 
+ * export default class AutoCompleteExampleMenuProps extends Component {
+ *   render() {
+ *     return (
+ *       <div>
+ *         <AutoComplete
+ *           hintText="Type anything"
+ *           dataSource={colors}
+ *           menuProps={menuProps}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
@@ -43,23 +315,23 @@ function getStyles(props, context, state) {
 class AutoComplete extends Component {
   static propTypes = {
     /**
-     * Location of the anchor for the auto complete.
+     * @property {PropTypes.bool} show - Location of the anchor for the auto complete.
      */
     anchorOrigin: propTypes.origin,
     /**
-     * If true, the auto complete is animated as it is toggled.
+     * @property {PropTypes.bool} show - If true, the auto complete is animated as it is toggled.
      */
     animated: PropTypes.bool,
     /**
-     * Override the default animation component used.
+     * @property {PropTypes.bool} show - Override the default animation component used.
      */
     animation: PropTypes.func,
     /**
-     * Array of strings or nodes used to populate the list.
+     * @property {PropTypes.bool} show - Array of strings or nodes used to populate the list.
      */
     dataSource: PropTypes.array.isRequired,
     /**
-     * Config for objects list dataSource.
+     * @property {PropTypes.bool} show - Config for objects list dataSource.
      *
      * @typedef {Object} dataSourceConfig
      *
@@ -69,19 +341,19 @@ class AutoComplete extends Component {
      */
     dataSourceConfig: PropTypes.object,
     /**
-     * Disables focus ripple when true.
+     * @property {PropTypes.bool} show - Disables focus ripple when true.
      */
     disableFocusRipple: PropTypes.bool,
     /**
-     * Override style prop for error.
+     * @property {PropTypes.bool} show - Override style prop for error.
      */
     errorStyle: PropTypes.object,
     /**
-     * The error content to display.
+     * @property {PropTypes.bool} show - The error content to display.
      */
     errorText: PropTypes.node,
     /**
-     * Callback function used to filter the auto complete.
+     * @property {PropTypes.bool} show - Callback function used to filter the auto complete.
      *
      * @param {string} searchText The text to search for within `dataSource`.
      * @param {string} key `dataSource` element, or `text` property on that element if it's not a string.
@@ -89,42 +361,42 @@ class AutoComplete extends Component {
      */
     filter: PropTypes.func,
     /**
-     * The content to use for adding floating label element.
+     * @property {PropTypes.bool} show - The content to use for adding floating label element.
      */
     floatingLabelText: PropTypes.node,
     /**
-     * If true, the field receives the property `width: 100%`.
+     * @property {PropTypes.bool} show - If true, the field receives the property `width: 100%`.
      */
     fullWidth: PropTypes.bool,
     /**
-     * The hint content to display.
+     * @property {PropTypes.bool} show - The hint content to display.
      */
     hintText: PropTypes.node,
     /**
-     * Override style for list.
+     * @property {PropTypes.bool} show - Override style for list.
      */
     listStyle: PropTypes.object,
     /**
-     * The max number of search results to be shown.
+     * @property {PropTypes.bool} show - The max number of search results to be shown.
      * By default it shows all the items which matches filter.
      */
     maxSearchResults: PropTypes.number,
     /**
-     * Delay for closing time of the menu.
+     * @property {PropTypes.bool} show - Delay for closing time of the menu.
      */
     menuCloseDelay: PropTypes.number,
     /**
-     * Props to be passed to menu.
+     * @property {PropTypes.bool} show - Props to be passed to menu.
      */
     menuProps: PropTypes.object,
     /**
-     * Override style for menu.
+     * @property {PropTypes.bool} show - Override style for menu.
      */
     menuStyle: PropTypes.object,
     /** @ignore */
     onBlur: PropTypes.func,
     /**
-     * Callback function fired when the menu is closed.
+     * @property {PropTypes.bool} show - Callback function fired when the menu is closed.
      */
     onClose: PropTypes.func,
     /** @ignore */
@@ -132,16 +404,16 @@ class AutoComplete extends Component {
     /** @ignore */
     onKeyDown: PropTypes.func,
     /**
-     * Callback function that is fired when a list item is selected, or enter is pressed in the `TextField`.
+     * @property {PropTypes.bool} show - Callback function that is fired when a list item is selected, or enter is pressed in the `TextField`.
      *
      * @param {string} chosenRequest Either the `TextField` input value, if enter is pressed in the `TextField`,
-     * or the dataSource object corresponding to the list item that was selected.
+     * or the text value of the corresponding list item that was selected.
      * @param {number} index The index in `dataSource` of the list item selected, or `-1` if enter is pressed in the
      * `TextField`.
      */
     onNewRequest: PropTypes.func,
     /**
-     * Callback function that is fired when the user updates the `TextField`.
+     * @property {PropTypes.bool} show - Callback function that is fired when the user updates the `TextField`.
      *
      * @param {string} searchText The auto-complete's `searchText` value.
      * @param {array} dataSource The auto-complete's `dataSource` array.
@@ -149,31 +421,31 @@ class AutoComplete extends Component {
      */
     onUpdateInput: PropTypes.func,
     /**
-     * Auto complete menu is open if true.
+     * @property {PropTypes.bool} show - Auto complete menu is open if true.
      */
     open: PropTypes.bool,
     /**
-     * If true, the list item is showed when a focus event triggers.
+     * @property {PropTypes.bool} show - If true, the list item is showed when a focus event triggers.
      */
     openOnFocus: PropTypes.bool,
     /**
-     * Props to be passed to popover.
+     * @property {PropTypes.bool} show - Props to be passed to popover.
      */
     popoverProps: PropTypes.object,
     /**
-     * Text being input to auto complete.
+     * @property {PropTypes.bool} show - Text being input to auto complete.
      */
     searchText: PropTypes.string,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.bool} show - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Origin for location of target.
+     * @property {PropTypes.bool} show - Origin for location of target.
      */
     targetOrigin: propTypes.origin,
     /**
-     * Override the inline-styles of AutoComplete's TextField element.
+     * @property {PropTypes.bool} show - Override the inline-styles of AutoComplete's TextField element.
      */
     textFieldStyle: PropTypes.object,
   };

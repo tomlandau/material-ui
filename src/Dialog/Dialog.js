@@ -365,103 +365,462 @@ class DialogInline extends Component {
   }
 }
 
+/**
+ * [Dialogs](https://www.google.com/design/spec/components/dialogs.html) contain text and UI controls focused on a specific task. They inform users about critical information, require users to make decisions, or involve multiple tasks.
+ * 
+ * Dialog can only be a controlled component. You must provide the open prop and handle onRequestClose in order to use this component.
+ * 
+ * &nbsp;
+ * # Examples
+ * 
+ * ## Simple dialog
+ * Dialog with action buttons. The actions are passed in as an array of React objects, in this example [FlatButtons](https://bitsrc.io/materialui/react-material-ui/buttons/flat-button).
+ * 
+ * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
+ * ```js
+ * import React from 'react';
+ * import Dialog from 'material-ui/Dialog';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class DialogExampleSimple extends React.Component {
+ *   state = {
+ *     open: false,
+ *   };
+ * 
+ *   handleOpen = () => {
+ *     this.setState({open: true});
+ *   };
+ * 
+ *   handleClose = () => {
+ *     this.setState({open: false});
+ *   };
+ * 
+ *   render() {
+ *     const actions = [
+ *       <FlatButton
+ *         label="Cancel"
+ *         primary={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *       <FlatButton
+ *         label="Submit"
+ *         primary={true}
+ *         keyboardFocused={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *     ];
+ * 
+ *     return (
+ *       <div>
+ *         <RaisedButton label="Dialog" onClick={this.handleOpen} />
+ *         <Dialog
+ *           title="Dialog With Actions"
+ *           actions={actions}
+ *           modal={false}
+ *           open={this.state.open}
+ *           onRequestClose={this.handleClose}
+ *         >
+ *           The actions in this window were passed in as an array of React objects.
+ *         </Dialog>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ## Modal dialog
+ * A modal dialog can only be closed by selecting one of the actions.
+ * ```js
+ * import React from 'react';
+ * import Dialog from 'material-ui/Dialog';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class DialogExampleModal extends React.Component {
+ *   state = {
+ *     open: false,
+ *   };
+ * 
+ *   handleOpen = () => {
+ *     this.setState({open: true});
+ *   };
+ * 
+ *   handleClose = () => {
+ *     this.setState({open: false});
+ *   };
+ * 
+ *   render() {
+ *     const actions = [
+ *       <FlatButton
+ *         label="Cancel"
+ *         primary={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *       <FlatButton
+ *         label="Submit"
+ *         primary={true}
+ *         disabled={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *     ];
+ * 
+ *     return (
+ *       <div>
+ *         <RaisedButton label="Modal Dialog" onClick={this.handleOpen} />
+ *         <Dialog
+ *           title="Dialog With Actions"
+ *           actions={actions}
+ *           modal={true}
+ *           open={this.state.open}
+ *         >
+ *           Only actions can close this dialog.
+ *         </Dialog>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ## Styled dialog
+ * The dialog width has been set to occupy the full width of browser through the `contentStyle` property.
+ * ```js
+ * import React from 'react';
+ * import Dialog from 'material-ui/Dialog';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * const customContentStyle = {
+ *   width: '100%',
+ *   maxWidth: 'none',
+ * };
+ * 
+ * export default class DialogExampleCustomWidth extends React.Component {
+ *   state = {
+ *     open: false,
+ *   };
+ * 
+ *   handleOpen = () => {
+ *     this.setState({open: true});
+ *   };
+ * 
+ *   handleClose = () => {
+ *     this.setState({open: false});
+ *   };
+ * 
+ *   render() {
+ *     const actions = [
+ *       <FlatButton
+ *         label="Cancel"
+ *         primary={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *       <FlatButton
+ *         label="Submit"
+ *         primary={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *     ];
+ * 
+ *     return (
+ *       <div>
+ *         <RaisedButton label="Dialog With Custom Width" onClick={this.handleOpen} />
+ *         <Dialog
+ *           title="Dialog With Custom Width"
+ *           actions={actions}
+ *           modal={true}
+ *           contentStyle={customContentStyle}
+ *           open={this.state.open}
+ *         >
+ *           This dialog spans the entire width of the screen.
+ *         </Dialog>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ## Nested dialogs
+ * Dialogs can be nested. This example opens a Date Picker from within a Dialog.
+ * ```js
+ * import React from 'react';
+ * import Dialog from 'material-ui/Dialog';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * import DatePicker from 'material-ui/DatePicker';
+ * 
+ * export default class DialogExampleDialogDatePicker extends React.Component {
+ *   state = {
+ *     open: false,
+ *   };
+ * 
+ *   handleOpen = () => {
+ *     this.setState({open: true});
+ *   };
+ * 
+ *   handleClose = () => {
+ *     this.setState({open: false});
+ *   };
+ * 
+ *   render() {
+ *     const actions = [
+ *       <FlatButton
+ *         label="Ok"
+ *         primary={true}
+ *         keyboardFocused={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *     ];
+ * 
+ *     return (
+ *       <div>
+ *         <RaisedButton label="Dialog With Date Picker" onClick={this.handleOpen} />
+ *         <Dialog
+ *           title="Dialog With Date Picker"
+ *           actions={actions}
+ *           modal={false}
+ *           open={this.state.open}
+ *           onRequestClose={this.handleClose}
+ *         >
+ *           Open a Date Picker dialog from within a dialog.
+ *           <DatePicker hintText="Date Picker" />
+ *         </Dialog>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ## Scrollable dialog
+ * Dialog content can be scrollable.
+ * ```js
+ * import React from 'react';
+ * import Dialog from 'material-ui/Dialog';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+ * 
+ * const styles = {
+ *   radioButton: {
+ *     marginTop: 16,
+ *   },
+ * };
+ * 
+ * export default class DialogExampleScrollable extends React.Component {
+ *   state = {
+ *     open: false,
+ *   };
+ * 
+ *   handleOpen = () => {
+ *     this.setState({open: true});
+ *   };
+ * 
+ *   handleClose = () => {
+ *     this.setState({open: false});
+ *   };
+ * 
+ *   render() {
+ *     const actions = [
+ *       <FlatButton
+ *         label="Cancel"
+ *         primary={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *       <FlatButton
+ *         label="Submit"
+ *         primary={true}
+ *         keyboardFocused={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *     ];
+ * 
+ *     const radios = [];
+ *     for (let i = 0; i < 30; i++) {
+ *       radios.push(
+ *         <RadioButton
+ *           key={i}
+ *           value={`value${i + 1}`}
+ *           label={`Option ${i + 1}`}
+ *           style={styles.radioButton}
+ *         />
+ *       );
+ *     }
+ * 
+ *     return (
+ *       <div>
+ *         <RaisedButton label="Scrollable Dialog" onClick={this.handleOpen} />
+ *         <Dialog
+ *           title="Scrollable Dialog"
+ *           actions={actions}
+ *           modal={false}
+ *           open={this.state.open}
+ *           onRequestClose={this.handleClose}
+ *           autoScrollBodyContent={true}
+ *         >
+ *           <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+ *             {radios}
+ *           </RadioButtonGroup>
+ *         </Dialog>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ## Alert dialog
+ * Alerts are urgent interruptions, requiring acknowledgement, that inform the user about a situation.
+ * ```js
+ * import React from 'react';
+ * import Dialog from 'material-ui/Dialog';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class DialogExampleAlert extends React.Component {
+ *   state = {
+ *     open: false,
+ *   };
+ * 
+ *   handleOpen = () => {
+ *     this.setState({open: true});
+ *   };
+ * 
+ *   handleClose = () => {
+ *     this.setState({open: false});
+ *   };
+ * 
+ *   render() {
+ *     const actions = [
+ *       <FlatButton
+ *         label="Cancel"
+ *         primary={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *       <FlatButton
+ *         label="Discard"
+ *         primary={true}
+ *         onClick={this.handleClose}
+ *       />,
+ *     ];
+ * 
+ *     return (
+ *       <div>
+ *         <RaisedButton label="Alert" onClick={this.handleOpen} />
+ *         <Dialog
+ *           actions={actions}
+ *           modal={false}
+ *           open={this.state.open}
+ *           onRequestClose={this.handleClose}
+ *         >
+ *           Discard draft?
+ *         </Dialog>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ */
 class Dialog extends Component {
   static propTypes = {
     /**
-     * Action buttons to display below the Dialog content (`children`).
+     * @property {PropTypes.node} actions - Action buttons to display below the Dialog content (`children`).
      * This property accepts either a React element, or an array of React elements.
      */
     actions: PropTypes.node,
     /**
-     * The `className` to add to the actions container's root element.
+     * @property {PropTypes.string} actionsContainerClassName - The `className` to add to the actions container's root element.
      */
     actionsContainerClassName: PropTypes.string,
     /**
-     * Overrides the inline-styles of the actions container's root element.
+     * @property {PropTypes.object} actionsContainerStyle - Overrides the inline-styles of the actions container's root element.
      */
     actionsContainerStyle: PropTypes.object,
     /**
-     * If set to true, the height of the `Dialog` will be auto detected. A max height
+     * @property {PropTypes.bool} autoDetectWindowHeight - If set to true, the height of the `Dialog` will be auto detected. A max height
      * will be enforced so that the content does not extend beyond the viewport.
      */
     autoDetectWindowHeight: PropTypes.bool,
     /**
-     * If set to true, the body content of the `Dialog` will be scrollable.
+     * @property {PropTypes.bool} autoScrollBodyContent - If set to true, the body content of the `Dialog` will be scrollable.
      */
     autoScrollBodyContent: PropTypes.bool,
     /**
-     * The `className` to add to the content's root element under the title.
+     * @property {PropTypes.string} bodyClassName - The `className` to add to the content's root element under the title.
      */
     bodyClassName: PropTypes.string,
     /**
-     * Overrides the inline-styles of the content's root element under the title.
+     * @property {PropTypes.object} bodyStyle - Overrides the inline-styles of the content's root element under the title.
      */
     bodyStyle: PropTypes.object,
     /**
-     * The contents of the `Dialog`.
+     * @property {PropTypes.object} containerStyle - The contents of the `Dialog`.
      */
     children: PropTypes.node,
     /**
-     * @ignore
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * The `className` to add to the content container.
+     * @property {PropTypes.string} contentClassName - The `className` to add to the content container.
      */
     contentClassName: PropTypes.string,
     /**
-     * Overrides the inline-styles of the content container.
+     * @property {PropTypes.object} contentStyle - Overrides the inline-styles of the content container.
      */
     contentStyle: PropTypes.object,
     /**
-     * Force the user to use one of the actions in the `Dialog`.
+     * @property {PropTypes.bool} modal - Force the user to use one of the actions in the `Dialog`.
      * Clicking outside the `Dialog` will not trigger the `onRequestClose`.
      */
     modal: PropTypes.bool,
     /**
-     * Fired when the `Dialog` is requested to be closed by a click outside the `Dialog` or on the buttons.
+     * @property {PropTypes.func} onRequestClose - Fired when the `Dialog` is requested to be closed by a click outside the `Dialog` or on the buttons.
      *
      * @param {bool} buttonClicked Determines whether a button click triggered this request.
      */
     onRequestClose: PropTypes.func,
     /**
-     * Controls whether the Dialog is opened or not.
+     * @property {PropTypes.bool.isRequired} open - Controls whether the Dialog is opened or not.
      */
     open: PropTypes.bool.isRequired,
     /**
-     * The `className` to add to the `Overlay` component that is rendered behind the `Dialog`.
+     * @property {PropTypes.string} overlayClassName - The `className` to add to the `Overlay` component that is rendered behind the `Dialog`.
      */
     overlayClassName: PropTypes.string,
     /**
-     * Overrides the inline-styles of the `Overlay` component that is rendered behind the `Dialog`.
+     * @property {PropTypes.object} overlayStyle - Overrides the inline-styles of the `Overlay` component that is rendered behind the `Dialog`.
      */
     overlayStyle: PropTypes.object,
     /**
-     * The CSS class name of the `Paper` element.
+     * @property {PropTypes.string} paperClassName - The CSS class name of the `Paper` element.
      */
     paperClassName: PropTypes.string,
     /**
-     * Properties applied to the `Paper` element.
+     * @property {PropTypes.object} paperProps - Properties applied to the `Paper` element.
      */
     paperProps: PropTypes.object,
     /**
-     * Determines whether the `Dialog` should be repositioned when it's contents are updated.
+     * @property {PropTypes.bool} repositionOnUpdate - Determines whether the `Dialog` should be repositioned when it's contents are updated.
      */
     repositionOnUpdate: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The title to display on the `Dialog`. Could be number, string, element or an array containing these types.
+     * @property {PropTypes.node} title - The title to display on the `Dialog`. Could be number, string, element or an array containing these types.
      */
     title: PropTypes.node,
     /**
-     * The `className` to add to the title's root container element.
+     * @property {PropTypes.string} titleClassName - The `className` to add to the title's root container element.
      */
     titleClassName: PropTypes.string,
     /**
-     * Overrides the inline-styles of the title's root container element.
+     * @property {PropTypes.object} titleStyle - Overrides the inline-styles of the title's root container element.
      */
     titleStyle: PropTypes.object,
   };

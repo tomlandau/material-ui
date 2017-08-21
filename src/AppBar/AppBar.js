@@ -1,3 +1,136 @@
+/**
+ * React [App Bar](https://www.google.com/design/spec/layout/structure.html#structure-app-bar), formerly known as the action bar in Android, is a special kind of toolbar that’s used for branding, navigation, search, and actions.
+ * 
+ * # Examples
+ * 
+ * ## Simple example
+ * A simple example of `AppBar` with an icon on the right. By default, the left icon is a navigation-menu.
+ * ```js
+ * import React from 'react';
+ * import AppBar from 'material-ui/AppBar';
+ * 
+ * // A simple example of `AppBar` with an icon on the right.
+ * // By default, the left icon is a navigation-menu.
+ * const AppBarExampleIcon = () => (
+ *  <AppBar
+ *    title="Title"
+ *    iconClassNameRight="muidocs-icon-navigation-expand-more"
+ *  />
+ * );
+ * 
+ * export default AppBarExampleIcon;
+ * ```
+ * 
+ * &nbsp;
+ * ## Buttons example
+ * This example uses an [IconButton](https://bitsrc.io/materialui/react-material-ui/buttons/icon-button) on the left, has a clickable title through the onClick property, and a FlatButton on the right.
+ * ```js
+ * import React from 'react';
+ * import AppBar from 'material-ui/AppBar';
+ * import IconButton from 'material-ui/IconButton';
+ * import NavigationClose from 'material-ui/svg-icons/navigation/close';
+ * import FlatButton from 'material-ui/FlatButton';
+ * 
+ * function handleTouchTap() {
+ *   alert('onClick triggered on the title component');
+ * }
+ * 
+ * const styles = {
+ *   title: {
+ *     cursor: 'pointer',
+ *   },
+ * };
+ * 
+ * // This example uses an [IconButton](/#/components/icon-button) on the left, has a clickable `title`
+ * // through the `onClick` property, and a [FlatButton](/#/components/flat-button) on the right.
+ * const AppBarExampleIconButton = () => (
+ *   <AppBar
+ *     title={<span style={styles.title}>Title</span>}
+ *     onTitleTouchTap={handleTouchTap}
+ *     iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+ *     iconElementRight={<FlatButton label="Save" />}
+ *   />
+ * );
+ * 
+ * export default AppBarExampleIconButton;
+ * ```
+ * 
+ * &nbsp;
+ * ## Composition example
+ * This example is taking advantage of the composability of the `AppBar` to render different components depending on the application state.
+ * ```js
+ * import React, {Component} from 'react';
+ * import AppBar from 'material-ui/AppBar';
+ * import IconButton from 'material-ui/IconButton';
+ * import IconMenu from 'material-ui/IconMenu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import Toggle from 'material-ui/Toggle';
+ * import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+ * import NavigationClose from 'material-ui/svg-icons/navigation/close';
+ * 
+ * class Login extends Component {
+ *   static muiName = 'FlatButton';
+ * 
+ *   render() {
+ *     return (
+ *       <FlatButton {...this.props} label="Login" />
+ *     );
+ *   }
+ * }
+ * 
+ * const Logged = (props) => (
+ *   <IconMenu
+ *     {...props}
+ *     iconButtonElement={
+ *       <IconButton><MoreVertIcon /></IconButton>
+ *     }
+ *     targetOrigin={{horizontal: 'right', vertical: 'top'}}
+ *     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+ *   >
+ *     <MenuItem primaryText="Refresh" />
+ *     <MenuItem primaryText="Help" />
+ *     <MenuItem primaryText="Sign out" />
+ *   </IconMenu>
+ * );
+ * 
+ * Logged.muiName = 'IconMenu';
+ * 
+ * // This example is taking advantage of the composability of the `AppBar`
+ * // to render different components depending on the application state.
+ * class AppBarExampleComposition extends Component {
+ *   state = {
+ *     logged: true,
+ *   };
+ * 
+ *   handleChange = (event, logged) => {
+ *     this.setState({logged: logged});
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <Toggle
+ *           label="Logged"
+ *           defaultToggled={true}
+ *           onToggle={this.handleChange}
+ *           labelPosition="right"
+ *           style={{margin: 20}}
+ *         />
+ *         <AppBar
+ *           title="Title"
+ *           iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+ *           iconElementRight={this.state.logged ? <Logged /> : <Login />}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * 
+ * export default AppBarExampleComposition;
+ * ```
+ */
+
 import React, {Component, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '../IconButton';
@@ -67,77 +200,77 @@ class AppBar extends Component {
 
   static propTypes = {
     /**
-     * Can be used to render a tab inside an app bar for instance.
+     * @property {PropTypes.node} children - Can be used to render a tab inside an app bar for instance.
      */
     children: PropTypes.node,
     /**
-     * Applied to the app bar's root element.
+     * @property {PropTypes.string} className - Applied to the app bar's root element.
      */
     className: PropTypes.string,
     /**
-     * The classname of the icon on the left of the app bar.
+     * @property {PropTypes.string} iconClassNameLeft - The classname of the icon on the left of the app bar.
      * If you are using a stylesheet for your icons, enter the class name for the icon to be used here.
      */
     iconClassNameLeft: PropTypes.string,
     /**
-     * Similiar to the iconClassNameLeft prop except that
+     * @property {PropTypes.string} iconClassNameRight - Similiar to the iconClassNameLeft prop except that
      * it applies to the icon displayed on the right of the app bar.
      */
     iconClassNameRight: PropTypes.string,
     /**
-     * The custom element to be displayed on the left side of the
+     * @property {PropTypes.element} iconElementLeft - The custom element to be displayed on the left side of the
      * app bar such as an SvgIcon.
      */
     iconElementLeft: PropTypes.element,
     /**
-     * Similiar to the iconElementLeft prop except that this element is displayed on the right of the app bar.
+     * @property {PropTypes.element} iconElementRight - Similiar to the iconElementLeft prop except that this element is displayed on the right of the app bar.
      */
     iconElementRight: PropTypes.element,
     /**
-     * Override the inline-styles of the element displayed on the left side of the app bar.
+     * @property {PropTypes.object} iconStyleLeft - Override the inline-styles of the element displayed on the left side of the app bar.
      */
     iconStyleLeft: PropTypes.object,
     /**
-     * Override the inline-styles of the element displayed on the right side of the app bar.
+     * @property {PropTypes.object} iconStyleRight - Override the inline-styles of the element displayed on the right side of the app bar.
      */
     iconStyleRight: PropTypes.object,
     /**
-     * Callback function for when the left icon is selected via a touch tap.
+     * @property {PropTypes.func} onLeftIconButtonTouchTap - Callback function for when the left icon is selected via a touch tap.
      *
      * @param {object} event TouchTap event targeting the left `IconButton`.
      */
     onLeftIconButtonTouchTap: PropTypes.func,
     /**
-     * Callback function for when the right icon is selected via a touch tap.
+     * @property {PropTypes.func} onRightIconButtonTouchTap - Callback function for when the right icon is selected via a touch tap.
      *
      * @param {object} event TouchTap event targeting the right `IconButton`.
      */
     onRightIconButtonTouchTap: PropTypes.func,
     /**
-     * Callback function for when the title text is selected via a touch tap.
+     * @property {PropTypes.func} onTitleTouchTap - Callback function for when the title text is selected via a touch tap.
      *
      * @param {object} event TouchTap event targeting the `title` node.
      */
     onTitleTouchTap: PropTypes.func,
     /**
-     * Determines whether or not to display the Menu icon next to the title.
+     * @property {PropTypes.bool} showMenuIconButton - Determines whether or not to display the Menu icon next to the title.
      * Setting this prop to false will hide the icon.
      */
     showMenuIconButton: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The title to display on the app bar.
+     * @property {PropTypes.node} title - The title to display on the app bar.
      */
     title: PropTypes.node,
     /**
-     * Override the inline-styles of the app bar's title element.
+     * @property {PropTypes.object} titleStyle - Override the inline-styles of the app bar's title element.
      */
     titleStyle: PropTypes.object,
     /**
-     * The zDepth of the component.
+     * @property {PropTypes.zDepth} zDepth - The zDepth of the component.
      * The shadow of the app bar is also dependent on this property.
      */
     zDepth: propTypes.zDepth,
