@@ -1,3 +1,8 @@
+/**
+ * #Time Picker
+ * A [time picker](#) is used to input a time by displaying an interface the user can interact with.
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TimePickerDialog from './TimePickerDialog';

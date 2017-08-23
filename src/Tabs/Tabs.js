@@ -1,3 +1,261 @@
+/**
+* #Tabs
+* 
+* [Tabs](#) make it easy to explore and switch between different views or functional aspects of an app or to browse categorized data sets.
+*
+* Tabs can operate in two different modes: controlled and uncontrolled.
+*
+* The uncontrolled mode takes over automatically if no value prop is passed to your Tabs and Tab components.
+* If you want controllable tabs, passing a value to both the Tabs and Tab elements will let you programmatically adjust which one is selected.
+* 
+* &nbsp;
+* ## Simple example
+*
+* ```js
+* import React from 'react';
+* import {Tabs, Tab} from 'material-ui/Tabs';
+* import Slider from 'material-ui/Slider';
+*
+* const styles = {
+*   headline: {
+*     fontSize: 24,
+*     paddingTop: 16,
+*     marginBottom: 12,
+*     fontWeight: 400,
+*   },
+* };
+*
+* function handleActive(tab) {
+*   alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
+* }
+*
+* const TabsExampleSimple = () => (
+*   <Tabs>
+*     <Tab label="Item One" >
+*      <div>
+*         <h2 style={styles.headline}>Tab One</h2>
+*         <p>
+*           This is an example tab.
+*         </p>
+*         <p>
+*           You can put any sort of HTML or react component in here. It even keeps the component state!
+*         </p>
+*         <Slider name="slider0" defaultValue={0.5} />
+*       </div>
+*     </Tab>
+*     <Tab label="Item Two" >
+*       <div>
+*         <h2 style={styles.headline}>Tab Two</h2>
+*         <p>
+*           This is another example tab.
+*         </p>
+*       </div>
+*     </Tab>
+*     <Tab
+*       label="onActive"
+*       data-route="/home"
+*       onActive={handleActive}
+*     >
+*       <div>
+*         <h2 style={styles.headline}>Tab Three</h2>
+*         <p>
+*           This is a third example tab.
+*         </p>
+*       </div>
+*     </Tab>
+*   </Tabs>
+* );
+*
+* export default TabsExampleSimple;
+* ```
+* 
+* &nbsp;
+*
+* ##Controlled example
+*
+* An example of controlled tabs. The selected tab is handled through state and callbacks in the parent (example) component.
+*
+* ```js
+* import React from 'react';
+* import {Tabs, Tab} from 'material-ui/Tabs';
+*
+* const styles = {
+*  headline: {
+*    fontSize: 24,
+*    paddingTop: 16,
+*    marginBottom: 12,
+*    fontWeight: 400,
+*  },
+* };
+*
+* export default class TabsExampleControlled extends React.Component {
+*
+*  constructor(props) {
+*    super(props);
+*    this.state = {
+*      value: 'a',
+*    };
+*  }
+*
+*  handleChange = (value) => {
+*    this.setState({
+*      value: value,
+*    });
+*  };
+*
+*  render() {
+*    return (
+*      <Tabs
+*        value={this.state.value}
+*        onChange={this.handleChange}
+*      >
+*        <Tab label="Tab A" value="a">
+*          <div>
+*            <h2 style={styles.headline}>Controllable Tab A</h2>
+*            <p>
+*              Tabs are also controllable if you want to programmatically pass them their values.
+*              This allows for more functionality in Tabs such as not
+*              having any Tab selected or assigning them different values.
+*            </p>
+*          </div>
+*        </Tab>
+*        <Tab label="Tab B" value="b">
+*          <div>
+*            <h2 style={styles.headline}>Controllable Tab B</h2>
+*            <p>
+*              This is another example of a controllable tab. Remember, if you
+*              use controllable Tabs, you need to give all of your tabs values or else
+*              you wont be able to select them.
+*            </p>
+*          </div>
+*        </Tab>
+*      </Tabs>
+*    );
+*  }
+* }
+* ```
+* &nbsp;
+*
+* ##Swipeable example
+*
+* This example integrates the [react-swipeable-views](#) component with Tabs, animating the Tab transition, and allowing tabs to be swiped on touch devices.
+*
+* ```js
+* import React from 'react';
+* import {Tabs, Tab} from 'material-ui/Tabs';
+* // From https://github.com/oliviertassinari/react-swipeable-views
+* import SwipeableViews from 'react-swipeable-views';
+*
+* const styles = {
+*  headline: {
+*    fontSize: 24,
+*    paddingTop: 16,
+*    marginBottom: 12,
+*    fontWeight: 400,
+*  },
+*  slide: {
+*    padding: 10,
+*  },
+* };
+*
+* export default class TabsExampleSwipeable extends React.Component {
+*
+*  constructor(props) {
+*    super(props);
+*    this.state = {
+*      slideIndex: 0,
+*    };
+*  }
+*
+*  handleChange = (value) => {
+*    this.setState({
+*      slideIndex: value,
+*    });
+*  };
+*
+*  render() {
+*    return (
+*      <div>
+*        <Tabs
+*          onChange={this.handleChange}
+*          value={this.state.slideIndex}
+*        >
+*          <Tab label="Tab One" value={0} />
+*          <Tab label="Tab Two" value={1} />
+*          <Tab label="Tab Three" value={2} />
+*        </Tabs>
+*        <SwipeableViews
+*          index={this.state.slideIndex}
+*          onChangeIndex={this.handleChange}
+*        >
+*          <div>
+*            <h2 style={styles.headline}>Tabs with slide effect</h2>
+*            Swipe to see the next slide.<br />
+*          </div>
+*          <div style={styles.slide}>
+*            slide n°2
+*          </div>
+*          <div style={styles.slide}>
+*            slide n°3
+*          </div>
+*        </SwipeableViews>
+*      </div>
+*    );
+*  }
+* }
+* ```
+* &nbsp;
+* ##Icon example
+* 
+* An example of tabs with icon.
+*
+* ```js
+* import React from 'react';
+* import {Tabs, Tab} from 'material-ui/Tabs';
+* import FontIcon from 'material-ui/FontIcon';
+* import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
+*
+* const TabsExampleIcon = () => (
+*   <Tabs>
+*     <Tab icon={<FontIcon className="muidocs-icon-action-home" />} />
+*     <Tab icon={<ActionFlightTakeoff />} />
+*     <Tab icon={<FontIcon className="material-icons">favorite</FontIcon>} />
+*   </Tabs>
+* );
+*
+* export default TabsExampleIcon;
+* ```
+* &nbsp;
+* ##Icon and text example
+*
+* ```js
+* import React from 'react';
+* import {Tabs, Tab} from 'material-ui/Tabs';
+* import FontIcon from 'material-ui/FontIcon';
+* import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
+*
+* const TabsExampleIconText = () => (
+*   <Tabs>
+*    <Tab
+*      icon={<FontIcon className="material-icons">phone</FontIcon>}
+*      label="RECENTS"
+*    />
+*    <Tab
+*      icon={<FontIcon className="material-icons">favorite</FontIcon>}
+*      label="FAVORITES"
+*    />
+*    <Tab
+*      icon={<MapsPersonPin />}
+*      label="NEARBY"
+*    />
+*  </Tabs>
+* );
+*
+* export default TabsExampleIconText;
+*
+* ```
+*/
+
 import React, {Component, createElement, cloneElement, Children, isValidElement} from 'react';
 import PropTypes from 'prop-types';
 import warning from 'warning';

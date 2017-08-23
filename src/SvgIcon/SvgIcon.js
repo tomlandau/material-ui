@@ -1,3 +1,81 @@
+/**
+ * #SVG Icon
+ * 
+ * 
+ * The SvgIcon component takes an SVG path element as its child, and converts it to a React component which displays the path and allows the icon to be styled and respond to mouse events.
+ *
+ * The resulting icon can be used as is, or included as a child for other Material-UI components that use icons, such as [Icon Button](#).
+ *
+ * ##Material icons
+ *
+ * For convenience, the full set of google [Material icons](#) are available in Material-UI as pre-built SVG Icon components. Each icon path is already wrapped with SvgIcon, and can be imported and used directly as a React component. Any properties supplied are passed to SvgIcon.
+ *
+ * The import path for each Material icons component includes the category and icon name, with spaces substituted with dashes. For example to use the [3d rotation](#) icon component, import material-ui/svg-icons/action/3d-rotation.
+ *
+ * &nbsp;
+ * #Examples
+ * 
+ * ##Custom SVG icon
+ * 
+ * This example uses a custom svg icon. The third example has a hoverColor defined.
+ *
+ *  ```js
+ * import React from 'react';
+ * import {blue500, red500, greenA200} from 'material-ui/styles/colors';
+ * import SvgIcon from 'material-ui/SvgIcon';
+ * 
+ * const iconStyles = {
+ *   marginRight: 24,
+ * };
+ * 
+ * const HomeIcon = (props) => (
+ *   <SvgIcon {...props}>
+ *     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+ *   </SvgIcon>
+ * );
+ * 
+ * const SvgIconExampleSimple = () => (
+ *   <div>
+ *     <HomeIcon style={iconStyles} />
+ *     <HomeIcon style={iconStyles} color={blue500} />
+ *     <HomeIcon style={iconStyles} color={red500} hoverColor={greenA200} />
+ *   </div>
+ * );
+ * 
+ * export default SvgIconExampleSimple;
+ * 
+ * ```
+ * 
+ * &nbsp;
+ * ##Material icons
+ * 
+ * This examples demonstrates how to use the included Material icon components.
+ *
+ *  ```js
+ * import React from 'react';
+ * import ActionHome from 'material-ui/svg-icons/action/home';
+ * import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
+ * import FileCloudDownload from 'material-ui/svg-icons/file/cloud-download';
+ * import HardwareVideogameAsset from 'material-ui/svg-icons/hardware/videogame-asset';
+ * import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+ * 
+ * const iconStyles = {
+ *   marginRight: 24,
+ * };
+ * 
+ * const SvgIconExampleIcons = () => (
+ *   <div>
+ *     <ActionHome style={iconStyles} />
+ *     <ActionFlightTakeoff style={iconStyles} color={red500} />
+ *     <FileCloudDownload style={iconStyles} color={yellow500} />
+ *     <HardwareVideogameAsset style={iconStyles} color={blue500} />
+ *   </div>
+ * );
+ * 
+ * export default SvgIconExampleIcons;
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';

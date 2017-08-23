@@ -1,3 +1,243 @@
+/**
+* #Text Field
+* 
+* 
+* [Text fields](https://bitsrc.io/materialui/react-material-ui/form-controls/text-field) allow users to input text.
+*
+* ##Simple examples
+* 
+* 
+* ```js
+* import React from 'react';
+* import TextField from 'material-ui/TextField';
+*
+* const TextFieldExampleSimple = () => (
+*   <div>
+*    <TextField
+*      hintText="Hint Text"
+*    /><br />
+*    <br />
+*    <TextField
+*      hintText="The hint text can be as long as you want, it will wrap."
+*    /><br />
+*    <TextField
+*      id="text-field-default"
+*      defaultValue="Default Value"
+*    /><br />
+*    <TextField
+*      hintText="Hint Text"
+*      floatingLabelText="Floating Label Text"
+*    /><br />
+*    <TextField
+*      defaultValue="Default Value"
+*      floatingLabelText="Floating Label Text"
+*    /><br />
+*    <TextField
+*      hintText="Hint Text"
+*      floatingLabelText="Fixed Floating Label Text"
+*     floatingLabelFixed={true}
+*    /><br />
+*    <TextField
+*      hintText="Password Field"
+*      floatingLabelText="Password"
+*      type="password"
+*    /><br />
+*    <TextField
+*      hintText="MultiLine with rows: 2 and rowsMax: 4"
+*      multiLine={true}
+*      rows={2}
+*      rowsMax={4}
+*    /><br />
+*    <TextField
+*      hintText="Message Field"
+*      floatingLabelText="MultiLine and FloatingLabel"
+*      multiLine={true}
+*      rows={2}
+*    /><br />
+*    <TextField
+*      hintText="Full width"
+*      fullWidth={true}
+*    />
+*  </div>
+* );
+*
+* export default TextFieldExampleSimple;
+* ```
+*
+* &nbsp;
+*
+* ##Error examples
+* 
+* The errorText property used in combination with various other features.
+* 
+* ```js
+* import React from 'react';
+* import TextField from 'material-ui/TextField';
+*
+* const TextFieldExampleError = () => (
+*   <div>
+*     <TextField
+*       hintText="Hint Text"
+*       errorText="This field is required"
+*     /><br />
+*     <TextField
+*       hintText="Hint Text"
+*       errorText="The error text can be as long as you want, it will wrap."
+*     /><br />
+*     <TextField
+*       hintText="Hint Text"
+*       errorText="This field is required"
+*       floatingLabelText="Floating Label Text"
+*     /><br />
+*     <TextField
+*       hintText="Message Field"
+*       errorText="This field is required."
+*       floatingLabelText="MultiLine and FloatingLabel"
+*       multiLine={true}
+*       rows={2}
+*     /><br />
+*   </div>
+* );
+*  
+* export default TextFieldExampleError;
+* ```
+*
+* &nbsp;
+*
+* ##Styled examples
+* 
+* Examples of styling various Text Field features.
+* 
+* ```js
+* import React from 'react';
+* import TextField from 'material-ui/TextField';
+* import {orange500, blue500} from 'material-ui/styles/colors';
+*
+* const styles = {
+*   errorStyle: {
+*     color: orange500,
+*   },
+*   underlineStyle: {
+*     borderColor: orange500,
+*   },
+*   floatingLabelStyle: {
+*     color: orange500,
+*   },
+*   floatingLabelFocusStyle: {
+*     color: blue500,
+*   },
+* };
+*
+* const TextFieldExampleCustomize = () => (
+*   <div>
+*     <TextField
+*       hintText="Styled Hint Text"
+*       hintStyle={styles.errorStyle}
+*     /><br />
+*     <TextField
+*       hintText="Custom error color"
+*       errorText="This field is required."
+*       errorStyle={styles.errorStyle}
+*     /><br />
+*     <TextField
+*       hintText="Custom Underline Color"
+*       underlineStyle={styles.underlineStyle}
+*     /><br />
+*     <TextField
+*       hintText="Custom Underline Focus Color"
+*       underlineFocusStyle={styles.underlineStyle}
+*     /><br />
+*     <TextField
+*       floatingLabelText="Styled Floating Label Text"
+*       floatingLabelStyle={styles.floatingLabelStyle}
+*       floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+*     />
+*   </div>
+* );
+* 
+* export default TextFieldExampleCustomize;
+* ```
+*
+* &nbsp;
+*
+* ##Disabled examples
+*
+* Various examples of disabled Text Fields.
+*
+* ```js
+* import React from 'react';
+* import TextField from 'material-ui/TextField';
+*
+* const TextFieldExampleDisabled = () => (
+*   <div>
+*     <TextField
+*      disabled={true}
+*       hintText="Disabled Hint Text"
+*     /><br />
+*     <TextField
+*       disabled={true}
+*       id="text-field-disabled"
+*       defaultValue="Disabled Value"
+*     /><br />
+*     <TextField
+*       disabled={true}
+*       hintText="Disabled Hint Text"
+*       floatingLabelText="Floating Label Text"
+*     /><br />
+*     <TextField
+*       disabled={true}
+*       hintText="Disabled Hint Text"
+*       defaultValue="Disabled With Floating Label"
+*       floatingLabelText="Floating Label Text"
+*     />
+*   </div>
+* );
+*
+* export default TextFieldExampleDisabled;
+* ```
+*
+* &nbsp;
+*
+* ##Controlled example
+* 
+* A controlled Text Field example.
+*
+* ```js
+* import React from 'react';
+* import TextField from 'material-ui/TextField';
+*
+* export default class TextFieldExampleControlled extends React.Component {
+*
+*   constructor(props) {
+*     super(props);
+*
+*     this.state = {
+*       value: 'Property Value',
+*     };
+*   }
+*
+*   handleChange = (event) => {
+*     this.setState({
+*       value: event.target.value,
+*     });
+*   };
+*
+*   render() {
+*     return (
+*       <div>
+*         <TextField
+*           id="text-field-controlled"
+*           value={this.state.value}
+*           onChange={this.handleChange}
+*         />
+*       </div>
+*     );
+*   }
+* }
+* ```
+*/
+
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';

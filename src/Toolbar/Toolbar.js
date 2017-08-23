@@ -1,3 +1,76 @@
+/** 
+ * # Toolbar
+ * 
+ * [Toolbars](https://material.io/guidelines/layout/structure.html#structure-toolbars) are collections of components stacked horizontally against each other.
+ * Toolbars provide greater versatility than AppBars which are a subset of toolbars. 
+ * The following toolbar components can help organize your layout.
+ * 
+ * 
+ * ##Example
+ * 
+ * An example Toolbar demonstrating the use of the available sub-components, and including a number of other Material-UI components, such as [Drop Down Menu](https://bitsrc.io/materialui/react-material-ui/menu/dropdown-menu), [Font Icon](https://bitsrc.io/materialui/react-material-ui/icons/font-icon), [Icon Menu](https://bitsrc.io/materialui/react-material-ui/menus/icon-menu) and [Raised Button](https://bitsrc.io/materialui/react-material-ui/buttons/raised-button) .
+ * 
+ * ```js
+ *  import React from 'react';
+ *  import IconMenu from 'material-ui/IconMenu';
+ *  import IconButton from 'material-ui/IconButton';
+ *  import FontIcon from 'material-ui/FontIcon';
+ *  import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
+ *  import MenuItem from 'material-ui/MenuItem';
+ *  import DropDownMenu from 'material-ui/DropDownMenu';
+ *  import RaisedButton from 'material-ui/RaisedButton';
+ *  import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+ *
+ *  export default class ToolbarExamplesSimple extends React.Component {
+ *
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {
+ *       value: 3,
+ *     };
+ *   }
+ *
+ *   handleChange = (event, index, value) => this.setState({value});
+ *
+ *   render() {
+ *    return (
+ *       <Toolbar>
+ *         <ToolbarGroup firstChild={true}>
+ *           <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+ *             <MenuItem value={1} primaryText="All Broadcasts" />
+ *             <MenuItem value={2} primaryText="All Voice" />
+ *             <MenuItem value={3} primaryText="All Text" />
+ *             <MenuItem value={4} primaryText="Complete Voice" />
+ *             <MenuItem value={5} primaryText="Complete Text" />
+ *             <MenuItem value={6} primaryText="Active Voice" />
+ *             <MenuItem value={7} primaryText="Active Text" />
+ *           </DropDownMenu>
+ *         </ToolbarGroup>
+ *         <ToolbarGroup>
+ *           <ToolbarTitle text="Options" />
+ *           <FontIcon className="muidocs-icon-custom-sort" />
+ *           <ToolbarSeparator />
+ *           <RaisedButton label="Create Broadcast" primary={true} />
+ *           <IconMenu
+ *             iconButtonElement={
+ *               <IconButton touch={true}>
+ *                 <NavigationExpandMoreIcon />
+ *               </IconButton>
+ *             }
+ *           >
+ *             <MenuItem primaryText="Download" />
+ *             <MenuItem primaryText="More Info" />
+ *           </IconMenu>&nbsp;
+ *         </ToolbarGroup>
+ *       </Toolbar>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * 
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
