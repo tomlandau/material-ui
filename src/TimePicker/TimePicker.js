@@ -1,6 +1,134 @@
 /**
  * #Time Picker
  * A [time picker](#) is used to input a time by displaying an interface the user can interact with.
+ * 
+ * #Examples
+ * 
+ * ##Simple examples
+ * 
+ * Time Picker supports 12 hour and 24 hour formats. In 12 hour format the AM and PM indicators toggle the selected time period. You can also disable the Dialog passing true to the disabled property.
+ * 
+ * ``js
+ * import React from 'react';
+ * import TimePicker from 'material-ui/TimePicker';
+ * 
+ * const TimePickerExampleSimple = () => (
+ *   <div>
+ *     <TimePicker
+ *       hintText="12hr Format"
+ *     />
+ *     <TimePicker
+ *       hintText="12hr Format with auto ok"
+ *       autoOk={true}
+ *     />
+ *     <TimePicker
+ *       format="24hr"
+ *       hintText="24hr Format"
+ *     />
+ *     <TimePicker
+ *       disabled={true}
+ *       format="24hr"
+ *       hintText="Disabled TimePicker"
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default TimePickerExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ##Controlled examples
+ * 
+ * TimePicker can be used as a controlled component.
+ *
+ * ```js
+ * import React from 'react';
+ * import TimePicker from 'material-ui/TimePicker';
+ * 
+ * export default class TimePickerExampleComplex extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {value24: null, value12: null};
+ *   }
+ * 
+ *   handleChangeTimePicker24 = (event, date) => {
+ *     this.setState({value24: date});
+ *   };
+ * 
+ *   handleChangeTimePicker12 = (event, date) => {
+ *     this.setState({value12: date});
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <TimePicker
+ *           format="ampm"
+ *           hintText="12hr Format"
+ *           value={this.state.value12}
+ *           onChange={this.handleChangeTimePicker12}
+ *         />
+ *         <TimePicker
+ *           format="24hr"
+ *           hintText="24hr Format"
+ *           value={this.state.value24}
+ *           onChange={this.handleChangeTimePicker24}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * 
+ * #Localised example
+ * 
+ * The buttons can be localised using the cancelLabel and okLabel properties.
+ * 
+ * ```js
+ *  import React from 'react';
+ * import TimePicker from 'material-ui/TimePicker';
+ * 
+ * const TimePickerInternational = () => (
+ *   <div>
+ *     <TimePicker
+ *       hintText="Custom Labels"
+ *       okLabel="确定"
+ *       cancelLabel="取消"
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default TimePickerInternational;
+ * ```
+ * 
+ * &nbsp;
+ * 
+ * ##Step example
+ * 
+ * The number of minutes on each step can be configured using the minutesStep property.
+ * 
+ * ```js
+ *  import React from 'react';
+ * import TimePicker from 'material-ui/TimePicker';
+ * 
+ * const TimePickerExampleStep = () => (
+ *   <div>
+ *     <TimePicker
+ *       hintText="5 minutes step"
+ *       minutesStep={5}
+ *     />
+ *     <TimePicker
+ *       hintText="10 minutes step"
+ *       minutesStep={10}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default TimePickerExampleStep;
+ * ```
  */
 
 import React, {Component} from 'react';
@@ -18,65 +146,65 @@ emptyTime.setMilliseconds(0);
 class TimePicker extends Component {
   static propTypes = {
     /**
-     * If true, automatically accept and close the picker on set minutes.
+     * @property {PropTypes.bool} autoOk - If true, automatically accept and close the picker on set minutes.
      */
     autoOk: PropTypes.bool,
     /**
-     * Override the label of the 'Cancel' button.
+     * @property {PropTypes.node} cancelLabel - Override the label of the 'Cancel' button.
      */
     cancelLabel: PropTypes.node,
     /**
-     * The initial time value of the TimePicker.
+     * @property {PropTypes.object} defaultTime - The initial time value of the TimePicker.
      */
     defaultTime: PropTypes.object,
     /**
-     * Override the inline-styles of TimePickerDialog's body element.
+     * @property {PropTypes.object} dialogBodyStyle - Override the inline-styles of TimePickerDialog's body element.
      */
     dialogBodyStyle: PropTypes.object,
     /**
-     * Override the inline-styles of TimePickerDialog's root element.
+     * @property {PropTypes.object} dialogStyle - Override the inline-styles of TimePickerDialog's root element.
      */
     dialogStyle: PropTypes.object,
     /**
-     * If true, the TimePicker is disabled.
+     * @property {PropTypes.bool} disabled - If true, the TimePicker is disabled.
      */
     disabled: PropTypes.bool,
     /**
-     * Tells the component to display the picker in `ampm` (12hr) format or `24hr` format.
+     * @property {'ampm'|'24hr'} format - Tells the component to display the picker in `ampm` (12hr) format or `24hr` format.
      */
     format: PropTypes.oneOf(['ampm', '24hr']),
     /**
-     * How many minutes should be added/subtracted when moving the clock pointer.
+     * @property {PropTypes.number} minutesStep - How many minutes should be added/subtracted when moving the clock pointer.
      */
     minutesStep: PropTypes.number,
     /**
-     * Override the label of the 'OK' button.
+     * @property {PropTypes.node} okLabel - Override the label of the 'OK' button.
      */
     okLabel: PropTypes.node,
     /**
-     * Callback function that is fired when the time value changes. The time value is passed in a Date Object.
+     * @property {PropTypes.func} onChange - Callback function that is fired when the time value changes. The time value is passed in a Date Object.
      * Since there is no particular event associated with the change the first argument will always be null
      * and the second argument will be the new Date instance.
      */
     onChange: PropTypes.func,
     /**
-     * Callback function fired when the TimePicker is tapped or clicked.
+     * @property {PropTypes.func} onClick - Callback function fired when the TimePicker is tapped or clicked.
      */
     onClick: PropTypes.func,
     /**
-     * Callback function fired when the TimePicker dialog is dismissed.
+     * @property {PropTypes.func} onDismiss - Callback function fired when the TimePicker dialog is dismissed.
      */
     onDismiss: PropTypes.func,
     /**
-     * Callback function fired when the TimePicker `TextField` gains focus.
+     * @property {PropTypes.func} onFocus - Callback function fired when the TimePicker `TextField` gains focus.
      */
     onFocus: PropTypes.func,
     /**
-     * Callback function fired when the TimePicker dialog is shown.
+     * @property {PropTypes.func} onShow - Callback function fired when the TimePicker dialog is shown.
      */
     onShow: PropTypes.func,
     /**
-     * If true, uses ("noon" / "midnight") instead of ("12 a.m." / "12 p.m.").
+     * @property {PropTypes.bool} pedantic - If true, uses ("noon" / "midnight") instead of ("12 a.m." / "12 p.m.").
      *
      * It's technically more correct to refer to "12 noon" and "12 midnight" rather than "12 a.m." and "12 p.m."
      * and it avoids confusion between different locales. By default (for compatibility reasons) TimePicker uses
@@ -84,15 +212,15 @@ class TimePicker extends Component {
      */
     pedantic: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Override the inline-styles of TimePicker's TextField element.
+     * @property {PropTypes.object} textFieldStyle - Override the inline-styles of TimePicker's TextField element.
      */
     textFieldStyle: PropTypes.object,
     /**
-     * Sets the time for the Time Picker programmatically.
+     * @property {PropTypes.object} value - Sets the time for the Time Picker programmatically.
      */
     value: PropTypes.object,
   };

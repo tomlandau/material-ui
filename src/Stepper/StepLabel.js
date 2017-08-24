@@ -117,19 +117,19 @@ StepLabel.muiName = 'StepLabel';
 
 StepLabel.propTypes = {
   /**
-   * Sets active styling. Overrides disabled coloring.
+   * @property {PropTypes.bool} active - Sets active styling. Overrides disabled coloring.
    */
   active: PropTypes.bool,
   /**
-   * The label text node
+   * @property {PropTypes.node} children - The label text node
    */
   children: PropTypes.node,
   /**
-   * Sets completed styling. Overrides disabled coloring.
+   * @property {PropTypes.bool} completed - Sets completed styling. Overrides disabled coloring.
    */
   completed: PropTypes.bool,
   /**
-   * Sets disabled styling.
+   * @property {PropTypes.bool} disabled - Sets disabled styling.
    */
   disabled: PropTypes.bool,
   /**
@@ -141,7 +141,7 @@ StepLabel.propTypes = {
     PropTypes.number,
   ]),
   /**
-   * Override the inline-styles of the icon container element.
+   * @property {PropTypes.object} iconContainerStyle - Override the inline-styles of the icon container element.
    */
   iconContainerStyle: PropTypes.object,
   /**
@@ -149,7 +149,7 @@ StepLabel.propTypes = {
    */
   last: PropTypes.bool,
   /**
-   * Override the inline-style of the root element.
+   * @property {PropTypes.object} style - Override the inline-style of the root element.
    */
   style: PropTypes.object,
 };

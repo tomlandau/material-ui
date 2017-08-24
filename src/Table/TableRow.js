@@ -28,24 +28,24 @@ function getStyles(props, context, state) {
 class TableRow extends Component {
   static propTypes = {
     /**
-     * Children passed to table row.
+     * @property {PropTypes.node} children - Children passed to table row.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * If true, row border will be displayed for the row.
+     * @property {PropTypes.bool} displayBorder - If true, row border will be displayed for the row.
      * If false, no border will be drawn.
      */
     displayBorder: PropTypes.bool,
     /**
-     * Controls whether or not the row responds to hover events.
+     * @property {PropTypes.bool} hoverable - Controls whether or not the row responds to hover events.
      */
     hoverable: PropTypes.bool,
     /**
-     * Controls whether or not the row should be rendered as being
+     * @property {PropTypes.bool} hovered - Controls whether or not the row should be rendered as being
      * hovered. This property is evaluated in addition to this.state.hovered
      * and can be used to synchronize the hovered state with some other
      * external events.
@@ -90,27 +90,27 @@ class TableRow extends Component {
      */
     onRowHoverExit: PropTypes.func,
     /**
-     * Number to identify the row. This property is
+     * @property {PropTypes.number} rowNumber - Number to identify the row. This property is
      * automatically populated when used with the TableBody component.
      */
     rowNumber: PropTypes.number,
     /**
-     * If true, table rows can be selected. If multiple row
+     * @property {PropTypes.bool} selectable - If true, table rows can be selected. If multiple row
      * selection is desired, enable multiSelectable.
      * The default value is true.
      */
     selectable: PropTypes.bool,
     /**
-     * Indicates that a particular row is selected.
+     * @property {PropTypes.bool} selected - Indicates that a particular row is selected.
      * This property can be used to programmatically select rows.
      */
     selected: PropTypes.bool,
     /**
-     * Indicates whether or not the row is striped.
+     * @property {PropTypes.bool} striped - Indicates whether or not the row is striped.
      */
     striped: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

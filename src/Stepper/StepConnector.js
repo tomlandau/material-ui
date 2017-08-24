@@ -4,7 +4,7 @@ import pure from 'recompose/pure';
 
 const propTypes = {
   /**
-   * Override the inline-style of the root element.
+   * @property {PropTypes.object} style - Override the inline-style of the root element.
    */
   style: PropTypes.object,
 };

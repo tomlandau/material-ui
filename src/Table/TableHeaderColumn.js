@@ -27,13 +27,16 @@ function getStyles(props, context) {
 
 class TableHeaderColumn extends Component {
   static propTypes = {
+    /**
+     * @property {PropTypes.node} children 
+     */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Number to identify the header row. This property
+     * @property {PropTypes.number} columnNumber - Number to identify the header row. This property
      * is automatically populated when used with TableHeader.
      */
     columnNumber: PropTypes.number,
@@ -55,16 +58,16 @@ class TableHeaderColumn extends Component {
      */
     onHoverExit: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The string to supply to the tooltip. If not
+     * @property {PropTypes.string} tooltip - The string to supply to the tooltip. If not
      * string is supplied no tooltip will be shown.
      */
     tooltip: PropTypes.string,
     /**
-     * Additional styling that can be applied to the tooltip.
+     * @property {PropTypes.object} tooltipStyle - Additional styling that can be applied to the tooltip.
      */
     tooltipStyle: PropTypes.object,
   };

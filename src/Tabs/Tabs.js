@@ -278,54 +278,54 @@ function getStyles(props, context) {
 class Tabs extends Component {
   static propTypes = {
     /**
-     * Should be used to pass `Tab` components.
+     * @property {PropTypes.node} children - Should be used to pass `Tab` components.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * The css class name of the content's container.
+     * @property {PropTypes.string} contentContainerClassName - The css class name of the content's container.
      */
     contentContainerClassName: PropTypes.string,
     /**
-     * Override the inline-styles of the content's container.
+     * @property {PropTypes.object} contentContainerStyle - Override the inline-styles of the content's container.
      */
     contentContainerStyle: PropTypes.object,
     /**
-     * Specify initial visible tab index.
+     * @property {PropTypes.number} initialSelectedIndex - Specify initial visible tab index.
      * If `initialSelectedIndex` is set but larger than the total amount of specified tabs,
      * `initialSelectedIndex` will revert back to default.
      * If `initialSelectedIndex` is set to any negative value, no tab will be selected intially.
      */
     initialSelectedIndex: PropTypes.number,
     /**
-     * Override the inline-styles of the InkBar.
+     * @property {PropTypes.object} inkBarStyle - Override the inline-styles of the InkBar.
      */
     inkBarStyle: PropTypes.object,
     /**
-     * Called when the selected value change.
+     * @property {PropTypes.func} onChange - Called when the selected value change.
      */
     onChange: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Override the inline-styles of the tab-labels container.
+     * @property {PropTypes.object} tabItemContainerStyle - Override the inline-styles of the tab-labels container.
      */
     tabItemContainerStyle: PropTypes.object,
     /**
-     * Override the default tab template used to wrap the content of each tab element.
+     * @property {PropTypes.func} tabTemplate - Override the default tab template used to wrap the content of each tab element.
      */
     tabTemplate: PropTypes.func,
     /**
-     * Override the inline-styles of the tab template.
+     * @property {PropTypes.object} tabTemplateStyle - Override the inline-styles of the tab template.
      */
     tabTemplateStyle: PropTypes.object,
     /**
-     * Makes Tabs controllable and selects the tab whose value prop matches this prop.
+     * @property {PropTypes.any} value - Makes Tabs controllable and selects the tab whose value prop matches this prop.
      */
     value: PropTypes.any,
   };

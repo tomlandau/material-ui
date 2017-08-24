@@ -1,3 +1,96 @@
+/**
+ * #Paper
+ * A [Paper](#) element is a basic container that can give depth to the page.
+ * 
+ * #Examples
+ * 
+ * ##Simple example
+ * Paper examples showing the range of zDepth.
+ * 
+ * ```js
+ *  import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * 
+ * const style = {
+ *   height: 100,
+ *   width: 100,
+ *   margin: 20,
+ *   textAlign: 'center',
+ *   display: 'inline-block',
+ * };
+ * 
+ * const PaperExampleSimple = () => (
+ *   <div>
+ *     <Paper style={style} zDepth={1} />
+ *     <Paper style={style} zDepth={2} />
+ *     <Paper style={style} zDepth={3} />
+ *     <Paper style={style} zDepth={4} />
+ *     <Paper style={style} zDepth={5} />
+ *   </div>
+ * );
+ * 
+ * export default PaperExampleSimple;
+ * ```
+ * 
+ * ##Non-rounded corners
+ * Corners are rounded by default. Set the rounded property to false for square corners.
+ * 
+ * ```js
+ *
+ * import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * 
+ * const style = {
+ *   height: 100,
+ *   width: 100,
+ *   margin: 20,
+ *   textAlign: 'center',
+ *   display: 'inline-block',
+ * };
+ * 
+ * const PaperExampleRounded = () => (
+ *   <div>
+ *     <Paper style={style} zDepth={1} rounded={false} />
+ *     <Paper style={style} zDepth={2} rounded={false} />
+ *     <Paper style={style} zDepth={3} rounded={false} />
+ *     <Paper style={style} zDepth={4} rounded={false} />
+ *     <Paper style={style} zDepth={5} rounded={false} />
+ *   </div>
+ * );
+ * 
+ * export default PaperExampleRounded;
+ * ```
+ * 
+ * ##Circular Paper
+ * Set the circle property for circular Paper.
+ * 
+ * ```js
+ *
+ * import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * 
+ * const style = {
+ *   height: 100,
+ *   width: 100,
+ *   margin: 20,
+ *   textAlign: 'center',
+ *   display: 'inline-block',
+ * };
+ * 
+ * const PaperExampleCircle = () => (
+ *   <div>
+ *     <Paper style={style} zDepth={1} circle={true} />
+ *     <Paper style={style} zDepth={2} circle={true} />
+ *     <Paper style={style} zDepth={3} circle={true} />
+ *     <Paper style={style} zDepth={4} circle={true} />
+ *     <Paper style={style} zDepth={5} circle={true} />
+ *   </div>
+ * );
+ * 
+ * export default PaperExampleCircle;
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import propTypes from '../utils/propTypes';
@@ -34,28 +127,28 @@ function getStyles(props, context) {
 class Paper extends Component {
   static propTypes = {
     /**
-     * Children passed into the paper element.
+     * @property {PropTypes.node} children - Children passed into the paper element.
      */
     children: PropTypes.node,
     /**
-     * Set to true to generate a circular paper container.
+     * @property {PropTypes.bool} circle - Set to true to generate a circular paper container.
      */
     circle: PropTypes.bool,
     /**
-     * By default, the paper container will have a border radius.
+     * @property {PropTypes.bool} rounded - By default, the paper container will have a border radius.
      * Set this to false to generate a container with sharp corners.
      */
     rounded: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Set to false to disable CSS transitions for the paper element.
+     * @property {PropTypes.bool} transitionEnabled - Set to false to disable CSS transitions for the paper element.
      */
     transitionEnabled: PropTypes.bool,
     /**
-     * This number represents the zDepth of the paper shadow.
+     * @property {PropTypes.zDepth} zDepth - This number represents the zDepth of the paper shadow.
      */
     zDepth: propTypes.zDepth,
   };

@@ -29,15 +29,15 @@ class Tab extends Component {
 
   static propTypes = {
     /**
-     * Override the inline-styles of the button element.
+     * @property {PropTypes.object} buttonStyle - Override the inline-styles of the button element.
      */
     buttonStyle: PropTypes.object,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Sets the icon of the tab, you can pass `FontIcon` or `SvgIcon` elements.
+     * @property {PropTypes.node} icon - Sets the icon of the tab, you can pass `FontIcon` or `SvgIcon` elements.
      */
     icon: PropTypes.node,
     /**
@@ -45,11 +45,11 @@ class Tab extends Component {
      */
     index: PropTypes.any,
     /**
-     * Sets the text value of the tab item to the string specified.
+     * @property {PropTypes.node} label - Sets the text value of the tab item to the string specified.
      */
     label: PropTypes.node,
     /**
-     * Fired when the active tab changes by touch or tap.
+     * @property {PropTypes.func} onActive - Fired when the active tab changes by touch or tap.
      * Use this event to specify any functionality when an active tab changes.
      * For example - we are using this to route to home when the third tab becomes active.
      * This function will always recieve the active tab as it\'s first argument.
@@ -67,11 +67,11 @@ class Tab extends Component {
      */
     selected: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * If value prop passed to Tabs component, this value prop is also required.
+     * @property {PropTypes.any} value - If value prop passed to Tabs component, this value prop is also required.
      * It assigns a value to the tab so that it can be selected by the Tabs.
      */
     value: PropTypes.any,

@@ -106,77 +106,84 @@ function getStyles(props, context, state) {
 class Toggle extends Component {
   static propTypes = {
     /**
-     * Determines whether the Toggle is initially turned on.
+     * @property {PropTypes.bool} defaultToggled - Determines whether the Toggle is initially turned on.
      * **Warning:** This cannot be used in conjunction with `toggled`.
      * Decide between using a controlled or uncontrolled input element and remove one of these props.
      * More info: https://fb.me/react-controlled-components
      */
     defaultToggled: PropTypes.bool,
     /**
-     * Will disable the toggle if true.
+     * @property {PropTypes.bool} disabled - Will disable the toggle if true.
      */
     disabled: PropTypes.bool,
     /**
-     * Overrides the inline-styles of the Toggle element.
+     * @property {PropTypes.object} elementStyle - Overrides the inline-styles of the Toggle element.
      */
     elementStyle: PropTypes.object,
     /**
-     * Overrides the inline-styles of the Icon element.
+     * @property {PropTypes.object} iconStyle - Overrides the inline-styles of the Icon element.
      */
     iconStyle: PropTypes.object,
     /**
-     * Overrides the inline-styles of the input element.
+     * @property {PropTypes.object} inputStyle - Overrides the inline-styles of the input element.
      */
     inputStyle: PropTypes.object,
     /**
-     * Label for toggle.
+     * @property {PropTypes.node} label - Label for toggle.
      */
     label: PropTypes.node,
     /**
-     * Where the label will be placed next to the toggle.
+     * @property {'left', 'right'} labelPosition - Where the label will be placed next to the toggle.
      */
     labelPosition: PropTypes.oneOf(['left', 'right']),
     /**
-     * Overrides the inline-styles of the Toggle element label.
+     * @property {PropTypes.object} labelStyle - Overrides the inline-styles of the Toggle element label.
      */
     labelStyle: PropTypes.object,
     /**
-     * Callback function that is fired when the toggle switch is toggled.
+     * @property {PropTypes.func} onToggle - Callback function that is fired when the toggle switch is toggled.
      *
      * @param {object} event Change event targeting the toggle.
      * @param {bool} isInputChecked The new value of the toggle.
      */
     onToggle: PropTypes.func,
     /**
-     * Override style of ripple.
+     * @property {PropTypes.object} rippleStyle - Override style of ripple.
      */
     rippleStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Override style for thumb.
+     * @property {PropTypes.object} thumbStyle - Override style for thumb.
      */
     thumbStyle: PropTypes.object,
     /**
-    * Override the inline styles for thumb when the toggle switch is toggled on.
+    * @property {PropTypes.object} thumbSwitchedStyle - Override the inline styles for thumb when the toggle switch is toggled on.
     */
     thumbSwitchedStyle: PropTypes.object,
     /**
-     * Toggled if set to true.
+     * @property {PropTypes.bool} toggled - Toggled if set to true.
      */
     toggled: PropTypes.bool,
     /**
-     * Override style for track.
+     * @property {PropTypes.object} trackStyle - Override style for track.
      */
     trackStyle: PropTypes.object,
     /**
-    * Override the inline styles for track when the toggle switch is toggled on.
+    * @property {PropTypes.bool} defaultToggled Determines whether the Toggle is initially turned on.
+     * **Warning:** This cannot be used in conjunction with `toggled`.
+     * Decide between using a controlled or uncontrolled input element and remove one of these props.
+     * More info: https://fb.me/react-controlled-components
+     */
+    defaultToggled: PropTypes.bool,
+    /**
+     * @property {PropTypes.object} trackSwitchedStyle - Override the inline styles for track when the toggle switch is toggled on.
     */
     trackSwitchedStyle: PropTypes.object,
     /**
-     * ValueLink prop for when using controlled toggle.
+     * @property {PropTypes.object} valueLink - ValueLink prop for when using controlled toggle.
      */
     valueLink: PropTypes.object,
   };

@@ -85,17 +85,17 @@ class SvgIcon extends Component {
 
   static propTypes = {
     /**
-     * Elements passed into the SVG Icon.
+     * @property {PropTypes.node} children - Elements passed into the SVG Icon.
      */
     children: PropTypes.node,
     /**
-     * This is the fill color of the svg icon.
+     * @property {PropTypes.string} color - This is the fill color of the svg icon.
      * If not specified, this component will default
      * to muiTheme.palette.textColor.
      */
     color: PropTypes.string,
     /**
-     * This is the icon color when the mouse hovers over the icon.
+     * @property {PropTypes.string} hoverColor - This is the icon color when the mouse hovers over the icon.
      */
     hoverColor: PropTypes.string,
     /** @ignore */
@@ -103,11 +103,11 @@ class SvgIcon extends Component {
     /** @ignore */
     onMouseLeave: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Allows you to redefine what the coordinates
+     * @property {PropTypes.string} viewBox - Allows you to redefine what the coordinates
      * without units mean inside an svg element. For example,
      * if the SVG element is 500 (width) by 200 (height), and you
      * pass viewBox="0 0 50 20", this means that the coordinates inside

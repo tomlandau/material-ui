@@ -27,9 +27,12 @@ function getStyles(props, context) {
 
 class TableRowColumn extends Component {
   static propTypes = {
+    /**
+     * @property {PropTypes.node} children 
+     */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
@@ -53,7 +56,7 @@ class TableRowColumn extends Component {
      */
     onHoverExit: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

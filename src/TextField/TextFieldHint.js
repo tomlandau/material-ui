@@ -48,15 +48,15 @@ TextFieldHint.propTypes = {
    */
   muiTheme: PropTypes.object.isRequired,
   /**
-   * True if the hint text should be visible.
+   * @property {PropTypes.bool} show - True if the hint text should be visible.
    */
   show: PropTypes.bool,
   /**
-   * Override the inline-styles of the root element.
+   * @property {PropTypes.object} style - Override the inline-styles of the root element.
    */
   style: PropTypes.object,
   /**
-   * The hint text displayed.
+   * @property {PropTypes.node} text - The hint text displayed.
    */
   text: PropTypes.node,
 };

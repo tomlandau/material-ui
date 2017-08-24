@@ -28,11 +28,11 @@ const getStyles = (props, context) => {
 class StepContent extends Component {
   static propTypes = {
     /**
-     * Expands the content
+     * @property {PropTypes.bool} active - Expands the content
      */
     active: PropTypes.bool,
     /**
-     * Step content
+     * @property {PropTypes.node} children - Step content
      */
     children: PropTypes.node,
     /**
@@ -44,15 +44,15 @@ class StepContent extends Component {
      */
     last: PropTypes.bool,
     /**
-     * Override the inline-style of the root element.
+     * @property {PropTypes.object} style - Override the inline-style of the root element.
      */
     style: PropTypes.object,
     /**
-     * ReactTransitionGroup component.
+     * @property {PropTypes.func} transition - ReactTransitionGroup component.
      */
     transition: PropTypes.func,
     /**
-     * Adjust the duration of the content expand transition. Passed as a prop to the transition component.
+     * @property {PropTypes.number} transitionDuration - Adjust the duration of the content expand transition. Passed as a prop to the transition component.
      */
     transitionDuration: PropTypes.number,
   };

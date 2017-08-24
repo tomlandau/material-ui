@@ -61,7 +61,7 @@ class MenuItem extends Component {
 
   static propTypes = {
     /**
-     * Location of the anchor for the popover of nested `MenuItem`
+     * @property {PropTypes.origin} anchorOrigin - Location of the anchor for the popover of nested `MenuItem`
      * elements.
      * Options:
      * horizontal: [left, middle, right]
@@ -69,15 +69,15 @@ class MenuItem extends Component {
      */
     anchorOrigin: propTypes.origin,
     /**
-     * Override the default animation component used.
+     * @property {PropTypes.func} animation - Override the default animation component used.
      */
     animation: PropTypes.func,
     /**
-     * If true, a left check mark will be rendered.
+     * @property {PropTypes.bool} checked - If true, a left check mark will be rendered.
      */
     checked: PropTypes.bool,
     /**
-     * Elements passed as children to the underlying `ListItem`.
+     * @property {PropTypes.node} children - Elements passed as children to the underlying `ListItem`.
      */
     children: PropTypes.node,
     /**
@@ -87,11 +87,11 @@ class MenuItem extends Component {
      */
     desktop: PropTypes.bool,
     /**
-     * If true, the menu item will be disabled.
+     * @property {PropTypes.bool} disabled - If true, the menu item will be disabled.
      */
     disabled: PropTypes.bool,
     /**
-     * The focus state of the menu item. This prop is used to set the focus
+     * @property {'none'|'focused'|'keyboard-focused'} focusState - The focus state of the menu item. This prop is used to set the focus
      * state of the underlying `ListItem`.
      */
     focusState: PropTypes.oneOf([
@@ -100,46 +100,46 @@ class MenuItem extends Component {
       'keyboard-focused',
     ]),
     /**
-     * Override the inline-styles of the inner div.
+     * @property {PropTypes.object} innerDivStyle - Override the inline-styles of the inner div.
      */
     innerDivStyle: PropTypes.object,
     /**
-     * If true, the children will be indented.
+     * @property {PropTypes.bool} insetChildren - If true, the children will be indented.
      * This is only needed when there is no `leftIcon`.
      */
     insetChildren: PropTypes.bool,
     /**
-     * The `SvgIcon` or `FontIcon` to be displayed on the left side.
+     * @property {PropTypes.element} leftIcon - The `SvgIcon` or `FontIcon` to be displayed on the left side.
      */
     leftIcon: PropTypes.element,
     /**
-     * `MenuItem` elements to nest within the menu item.
+     * @property {PropTypes.node} menuItems - `MenuItem` elements to nest within the menu item.
      */
     menuItems: PropTypes.node,
     /**
-     * Callback function fired when the menu item is touch-tapped.
+     * @property {PropTypes.func} onClick - Callback function fired when the menu item is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the menu item.
      */
     onClick: PropTypes.func,
     /**
-     * Can be used to render primary text within the menu item.
+     * @property {PropTypes.node} primaryText - Can be used to render primary text within the menu item.
      */
     primaryText: PropTypes.node,
     /**
-     * The `SvgIcon` or `FontIcon` to be displayed on the right side.
+     * @property {PropTypes.element} rightIcon - The `SvgIcon` or `FontIcon` to be displayed on the right side.
      */
     rightIcon: PropTypes.element,
     /**
-     * Can be used to render secondary text within the menu item.
+     * @property {PropTypes.node} secondaryText - Can be used to render secondary text within the menu item.
      */
     secondaryText: PropTypes.node,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Location on the popover of nested `MenuItem` elements that will attach
+     * @property {PropTypes.origin} targetOrigin - Location on the popover of nested `MenuItem` elements that will attach
      * to the anchor's origin.
      * Options:
      * horizontal: [left, middle, right]
@@ -147,7 +147,7 @@ class MenuItem extends Component {
      */
     targetOrigin: propTypes.origin,
     /**
-     * The value of the menu item.
+     * @property {PropTypes.any} value - The value of the menu item.
      */
     value: PropTypes.any,
   };

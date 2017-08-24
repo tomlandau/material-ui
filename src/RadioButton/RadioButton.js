@@ -1,3 +1,76 @@
+/**
+ * #Radio Button
+ * [Radio buttons](#) are switches used for selection from multiple options.
+ * 
+ * #Examples
+ * The second button is selected by default using the defaultSelected property of RadioButtonGroup. The third button is disabled using the disabled property of RadioButton. The final example uses the labelPosition property to position the label on the left.
+ * 
+ * ```js
+ * import React from 'react';
+ * import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+ * import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+ * import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+ * 
+ * const styles = {
+ *   block: {
+ *     maxWidth: 250,
+ *   },
+ *   radioButton: {
+ *     marginBottom: 16,
+ *   },
+ * };
+ * 
+ * const RadioButtonExampleSimple = () => (
+ *   <div>
+ *     <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+ *       <RadioButton
+ *         value="light"
+ *         label="Simple"
+ *         style={styles.radioButton}
+ *       />
+ *       <RadioButton
+ *         value="not_light"
+ *         label="Selected by default"
+ *         style={styles.radioButton}
+ *       />
+ *       <RadioButton
+ *         value="ludicrous"
+ *         label="Custom icon"
+ *         checkedIcon={<ActionFavorite style={{color: '#F44336'}} />}
+ *         uncheckedIcon={<ActionFavoriteBorder />}
+ *         style={styles.radioButton}
+ *       />
+ *     </RadioButtonGroup>
+ *     <RadioButtonGroup name="shipName" defaultSelected="community">
+ *       <RadioButton
+ *         value="enterprise"
+ *         label="Disabled unchecked"
+ *         disabled={true}
+ *         style={styles.radioButton}
+ *       />
+ *       <RadioButton
+ *         value="community"
+ *         label="Disabled checked"
+ *         disabled={true}
+ *         style={styles.radioButton}
+ *       />
+ *     </RadioButtonGroup>
+ *     <RadioButtonGroup name="notRight" labelPosition="left" style={styles.block}>
+ *       <RadioButton
+ *         value="reverse"
+ *         label="Label on the left"
+ *         style={styles.radioButton}
+ *       />
+ *     </RadioButtonGroup>
+ *   </div>
+ * );
+ * 
+ * export default RadioButtonExampleSimple;
+ * 
+ * ```
+ */
+
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
@@ -60,19 +133,19 @@ class RadioButton extends Component {
      */
     checked: PropTypes.bool,
     /**
-     * The icon element to show when the radio button is checked.
+     * @property {PropTypes.element} checkedIcon - The icon element to show when the radio button is checked.
      */
     checkedIcon: PropTypes.element,
     /**
-     * If true, the radio button is disabled.
+     * @property {PropTypes.bool} disabled - If true, the radio button is disabled.
      */
     disabled: PropTypes.bool,
     /**
-     * Override the inline-styles of the icon element.
+     * @property {PropTypes.object} iconStyle - Override the inline-styles of the icon element.
      */
     iconStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the input element.
+     * @property {PropTypes.object} inputStyle - Override the inline-styles of the input element.
      */
     inputStyle: PropTypes.object,
     /**
@@ -82,7 +155,7 @@ class RadioButton extends Component {
      */
     labelPosition: PropTypes.oneOf(['left', 'right']),
     /**
-     * Override the inline-styles of the label element.
+     * @property {PropTypes.object} labelStyle - Override the inline-styles of the label element.
      */
     labelStyle: PropTypes.object,
     /**
@@ -97,15 +170,15 @@ class RadioButton extends Component {
      */
     onCheck: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The icon element to show when the radio button is unchecked.
+     * @property {PropTypes.element} uncheckedIcon - The icon element to show when the radio button is unchecked.
      */
     uncheckedIcon: PropTypes.element,
     /**
-     * The value of the radio button.
+     * @property {PropTypes.any} value - The value of the radio button.
      */
     value: PropTypes.any,
   };

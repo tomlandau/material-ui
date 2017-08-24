@@ -25,14 +25,29 @@ function getStyles(props, context, state) {
 
 class PopoverAnimationVertical extends Component {
   static propTypes = {
+    /**
+     * @property {PropTypes.node} children
+     */
     children: PropTypes.node,
+    /**
+     * @property {PropTypes.string} className
+     */
     className: PropTypes.string,
+    /**
+     * @property {PropTypes.bool} open
+     */
     open: PropTypes.bool.isRequired,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
+    /**
+     * @property {PropTypes.origin} targetOrigin
+     */
     targetOrigin: propTypes.origin.isRequired,
+    /**
+     * @property {PropTypes.zDepth} zDepth
+     */
     zDepth: propTypes.zDepth,
   };
 

@@ -1,3 +1,197 @@
+/**
+ * #Slider
+ * 
+ * A [slider](#) is an interface for users to input a value in a range. Sliders can be continuous or discrete and can be enabled or disabled.
+ * 
+ * #Examples
+ * 
+ * ##Simple examples
+ * 
+ * The `defaultValue` property sets the initial position of the slider.
+ * The slider appearance changes when not at the starting position.
+ * 
+ * ``js
+ * import React from 'react';
+ * import Slider from 'material-ui/Slider';
+ * 
+ * 
+ * const SliderExampleSimple = () => (
+ *   <div>
+ *     <Slider />
+ *     <Slider defaultValue={0.5} />
+ *     <Slider defaultValue={1} />
+ *   </div>
+ * );
+ * 
+ * export default SliderExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ##Disabled examples
+ * 
+ * ```js
+ * import React from 'react';
+ * import Slider from 'material-ui/Slider';
+ * 
+ * const SliderExampleDisabled = () => (
+ *   <div>
+ *     <Slider disabled={true} />
+ *     <Slider disabled={true} value={0.5} />
+ *     <Slider disabled={true} value={1} />
+ *   </div>
+ * );
+ * 
+ * export default SliderExampleDisabled;
+ * 
+ * ```
+ * 
+ * &nbsp;
+ * ##Stepped example
+ * By default, the slider is continuous.
+ * The `step` property causes the slider to move in discrete increments.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Slider from 'material-ui/Slider';
+ * 
+ * const SliderExampleStep = () => (
+ *   <Slider step={0.10} value={0.5} />
+ * );
+ * 
+ * export default SliderExampleStep;
+ * ```
+ * 
+ * &nbsp;
+ * ##Controlled Examples
+ * The slider bar can have a set minimum and maximum, and the value can be
+ * obtained through the value parameter fired on an onChange event.
+ * 
+ * ```js
+ * import React, {Component} from 'react';
+ * import Slider from 'material-ui/Slider';
+ * 
+ * export default class SliderExampleControlled extends Component {
+ *   state = {
+ *     firstSlider: 0.5,
+ *     secondSlider: 50,
+ *   };
+ * 
+ *   handleFirstSlider = (event, value) => {
+ *     this.setState({firstSlider: value});
+ *   };
+ * 
+ *   handleSecondSlider = (event, value) => {
+ *     this.setState({secondSlider: value});
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <Slider value={this.state.firstSlider} onChange={this.handleFirstSlider} />
+ *         <p>
+ *           <span>{'The value of this slider is: '}</span>
+ *           <span>{this.state.firstSlider}</span>
+ *           <span>{' from a range of 0 to 1 inclusive'}</span>
+ *         </p>
+ *         <Slider
+ *           min={0}
+ *           max={100}
+ *           step={1}
+ *           value={this.state.secondSlider}
+ *           onChange={this.handleSecondSlider}
+ *         />
+ *         <p>
+ *           <span>{'The value of this slider is: '}</span>
+ *           <span>{this.state.secondSlider}</span>
+ *           <span>{' from a range of 0 to 100 inclusive'}</span>
+ *         </p>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * 
+ * ##Alternative Axis Examples
+ * 
+ * The orientation of the slider can be reversed and rotated using the `axis` prop.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Slider from 'material-ui/Slider';
+ * 
+ * const styles = {
+ *   root: {
+ *     display: 'flex',
+ *     height: 124,
+ *     flexDirection: 'row',
+ *     justifyContent: 'space-around',
+ *   },
+ * };
+ * 
+ * const SliderExampleAxis = () => (
+ *   <div style={styles.root}>
+ *     <Slider style={{height: 100}} axis="y" defaultValue={0.5} />
+ *     <Slider style={{width: 200}} axis="x-reverse" />
+ *     <Slider style={{height: 100}} axis="y-reverse" defaultValue={1} />
+ *   </div>
+ * );
+ *
+ * export default SliderExampleAxis;
+ * ```
+ * 
+ * ##Custom scale
+ * 
+ * You may find yourself needing a custom scale.
+ * Here is how you would implement a [logarithmic scale](https://simple.wikipedia.org/wiki/Logarithmic_scale).
+ *
+ * ```js
+ * import React, {Component} from 'react';
+ * import Slider from 'material-ui/Slider';
+ * 
+ * const min = 0;
+ * const max = Math.pow(10, 6);
+ * const power = 12;
+ * 
+ * function transform(value) {
+ *   return Math.round((Math.exp(power * value / max) - 1) / (Math.exp(power) - 1) * max);
+ * }
+ * 
+ * function reverse(value) {
+ *   return (1 / power) * Math.log(((Math.exp(power) - 1) * value / max) + 1) * max;
+ * }
+ * 
+ * export default class SliderExampleCustomScale extends Component {
+ *   state = {
+ *     slider: Math.pow(10, 4),
+ *   };
+ * 
+ *   handleSlider = (event, value) => {
+ *     this.setState({slider: transform(value)});
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <Slider
+ *           min={min}
+ *           max={max}
+ *           step={max / 100}
+ *           value={reverse(this.state.slider)}
+ *           onChange={this.handleSlider}
+ *         />
+ *         <p>
+ *           <span>{'The value of this slider is: '}</span>
+ *           <span>{this.state.slider}</span>
+ *         </p>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ *
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import keycode from 'keycode';
@@ -283,53 +477,53 @@ const getStyles = (props, context, state) => {
 class Slider extends Component {
   static propTypes = {
     /**
-     * The axis on which the slider will slide.
+     * @property {'x'| 'x-reverse'| 'y'| 'y-reverse'} axis - The axis on which the slider will slide.
      */
     axis: PropTypes.oneOf(['x', 'x-reverse', 'y', 'y-reverse']),
     /**
-     * The default value of the slider.
+     * @property {} defaultValue - The default value of the slider.
      */
     defaultValue: valueInRangePropType,
     /**
-     * Disables focus ripple if set to true.
+     * @property {PropTypes.bool} disableFocusRipple - Disables focus ripple if set to true.
      */
     disableFocusRipple: PropTypes.bool,
     /**
-     * If true, the slider will not be interactable.
+     * @property {PropTypes.bool} disabled - If true, the slider will not be interactable.
      */
     disabled: PropTypes.bool,
     /**
-     * The maximum value the slider can slide to on
+     * @property {} max - The maximum value the slider can slide to on
      * a scale from 0 to 1 inclusive. Cannot be equal to min.
      */
     max: minMaxPropType,
     /**
-     * The minimum value the slider can slide to on a scale
+     * @property {} min - The minimum value the slider can slide to on a scale
      * from 0 to 1 inclusive. Cannot be equal to max.
      */
     min: minMaxPropType,
     /**
-     * The name of the slider. Behaves like the name attribute
+     * @property {PropTypes.string} name - The name of the slider. Behaves like the name attribute
      * of an input element.
      */
     name: PropTypes.string,
     /** @ignore */
     onBlur: PropTypes.func,
     /**
-     * Callback function that is fired when the slider's value changed.
+     * @property {PropTypes.func} onChange - Callback function that is fired when the slider's value changed.
      *
      * @param {object} event KeyDown event targeting the slider.
      * @param {number} newValue The new value of the slider.
      */
     onChange: PropTypes.func,
     /**
-     * Callback function that is fired when the slider has begun to move.
+     * @property {PropTypes.func} onDragStart - Callback function that is fired when the slider has begun to move.
      *
      * @param {object} event MouseDown or TouchStart event targeting the slider.
      */
     onDragStart: PropTypes.func,
     /**
-     * Callback function that is fired when the slide has stopped moving.
+     * @property {PropTypes.func} onDragStop - Callback function that is fired when the slide has stopped moving.
      *
      * @param {object} event MouseEnd or TouchEnd event targeting the slider.
      */
@@ -337,23 +531,23 @@ class Slider extends Component {
     /** @ignore */
     onFocus: PropTypes.func,
     /**
-     * Whether or not the slider is required in a form.
+     * @property {PropTypes.bool} required - Whether or not the slider is required in a form.
      */
     required: PropTypes.bool,
     /**
-     * Override the inline-styles of the inner slider element.
+     * @property {PropTypes.object} sliderStyle - Override the inline-styles of the inner slider element.
      */
     sliderStyle: PropTypes.object,
     /**
-     * The granularity the slider can step through values.
+     * @property {PropTypes.number} step - The granularity the slider can step through values.
      */
     step: PropTypes.number,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The value of the slider.
+     * @property {} value - The value of the slider.
      */
     value: valueInRangePropType,
   };

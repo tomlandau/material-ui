@@ -26,15 +26,15 @@ class ToolbarTitle extends Component {
 
   static propTypes = {
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The text to be displayed.
+     * @property {PropTypes.node} text - The text to be displayed.
      */
     text: PropTypes.node,
   };

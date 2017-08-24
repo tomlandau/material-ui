@@ -373,96 +373,96 @@ function getStyles(props, context) {
 class Table extends Component {
   static propTypes = {
     /**
-     * Set to true to indicate that all rows should be selected.
+     * @property {PropTypes.bool} allRowsSelected - Set to true to indicate that all rows should be selected.
      */
     allRowsSelected: PropTypes.bool,
     /**
-     * Override the inline-styles of the body's table element.
+     * @property {PropTypes.object} bodyStyle - Override the inline-styles of the body's table element.
      */
     bodyStyle: PropTypes.object,
     /**
-     * Children passed to table.
+     * @property {PropTypes.node} children - Children passed to table.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * If true, the footer will appear fixed below the table.
+     * @property {PropTypes.bool} fixedFooter - If true, the footer will appear fixed below the table.
      * The default value is true.
      */
     fixedFooter: PropTypes.bool,
     /**
-     * If true, the header will appear fixed above the table.
+     * @property {PropTypes.bool} fixedHeader - If true, the header will appear fixed above the table.
      * The default value is true.
      */
     fixedHeader: PropTypes.bool,
     /**
-     * Override the inline-styles of the footer's table element.
+     * @property {PropTypes.object} footerStyle - Override the inline-styles of the footer's table element.
      */
     footerStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the header's table element.
+     * @property {PropTypes.object} headerStyle - Override the inline-styles of the header's table element.
      */
     headerStyle: PropTypes.object,
     /**
-     * The height of the table.
+     * @property {PropTypes.string} height - The height of the table.
      */
     height: PropTypes.string,
     /**
-     * If true, multiple table rows can be selected.
+     * @property {PropTypes.bool} multiSelectable - If true, multiple table rows can be selected.
      * CTRL/CMD+Click and SHIFT+Click are valid actions.
      * The default value is false.
      */
     multiSelectable: PropTypes.bool,
     /**
-     * Called when a row cell is clicked.
+     * @property {PropTypes.func} onCellClick - Called when a row cell is clicked.
      * rowNumber is the row number and columnId is
      * the column number or the column key.
      */
     onCellClick: PropTypes.func,
     /**
-     * Called when a table cell is hovered.
+     * @property {PropTypes.func} onCellHover - Called when a table cell is hovered.
      * rowNumber is the row number of the hovered row
      * and columnId is the column number or the column key of the cell.
      */
     onCellHover: PropTypes.func,
     /**
-     * Called when a table cell is no longer hovered.
+     * @property {PropTypes.func} onCellHoverExit - Called when a table cell is no longer hovered.
      * rowNumber is the row number of the row and columnId
      * is the column number or the column key of the cell.
      */
     onCellHoverExit: PropTypes.func,
     /**
-     * Called when a table row is hovered.
+     * @property {PropTypes.func} onRowHover - Called when a table row is hovered.
      * rowNumber is the row number of the hovered row.
      */
     onRowHover: PropTypes.func,
     /**
-     * Called when a table row is no longer hovered.
+     * @property {PropTypes.func} onRowHoverExit - Called when a table row is no longer hovered.
      * rowNumber is the row number of the row that is no longer hovered.
      */
     onRowHoverExit: PropTypes.func,
     /**
-     * Called when a row is selected.
+     * @property {PropTypes.func} onRowSelection - Called when a row is selected.
      * selectedRows is an array of all row selections.
      * IF all rows have been selected, the string "all"
      * will be returned instead to indicate that all rows have been selected.
      */
     onRowSelection: PropTypes.func,
     /**
-     * If true, table rows can be selected.
+     * @property {PropTypes.bool} selectable - If true, table rows can be selected.
      * If multiple row selection is desired, enable multiSelectable.
      * The default value is true.
      */
     selectable: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Override the inline-styles of the table's wrapper element.
+     * @property {PropTypes.object} wrapperStyle - Override the inline-styles of the table's wrapper element.
      */
     wrapperStyle: PropTypes.object,
   };

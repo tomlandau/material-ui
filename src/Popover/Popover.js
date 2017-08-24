@@ -1,3 +1,327 @@
+/**
+ * #Popover
+ * A Popover can be used as an alternative to a [Drop Down Menu](#) that can contain elements inside. In our examples we are using a [Menu](#), but any suitable combination of components can be used.
+ *
+ * #Examples
+ * 
+ * ##Simple example
+ * A simple example showing a Popover containing a [Menu](#). It can be also closed by clicking away from the Popover.
+ * ```js
+ *
+ * import React from 'react';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * import Popover from 'material-ui/Popover';
+ * import Menu from 'material-ui/Menu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * export default class PopoverExampleSimple extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ * 
+ *     this.state = {
+ *       open: false,
+ *     };
+ *   }
+ * 
+ *   handleTouchTap = (event) => {
+ *     // This prevents ghost click.
+ *     event.preventDefault();
+ * 
+ *     this.setState({
+ *       open: true,
+ *       anchorEl: event.currentTarget,
+ *     });
+ *   };
+ * 
+ *   handleRequestClose = () => {
+ *     this.setState({
+ *       open: false,
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           onClick={this.handleTouchTap}
+ *           label="Click me"
+ *         />
+ *         <Popover
+ *           open={this.state.open}
+ *           anchorEl={this.state.anchorEl}
+ *           anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+ *           targetOrigin={{horizontal: 'left', vertical: 'top'}}
+ *           onRequestClose={this.handleRequestClose}
+ *         >
+ *           <Menu>
+ *             <MenuItem primaryText="Refresh" />
+ *             <MenuItem primaryText="Help &amp; feedback" />
+ *             <MenuItem primaryText="Settings" />
+ *             <MenuItem primaryText="Sign out" />
+ *           </Menu>
+ *         </Popover>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ##Animation
+ * 
+ * The default animation style is to animate around the origin. An alternative animation can be applied using the animation property. Currently one alternative animation is available, popover-animation-from-top, which animates vertically.
+ * 
+ * ```js
+ *
+ *  import React from 'react';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
+ * import Menu from 'material-ui/Menu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * export default class PopoverExampleAnimation extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ * 
+ *     this.state = {
+ *       open: false,
+ *     };
+ *   }
+ * 
+ *   handleTouchTap = (event) => {
+ *     // This prevents ghost click.
+ *     event.preventDefault();
+ * 
+ *     this.setState({
+ *       open: true,
+ *       anchorEl: event.currentTarget,
+ *     });
+ *   };
+ * 
+ *   handleRequestClose = () => {
+ *     this.setState({
+ *       open: false,
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           onClick={this.handleTouchTap}
+ *           label="Click me"
+ *         />
+ *         <Popover
+ *           open={this.state.open}
+ *           anchorEl={this.state.anchorEl}
+ *           anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+ *           targetOrigin={{horizontal: 'left', vertical: 'top'}}
+ *           onRequestClose={this.handleRequestClose}
+ *           animation={PopoverAnimationVertical}
+ *         >
+ *           <Menu>
+ *             <MenuItem primaryText="Refresh" />
+ *             <MenuItem primaryText="Help &amp; feedback" />
+ *             <MenuItem primaryText="Settings" />
+ *             <MenuItem primaryText="Sign out" />
+ *           </Menu>
+ *         </Popover>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * 
+ * ```
+ * 
+ * &nbsp;
+ * ##Anchor playground
+ * 
+ * Use the radio buttons to adjust the anchorOrigin and targetOrigin positions.
+ * 
+ * ```js
+ * import React from 'react';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * import RadioButton from 'material-ui/RadioButton';
+ * import Popover from 'material-ui/Popover/Popover';
+ * import {Menu, MenuItem} from 'material-ui/Menu';
+ * 
+ * const styles = {
+ *   h3: {
+ *     marginTop: 20,
+ *     fontWeight: 400,
+ *   },
+ *   block: {
+ *     display: 'flex',
+ *   },
+ *   block2: {
+ *     margin: 10,
+ *   },
+ *   pre: {
+ *     overflow: 'hidden', // Fix a scrolling issue on iOS.
+ *   },
+ * };
+ * 
+ * export default class PopoverExampleConfigurable extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ * 
+ *     this.state = {
+ *       open: false,
+ *       anchorOrigin: {
+ *         horizontal: 'left',
+ *         vertical: 'bottom',
+ *       },
+ *       targetOrigin: {
+ *         horizontal: 'left',
+ *         vertical: 'top',
+ *       },
+ *     };
+ *   }
+ * 
+ *   handleTouchTap = (event) => {
+ *     // This prevents ghost click.
+ *     event.preventDefault();
+ *     this.setState({
+ *       open: true,
+ *       anchorEl: event.currentTarget,
+ *     });
+ *   };
+ * 
+ *   handleRequestClose = () => {
+ *     this.setState({
+ *       open: false,
+ *     });
+ *   };
+ * 
+ *   setAnchor = (positionElement, position) => {
+ *     const {anchorOrigin} = this.state;
+ *     anchorOrigin[positionElement] = position;
+ * 
+ *     this.setState({
+ *       anchorOrigin: anchorOrigin,
+ *     });
+ *   };
+ * 
+ *   setTarget = (positionElement, position) => {
+ *     const {targetOrigin} = this.state;
+ *     targetOrigin[positionElement] = position;
+ * 
+ *     this.setState({
+ *       targetOrigin: targetOrigin,
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           onClick={this.handleTouchTap}
+ *           label="Click me"
+ *         />
+ *         <h3 style={styles.h3}>Current Settings</h3>
+ *         <pre style={styles.pre}>
+ *           anchorOrigin: {JSON.stringify(this.state.anchorOrigin)}
+ *           <br />
+ *           targetOrigin: {JSON.stringify(this.state.targetOrigin)}
+ *         </pre>
+ *         <h3 style={styles.h3}>Position Options</h3>
+ *         <p>Use the settings below to toggle the positioning of the popovers above</p>
+ *         <h3 style={styles.h3}>Anchor Origin</h3>
+ *         <div style={styles.block}>
+ *           <div style={styles.block2}>
+ *             <span>Vertical</span>
+ *             <RadioButton
+ *               onClick={this.setAnchor.bind(this, 'vertical', 'top')}
+ *               label="Top" checked={this.state.anchorOrigin.vertical === 'top'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setAnchor.bind(this, 'vertical', 'center')}
+ *               label="Center" checked={this.state.anchorOrigin.vertical === 'center'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setAnchor.bind(this, 'vertical', 'bottom')}
+ *               label="Bottom" checked={this.state.anchorOrigin.vertical === 'bottom'}
+ *             />
+ *           </div>
+ *           <div style={styles.block2}>
+ *             <span>Horizontal</span>
+ *             <RadioButton
+ *               onClick={this.setAnchor.bind(this, 'horizontal', 'left')}
+ *               label="Left" checked={this.state.anchorOrigin.horizontal === 'left'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setAnchor.bind(this, 'horizontal', 'middle')}
+ *               label="Middle" checked={this.state.anchorOrigin.horizontal === 'middle'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setAnchor.bind(this, 'horizontal', 'right')}
+ *               label="Right" checked={this.state.anchorOrigin.horizontal === 'right'}
+ *             />
+ *           </div>
+ *         </div>
+ *         <h3 style={styles.h3}>Target Origin</h3>
+ *         <div style={styles.block}>
+ *           <div style={styles.block2}>
+ *             <span>Vertical</span>
+ *             <RadioButton
+ *               onClick={this.setTarget.bind(this, 'vertical', 'top')}
+ *               label="Top" checked={this.state.targetOrigin.vertical === 'top'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setTarget.bind(this, 'vertical', 'center')}
+ *               label="Center" checked={this.state.targetOrigin.vertical === 'center'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setTarget.bind(this, 'vertical', 'bottom')}
+ *               label="Bottom" checked={this.state.targetOrigin.vertical === 'bottom'}
+ *             />
+ *           </div>
+ *           <div style={styles.block2}>
+ *             <span>Horizontal</span>
+ *             <RadioButton
+ *               onClick={this.setTarget.bind(this, 'horizontal', 'left')}
+ *               label="Left" checked={this.state.targetOrigin.horizontal === 'left'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setTarget.bind(this, 'horizontal', 'middle')}
+ *               label="Middle" checked={this.state.targetOrigin.horizontal === 'middle'}
+ *             />
+ *             <RadioButton
+ *               onClick={this.setTarget.bind(this, 'horizontal', 'right')}
+ *               label="Right" checked={this.state.targetOrigin.horizontal === 'right'}
+ *             />
+ *           </div>
+ *         </div>
+ *         <Popover
+ *           open={this.state.open}
+ *           anchorEl={this.state.anchorEl}
+ *           anchorOrigin={this.state.anchorOrigin}
+ *           targetOrigin={this.state.targetOrigin}
+ *           onRequestClose={this.handleRequestClose}
+ *         >
+ *           <Menu>
+ *             <MenuItem primaryText="Refresh" />
+ *             <MenuItem primaryText="Help &amp; feedback" />
+ *             <MenuItem primaryText="Settings" />
+ *             <MenuItem primaryText="Sign out" />
+ *           </Menu>
+ *         </Popover>
+ *       </div>
+ *     );
+ *   }
+ * } 
+ * 
+ * ```
+ * 
+ * #Note
+ * 
+ * The event.preventDefault(); in the examples above is to prevent an effect called [ghost click](#) that happens with touch-devices. It is recommended that you add that call whenever you handle a TouchTap event associated with closing/opening Popover.
+ * 
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
@@ -17,12 +341,12 @@ const styles = {
 class Popover extends Component {
   static propTypes = {
     /**
-     * This is the DOM element that will be used to set the position of the
+     * @property {PropTypes.object} anchorEl - This is the DOM element that will be used to set the position of the
      * popover.
      */
     anchorEl: PropTypes.object,
     /**
-     * This is the point on the anchor where the popover's
+     * @property {PropTypes.origin} anchorOrigin - This is the point on the anchor where the popover's
      * `targetOrigin` will attach to.
      * Options:
      * vertical: [top, center, bottom]
@@ -30,45 +354,45 @@ class Popover extends Component {
      */
     anchorOrigin: propTypes.origin,
     /**
-     * If true, the popover will apply transitions when
+     * @property {PropTypes.bool} animated - If true, the popover will apply transitions when
      * it is added to the DOM.
      */
     animated: PropTypes.bool,
     /**
-     * Override the default animation component used.
+     * @property {PropTypes.func} animation - Override the default animation component used.
      */
     animation: PropTypes.func,
     /**
-     * If true, the popover will hide when the anchor is scrolled off the screen.
+     * @property {PropTypes.bool} autoCloseWhenOffScreen - If true, the popover will hide when the anchor is scrolled off the screen.
      */
     autoCloseWhenOffScreen: PropTypes.bool,
     /**
-     * If true, the popover (potentially) ignores `targetOrigin`
+     * @property {PropTypes.bool} canAutoPosition - If true, the popover (potentially) ignores `targetOrigin`
      * and `anchorOrigin` to make itself fit on screen,
      * which is useful for mobile devices.
      */
     canAutoPosition: PropTypes.bool,
     /**
-     * The content of the popover.
+     * @property {PropTypes.node} children - The content of the popover.
      */
     children: PropTypes.node,
     /**
-     * The CSS class name of the root element.
+     * @property {PropTypes.string} className - The CSS class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Callback function fired when the popover is requested to be closed.
+     * @property {PropTypes.func} onRequestClose - Callback function fired when the popover is requested to be closed.
      *
      * @param {string} reason The reason for the close request. Possibles values
      * are 'clickAway' and 'offScreen'.
      */
     onRequestClose: PropTypes.func,
     /**
-     * If true, the popover is visible.
+     * @property {PropTypes.bool} open - If true, the popover is visible.
      */
     open: PropTypes.bool,
     /**
-     * Represents the parent scrollable container.
+     * @property {} scrollableContainer - Represents the parent scrollable container.
      * It can be an element or a string like `window`.
      */
     scrollableContainer: PropTypes.oneOfType([
@@ -76,11 +400,11 @@ class Popover extends Component {
       PropTypes.string,
     ]),
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * This is the point on the popover which will attach to
+     * @property {PropTypes.origin} targetOrigin - This is the point on the popover which will attach to
      * the anchor's origin.
      * Options:
      * vertical: [top, center, bottom]
@@ -88,13 +412,13 @@ class Popover extends Component {
      */
     targetOrigin: propTypes.origin,
     /**
-     * If true, the popover will render on top of an invisible
+     * @property {PropTypes.bool} useLayerForClickAway - If true, the popover will render on top of an invisible
      * layer, which will prevent clicks to the underlying
      * elements, and trigger an `onRequestClose('clickAway')` call.
      */
     useLayerForClickAway: PropTypes.bool,
     /**
-     * The zDepth of the popover.
+     * @property {PropTypes.zDepth} zDepth - The zDepth of the popover.
      */
     zDepth: propTypes.zDepth,
   };

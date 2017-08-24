@@ -98,19 +98,19 @@ function getStyles(props, context) {
 class Toolbar extends Component {
   static propTypes = {
     /**
-     * Can be a `ToolbarGroup` to render a group of related items.
+     * @property {PropTypes.node} children - Can be a `ToolbarGroup` to render a group of related items.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Do not apply `desktopGutter` to the `Toolbar`.
+     * @property {PropTypes.bool} noGutter - Do not apply `desktopGutter` to the `Toolbar`.
      */
     noGutter: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

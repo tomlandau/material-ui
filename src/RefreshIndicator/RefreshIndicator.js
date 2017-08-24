@@ -1,3 +1,111 @@
+/**
+ * #Refresh Indicator
+ * The [refresh indicator](#) is used when showing an item is loading. It is kept hidden from the interface until it's status prop is changed to loading or ready.
+ * #Examples
+ * 
+ * ##Ready
+ * The ready status can be used in response to a pull-to-refresh action, with the percentage tracking the depth of the "pull". The size property determines the icon size in pixels, and the color property its color, except at percentage 100, when the colour switches to the secondary color.
+ * 
+ * ```js
+ 
+ * import React from 'react';
+ * import RefreshIndicator from 'material-ui/RefreshIndicator';
+ * 
+ * const style = {
+ *   container: {
+ *     position: 'relative',
+ *   },
+ *   refresh: {
+ *     display: 'inline-block',
+ *     position: 'relative',
+ *   },
+ * };
+ * 
+ * const RefreshIndicatorExampleSimple = () => (
+ *   <div style={style.container}>
+ *     <RefreshIndicator
+ *       percentage={30}
+ *       size={40}
+ *       left={10}
+ *       top={0}
+ *       status="ready"
+ *       style={style.refresh}
+ *     />
+ *     <RefreshIndicator
+ *       percentage={60}
+ *       size={50}
+ *       left={65}
+ *       top={0}
+ *       status="ready"
+ *       style={style.refresh}
+ *     />
+ *     <RefreshIndicator
+ *       percentage={80}
+ *       size={60}
+ *       left={120}
+ *       top={0}
+ *       color="red"
+ *       status="ready"
+ *       style={style.refresh}
+ *     />
+ *     <RefreshIndicator
+ *       percentage={100}
+ *       size={70}
+ *       left={175}
+ *       top={0}
+ *       color="red" // Overridden by percentage={100}
+ *       status="ready"
+ *       style={style.refresh}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default RefreshIndicatorExampleSimple;
+ * 
+ * ```
+ * 
+ * &nbsp;
+ * ##Loading
+ * The loading status displays an indeterminate indicator, intended to to be used while content is loading. The loadingColor prop can be used to set the indicator color, which defaults to the secondary color.
+ * 
+ * ```js
+ * import React from 'react';
+ * import RefreshIndicator from 'material-ui/RefreshIndicator';
+ * 
+ * const style = {
+ *   container: {
+ *     position: 'relative',
+ *   },
+ *   refresh: {
+ *     display: 'inline-block',
+ *     position: 'relative',
+ *   },
+ * };
+ * 
+ * const RefreshIndicatorExampleLoading = () => (
+ *   <div style={style.container}>
+ *     <RefreshIndicator
+ *       size={40}
+ *       left={10}
+ *       top={0}
+ *       status="loading"
+ *       style={style.refresh}
+ *     />
+ *     <RefreshIndicator
+ *       size={50}
+ *       left={70}
+ *       top={0}
+ *       loadingColor="#FF9800"
+ *       status="loading"
+ *       style={style.refresh}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default RefreshIndicatorExampleLoading;
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import autoPrefix from '../utils/autoPrefix';
@@ -27,29 +135,29 @@ function getStyles(props) {
 class RefreshIndicator extends Component {
   static propTypes = {
     /**
-     * Override the theme's color of the indicator while it's status is
+     * @property {PropTypes.string} color - Override the theme's color of the indicator while it's status is
      * "ready" and it's percentage is less than 100.
      */
     color: PropTypes.string,
     /**
-     * The absolute left position of the indicator in pixels.
+     * @property {PropTypes.number} left - The absolute left position of the indicator in pixels.
      */
     left: PropTypes.number.isRequired,
     /**
-     * Override the theme's color of the indicator while
+     * @property {PropTypes.string} loadingColor - Override the theme's color of the indicator while
      * it's status is "loading" or when it's percentage is 100.
      */
     loadingColor: PropTypes.string,
     /**
-     * The confirmation progress to fetch data. Max value is 100.
+     * @property {PropTypes.number} percentage - The confirmation progress to fetch data. Max value is 100.
      */
     percentage: PropTypes.number,
     /**
-     * Size in pixels.
+     * @property {PropTypes.number} size - Size in pixels.
      */
     size: PropTypes.number,
     /**
-     * The display status of the indicator. If the status is
+     * @property {'ready'| 'loading'| 'hide'} status - The display status of the indicator. If the status is
      * "ready", the indicator will display the ready state
      * arrow. If the status is "loading", it will display
      * the loading progress indicator. If the status is "hide",
@@ -57,11 +165,11 @@ class RefreshIndicator extends Component {
      */
     status: PropTypes.oneOf(['ready', 'loading', 'hide']),
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The absolute top position of the indicator in pixels.
+     * @property {PropTypes.number} top - The absolute top position of the indicator in pixels.
      */
     top: PropTypes.number.isRequired,
   };

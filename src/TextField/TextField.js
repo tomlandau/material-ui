@@ -352,76 +352,79 @@ function isValid(value) {
 
 class TextField extends Component {
   static propTypes = {
+    /**
+     * @property {PropTypes.node} children - The css class name of the root element.
+     */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * The text string to use for the default value.
+     * @property {PropTypes.any} defaultValue - The text string to use for the default value.
      */
     defaultValue: PropTypes.any,
     /**
-     * Disables the text field if set to true.
+     * @property {PropTypes.bool} disabled - Disables the text field if set to true.
      */
     disabled: PropTypes.bool,
     /**
-     * The style object to use to override error styles.
+     * @property {PropTypes.object} errorStyle - The style object to use to override error styles.
      */
     errorStyle: PropTypes.object,
     /**
-     * The error content to display.
+     * @property {PropTypes.node} errorText - The error content to display.
      */
     errorText: PropTypes.node,
     /**
-     * If true, the floating label will float even when there is no value.
+     * @property {PropTypes.bool} floatingLabelFixed - If true, the floating label will float even when there is no value.
      */
     floatingLabelFixed: PropTypes.bool,
     /**
-     * The style object to use to override floating label styles when focused.
+     * @property {PropTypes.object} floatingLabelFocusStyle - The style object to use to override floating label styles when focused.
      */
     floatingLabelFocusStyle: PropTypes.object,
     /**
-     * The style object to use to override floating label styles when shrunk.
+     * @property {PropTypes.object} floatingLabelShrinkStyle - The style object to use to override floating label styles when shrunk.
      */
     floatingLabelShrinkStyle: PropTypes.object,
     /**
-     * The style object to use to override floating label styles.
+     * @property {PropTypes.object} floatingLabelStyle - The style object to use to override floating label styles.
      */
     floatingLabelStyle: PropTypes.object,
     /**
-     * The content to use for the floating label element.
+     * @property {PropTypes.node} floatingLabelText - The content to use for the floating label element.
      */
     floatingLabelText: PropTypes.node,
     /**
-     * If true, the field receives the property width 100%.
+     * @property {PropTypes.bool} fullWidth - If true, the field receives the property width 100%.
      */
     fullWidth: PropTypes.bool,
     /**
-     * Override the inline-styles of the TextField's hint text element.
+     * @property {PropTypes.object} hintStyle - Override the inline-styles of the TextField's hint text element.
      */
     hintStyle: PropTypes.object,
     /**
-     * The hint content to display.
+     * @property {PropTypes.node} hintText - The hint content to display.
      */
     hintText: PropTypes.node,
     /**
-     * The id prop for the text field.
+     * @property {PropTypes.string} id - The id prop for the text field.
      */
     id: PropTypes.string,
     /**
-     * Override the inline-styles of the TextField's input element.
+     * @property {PropTypes.object} inputStyle - Override the inline-styles of the TextField's input element.
      * When multiLine is false: define the style of the input element.
      * When multiLine is true: define the style of the container of the textarea.
      */
     inputStyle: PropTypes.object,
     /**
-     * If true, a textarea element will be rendered.
+     * @property {PropTypes.bool} multiLine - If true, a textarea element will be rendered.
      * The textarea also grows and shrinks according to the number of lines.
      */
     multiLine: PropTypes.bool,
     /**
-     * Name applied to the input.
+     * @property {PropTypes.string} name - Name applied to the input.
      */
     name: PropTypes.string,
     /** @ignore */
@@ -436,49 +439,49 @@ class TextField extends Component {
     /** @ignore */
     onFocus: PropTypes.func,
     /**
-     * Number of rows to display when multiLine option is set to true.
+     * @property {PropTypes.number} rows - Number of rows to display when multiLine option is set to true.
      */
     rows: PropTypes.number,
     /**
-     * Maximum number of rows to display when
+     * @property {PropTypes.number} rowsMax - Maximum number of rows to display when
      * multiLine option is set to true.
      */
     rowsMax: PropTypes.number,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * Override the inline-styles of the TextField's textarea element.
+     * @property {PropTypes.object} textareaStyle - Override the inline-styles of the TextField's textarea element.
      * The TextField use either a textarea or an input,
      * this property has effects only when multiLine is true.
      */
     textareaStyle: PropTypes.object,
     /**
-     * Specifies the type of input to display
+     * @property {PropTypes.string} type - Specifies the type of input to display
      * such as "password" or "text".
      */
     type: PropTypes.string,
     /**
-     * Override the inline-styles of the
+     * @property {PropTypes.object} underlineDisabledStyle - Override the inline-styles of the
      * TextField's underline element when disabled.
      */
     underlineDisabledStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the TextField's
+     * @property {PropTypes.object} underlineFocusStyle - Override the inline-styles of the TextField's
      * underline element when focussed.
      */
     underlineFocusStyle: PropTypes.object,
     /**
-     * If true, shows the underline for the text field.
+     * @property {PropTypes.bool} underlineShow - If true, shows the underline for the text field.
      */
     underlineShow: PropTypes.bool,
     /**
-     * Override the inline-styles of the TextField's underline element.
+     * @property {PropTypes.object} underlineStyle - Override the inline-styles of the TextField's underline element.
      */
     underlineStyle: PropTypes.object,
     /**
-     * The value of the text field.
+     * @property {PropTypes.any} value - The value of the text field.
      */
     value: PropTypes.any,
   };

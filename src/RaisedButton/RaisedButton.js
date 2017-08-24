@@ -1,3 +1,135 @@
+/**
+ * #Raised Button
+ * This [button](#) is used to add dimension to mostly flat layouts and emphasizes important functions on your page.
+ * 
+ * #Examples
+ * 
+ * ##Simple examples
+ * RaisedButton with default color, primary, secondary and and disabled props applied
+ * 
+ * ```js
+ *  import React from 'react';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * const style = {
+ *   margin: 12,
+ * };
+ * 
+ * const RaisedButtonExampleSimple = () => (
+ *   <div>
+ *     <RaisedButton label="Default" style={style} />
+ *     <RaisedButton label="Primary" primary={true} style={style} />
+ *     <RaisedButton label="Secondary" secondary={true} style={style} />
+ *     <RaisedButton label="Disabled" disabled={true} style={style} />
+ *     <br />
+ *     <br />
+ *     <RaisedButton label="Full width" fullWidth={true} />
+ *   </div>
+ * );
+ * 
+ * export default RaisedButtonExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ##Complex examples
+ * The first example uses an input as a child component. The second example has an [SVG Icon](#), with the label positioned after. The final example uses a [Font Icon](#), and is wrapped in an anchor tag.
+ * 
+ * ```js
+ *
+ * import React from 'react';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * import ActionAndroid from 'material-ui/svg-icons/action/android';
+ * import FontIcon from 'material-ui/FontIcon';
+ * 
+ * const styles = {
+ *   button: {
+ *     margin: 12,
+ *   },
+ *   exampleImageInput: {
+ *     cursor: 'pointer',
+ *     position: 'absolute',
+ *     top: 0,
+ *     bottom: 0,
+ *     right: 0,
+ *     left: 0,
+ *     width: '100%',
+ *     opacity: 0,
+ *   },
+ * };
+ * 
+ * const RaisedButtonExampleComplex = () => (
+ *   <div>
+ *     <RaisedButton
+ *       label="Choose an Image"
+ *       labelPosition="before"
+ *       style={styles.button}
+ *       containerElement="label"
+ *     >
+ *       <input type="file" style={styles.exampleImageInput} />
+ *     </RaisedButton>
+ *     <RaisedButton
+ *       label="Label before"
+ *       labelPosition="before"
+ *       primary={true}
+ *       icon={<ActionAndroid />}
+ *       style={styles.button}
+ *     />
+ *     <RaisedButton
+ *       href="https://github.com/callemall/material-ui"
+ *       target="_blank"
+ *       label="Github Link"
+ *       secondary={true}
+ *       style={styles.button}
+ *       icon={<FontIcon className="muidocs-icon-custom-github" />}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default RaisedButtonExampleComplex;
+ * 
+ * ```
+ * 
+ * &nbsp;
+ * ##Icon examples
+ * Examples of Raised Buttons using an icon without a label. The first example uses an [SVG Icon](#), and has the default color. The second example shows how the icon and background color can be changed. The final example uses a [Font Icon](#), and is wrapped in an anchor tag.
+ *
+ * 
+ * ```js
+ * import React from 'react';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * import {fullWhite} from 'material-ui/styles/colors';
+ * import ActionAndroid from 'material-ui/svg-icons/action/android';
+ * import FontIcon from 'material-ui/FontIcon';
+ * 
+ * const style = {
+ *   margin: 12,
+ * };
+ * 
+ * const RaisedButtonExampleIcon = () => (
+ *   <div>
+ *     <RaisedButton
+ *       icon={<ActionAndroid />}
+ *       style={style}
+ *     />
+ *     <RaisedButton
+ *       backgroundColor="#a4c639"
+ *       icon={<ActionAndroid color={fullWhite} />}
+ *       style={style}
+ *     />
+ *     <RaisedButton
+ *       href="https://github.com/callemall/material-ui"
+ *       target="_blank"
+ *       secondary={true}
+ *       icon={<FontIcon className="muidocs-icon-custom-github" />}
+ *       style={style}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default RaisedButtonExampleIcon;
+ * ```
+ */
+
 import React, {Component, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
@@ -114,27 +246,27 @@ class RaisedButton extends Component {
 
   static propTypes = {
     /**
-     * Override the default background color for the button,
+     * @property {PropTypes.string} backgroundColor - Override the default background color for the button,
      * but not the default disabled background color
      * (use `disabledBackgroundColor` for this).
      */
     backgroundColor: PropTypes.string,
     /**
-     * Override the inline-styles of the button element.
+     * @property {PropTypes.object} buttonStyle - Override the inline-styles of the button element.
      */
     buttonStyle: PropTypes.object,
     /**
-     * The content of the button.
+     * @property {PropTypes.node} children - The content of the button.
      * If a label is provided via the `label` prop, the text within the label
      * will be displayed in addition to the content provided here.
      */
     children: PropTypes.node,
     /**
-     * The CSS class name of the root element.
+     * @property {PropTypes.string} className - The CSS class name of the root element.
      */
     className: PropTypes.string,
     /**
-      * The element to use as the container for the RaisedButton. Either a string to
+      * @property {} containerElement - The element to use as the container for the RaisedButton. Either a string to
       * use a DOM element or a ReactElement. This is useful for wrapping the
       * RaisedButton in a custom Link component. If a ReactElement is given, ensure
       * that it passes all of its given props through to the underlying DOM
@@ -145,57 +277,57 @@ class RaisedButton extends Component {
       PropTypes.element,
     ]),
     /**
-     * If true, the element's ripple effect will be disabled.
+     * @property {PropTypes.bool} disableTouchRipple - If true, the element's ripple effect will be disabled.
      */
     disableTouchRipple: PropTypes.bool,
     /**
-     * If true, the button will be disabled.
+     * @property {PropTypes.bool} disabled - If true, the button will be disabled.
      */
     disabled: PropTypes.bool,
     /**
-     * Override the default background color for the button
+     * @property {PropTypes.string} disabledBackgroundColor - Override the default background color for the button
      * when it is disabled.
      */
     disabledBackgroundColor: PropTypes.string,
     /**
-     * The color of the button's label when the button is disabled.
+     * @property {PropTypes.string} disabledLabelColor - The color of the button's label when the button is disabled.
      */
     disabledLabelColor: PropTypes.string,
     /**
-     * If true, the button will take up the full width of its container.
+     * @property {PropTypes.bool} fullWidth - If true, the button will take up the full width of its container.
      */
     fullWidth: PropTypes.bool,
     /**
-     * The URL to link to when the button is clicked.
+     * @property {PropTypes.string} href - The URL to link to when the button is clicked.
      */
     href: PropTypes.string,
     /**
-     * An icon to be displayed within the button.
+     * @property {PropTypes.node} icon - An icon to be displayed within the button.
      */
     icon: PropTypes.node,
     /**
-     * The label to be displayed within the button.
+     * @property {} label - The label to be displayed within the button.
      * If content is provided via the `children` prop, that content will be
      * displayed in addition to the label provided here.
      */
     label: validateLabel,
     /**
-     * The color of the button's label.
+     * @property {PropTypes.string} labelColor - The color of the button's label.
      */
     labelColor: PropTypes.string,
     /**
-     * The position of the button's label relative to the button's `children`.
+     * @property {'before'|'after'} labelPosition - The position of the button's label relative to the button's `children`.
      */
     labelPosition: PropTypes.oneOf([
       'before',
       'after',
     ]),
     /**
-     * Override the inline-styles of the button's label element.
+     * @property {PropTypes.object} labelStyle - Override the inline-styles of the button's label element.
      */
     labelStyle: PropTypes.object,
     /**
-     * Callback function fired when the button is touch-tapped.
+     * @property {PropTypes.func} onClick - Callback function fired when the button is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the button.
      */
@@ -213,25 +345,25 @@ class RaisedButton extends Component {
     /** @ignore */
     onTouchStart: PropTypes.func,
     /**
-     * Override the inline style of the button overlay.
+     * @property {PropTypes.object} overlayStyle - Override the inline style of the button overlay.
      */
     overlayStyle: PropTypes.object,
     /**
-     * If true, the button will use the theme's primary color.
+     * @property {PropTypes.bool} primary - If true, the button will use the theme's primary color.
      */
     primary: PropTypes.bool,
     /**
-     * Override the inline style of the ripple element.
+     * @property {PropTypes.object} rippleStyle - Override the inline style of the ripple element.
      */
     rippleStyle: PropTypes.object,
     /**
-     * If true, the button will use the theme's secondary color.
+     * @property {PropTypes.bool} secondary - If true, the button will use the theme's secondary color.
      * If both `secondary` and `primary` are true, the button will use
      * the theme's primary color.
      */
     secondary: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

@@ -31,19 +31,19 @@ class StepButton extends Component {
 
   static propTypes = {
     /**
-     * Passed from `Step` Is passed to StepLabel.
+     * @property {PropTypes.bool} active - Passed from `Step` Is passed to StepLabel.
      */
     active: PropTypes.bool,
     /**
-     * Can be a `StepLabel` or a node to place inside `StepLabel` as children.
+     * @property {PropTypes.node} children - Can be a `StepLabel` or a node to place inside `StepLabel` as children.
      */
     children: PropTypes.node,
     /**
-     * Sets completed styling. Is passed to StepLabel.
+     * @property {PropTypes.bool} completed - Sets completed styling. Is passed to StepLabel.
      */
     completed: PropTypes.bool,
     /**
-     * Disables the button and sets disabled styling. Is passed to StepLabel.
+     * @property {PropTypes.bool} disabled - Disables the button and sets disabled styling. Is passed to StepLabel.
      */
     disabled: PropTypes.bool,
     /**
@@ -55,7 +55,7 @@ class StepButton extends Component {
       PropTypes.number,
     ]),
     /**
-     * Override the inline-styles of the icon container element.
+     * @property {PropTypes.object} iconContainerStyle - Override the inline-styles of the icon container element.
      */
     iconContainerStyle: PropTypes.object,
     /** @ignore */
@@ -67,7 +67,7 @@ class StepButton extends Component {
     /** @ignore */
     onTouchStart: PropTypes.func,
     /**
-     * Override the inline-style of the root element.
+     * @property {PropTypes.object} style - Override the inline-style of the root element.
      */
     style: PropTypes.object,
   };

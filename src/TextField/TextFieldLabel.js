@@ -51,19 +51,19 @@ const TextFieldLabel = (props) => {
 
 TextFieldLabel.propTypes = {
   /**
-   * The label contents.
+   * @property {PropTypes.node} children - The label contents.
    */
   children: PropTypes.node,
   /**
-   * The css class name of the root element.
+   * @property {PropTypes.string} className - The css class name of the root element.
    */
   className: PropTypes.string,
   /**
-   * Disables the label if set to true.
+   * @property {PropTypes.bool} disabled - Disables the label if set to true.
    */
   disabled: PropTypes.bool,
   /**
-   * The id of the target element that this label should refer to.
+   * @property {PropTypes.string} htmlFor - The id of the target element that this label should refer to.
    */
   htmlFor: PropTypes.string,
   /**
@@ -72,21 +72,21 @@ TextFieldLabel.propTypes = {
    */
   muiTheme: PropTypes.object.isRequired,
   /**
-   * Callback function for when the label is selected via a touch tap.
+   * @property {PropTypes.func} onClick - Callback function for when the label is selected via a touch tap.
    *
    * @param {object} event TouchTap event targeting the text field label.
    */
   onClick: PropTypes.func,
   /**
-   * True if the floating label should shrink.
+   * @property {PropTypes.bool} shrink - True if the floating label should shrink.
    */
   shrink: PropTypes.bool,
   /**
-   * Override the inline-styles of the root element when shrunk.
+   * @property {PropTypes.object} shrinkStyle - Override the inline-styles of the root element when shrunk.
    */
   shrinkStyle: PropTypes.object,
   /**
-   * Override the inline-styles of the root element.
+   * @property {PropTypes.object} style - Override the inline-styles of the root element.
    */
   style: PropTypes.object,
 };

@@ -1,3 +1,195 @@
+/**
+ * #Snackbar
+ * 
+ * [Snackbars](#) provide lightweight feedback about an operation by showing a brief message at the bottom of the screen. Snackbars can contain an action.
+ * 
+ * ##Simple example
+ * 
+ * Snackbar is a controlled component, and is displayed when open is true. Click away from the Snackbar to close it, or wait for autoHideDuration to expire.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Snackbar from 'material-ui/Snackbar';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class SnackbarExampleSimple extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {
+ *       open: false,
+ *     };
+ *   }
+ * 
+ *   handleTouchTap = () => {
+ *     this.setState({
+ *       open: true,
+ *     });
+ *   };
+ * 
+ *   handleRequestClose = () => {
+ *     this.setState({
+ *       open: false,
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           onClick={this.handleTouchTap}
+ *           label="Add to my calendar"
+ *         />
+ *         <Snackbar
+ *           open={this.state.open}
+ *           message="Event added to your calendar"
+ *           autoHideDuration={4000}
+ *           onRequestClose={this.handleRequestClose}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ##Example action
+ * A single action can be added to the Snackbar, and triggers onActionTouchTap. Edit the textfield to change autoHideDuration
+ * 
+ * ```js
+ * import React from 'react';
+ * import Snackbar from 'material-ui/Snackbar';
+ * import TextField from 'material-ui/TextField';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class SnackbarExampleSimple extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {
+ *       autoHideDuration: 4000,
+ *       message: 'Event added to your calendar',
+ *       open: false,
+ *     };
+ *   }
+ * 
+ *   handleTouchTap = () => {
+ *     this.setState({
+ *       open: true,
+ *     });
+ *   };
+ * 
+ *   handleActionTouchTap = () => {
+ *     this.setState({
+ *       open: false,
+ *     });
+ *     alert('Event removed from your calendar.');
+ *   };
+ * 
+ *   handleChangeDuration = (event) => {
+ *     const value = event.target.value;
+ *     this.setState({
+ *       autoHideDuration: value.length > 0 ? parseInt(value) : 0,
+ *     });
+ *   };
+ * 
+ *   handleRequestClose = () => {
+ *     this.setState({
+ *       open: false,
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           onClick={this.handleTouchTap}
+ *           label="Add to my calendar"
+ *         />
+ *         <br />
+ *         <TextField
+ *           floatingLabelText="Auto Hide Duration in ms"
+ *           value={this.state.autoHideDuration}
+ *           onChange={this.handleChangeDuration}
+ *         />
+ *         <Snackbar
+ *           open={this.state.open}
+ *           message={this.state.message}
+ *           action="undo"
+ *           autoHideDuration={this.state.autoHideDuration}
+ *           onActionTouchTap={this.handleActionTouchTap}
+ *           onRequestClose={this.handleRequestClose}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ##Consecutive Snackbars
+ * Changing message causes the Snackbar to animate - it isn't necessary to close and reopen the Snackbar with the open prop.
+ * 
+ * ```js
+ *
+ * import React from 'react';
+ * import Snackbar from 'material-ui/Snackbar';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class SnackbarExampleTwice extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {
+ *       message: 'Event 1 added to your calendar',
+ *       open: false,
+ *     };
+ *     this.timer = undefined;
+ *   }
+ * 
+ *   componentWillUnMount() {
+ *     clearTimeout(this.timer);
+ *   }
+ * 
+ *   handleTouchTap = () => {
+ *     this.setState({
+ *       open: true,
+ *     });
+ * 
+ *     this.timer = setTimeout(() => {
+ *       this.setState({
+ *         message: `Event ${Math.round(Math.random() * 100)} added to your calendar`,
+ *       });
+ *     }, 1500);
+ *   };
+ * 
+ *   handleRequestClose = () => {
+ *     this.setState({
+ *       open: false,
+ *     });
+ *   };
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           onClick={this.handleTouchTap}
+ *           label="Add to my calendar two times"
+ *         />
+ *         <Snackbar
+ *           open={this.state.open}
+ *           message={this.state.message}
+ *           action="undo"
+ *           autoHideDuration={3000}
+ *           onRequestClose={this.handleRequestClose}
+ *         />
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
@@ -40,30 +232,30 @@ function getStyles(props, context, state) {
 class Snackbar extends Component {
   static propTypes = {
     /**
-     * The label for the action on the snackbar.
+     * @property {PropTypes.node} action - The label for the action on the snackbar.
      */
     action: PropTypes.node,
     /**
-     * The number of milliseconds to wait before automatically dismissing.
+     * @property {PropTypes.number} autoHideDuration - The number of milliseconds to wait before automatically dismissing.
      * If no value is specified the snackbar will dismiss normally.
      * If a value is provided the snackbar can still be dismissed normally.
      * If a snackbar is dismissed before the timer expires, the timer will be cleared.
      */
     autoHideDuration: PropTypes.number,
     /**
-     * Override the inline-styles of the body element.
+     * @property {PropTypes.object} bodyStyle - Override the inline-styles of the body element.
      */
     bodyStyle: PropTypes.object,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Override the inline-styles of the content element.
+     * @property {PropTypes.object} contentStyle - Override the inline-styles of the content element.
      */
     contentStyle: PropTypes.object,
     /**
-     * The message to be displayed.
+     * @property {PropTypes.node} message - The message to be displayed.
      *
      * (Note: If the message is an element or array, and the `Snackbar` may re-render while it is still open,
      * ensure that the same object remains as the `message` property if you want to avoid the `Snackbar` hiding and
@@ -71,13 +263,13 @@ class Snackbar extends Component {
      */
     message: PropTypes.node.isRequired,
     /**
-     * Fired when the action button is touchtapped.
+     * @property {PropTypes.func} onActionTouchTap - Fired when the action button is touchtapped.
      *
      * @param {object} event Action button event.
      */
     onActionTouchTap: PropTypes.func,
     /**
-     * Fired when the `Snackbar` is requested to be closed by a click outside the `Snackbar`, or after the
+     * @property {PropTypes.func} onRequestClose - Fired when the `Snackbar` is requested to be closed by a click outside the `Snackbar`, or after the
      * `autoHideDuration` timer expires.
      *
      * Typically `onRequestClose` is used to set state in the parent component, which is used to control the `Snackbar`
@@ -90,11 +282,11 @@ class Snackbar extends Component {
      */
     onRequestClose: PropTypes.func,
     /**
-     * Controls whether the `Snackbar` is opened or not.
+     * @property {PropTypes.bool} open - Controls whether the `Snackbar` is opened or not.
      */
     open: PropTypes.bool.isRequired,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

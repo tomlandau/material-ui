@@ -23,19 +23,19 @@ const getStyles = ({index}, {stepper}) => {
 class Step extends Component {
   static propTypes = {
     /**
-     * Sets the step as active. Is passed to child components.
+     * @property {PropTypes.bool} active - Sets the step as active. Is passed to child components.
      */
     active: PropTypes.bool,
     /**
-     * Should be `Step` sub-components such as `StepLabel`.
+     * @property {PropTypes.node} children - Should be `Step` sub-components such as `StepLabel`.
      */
     children: PropTypes.node,
     /**
-     * Mark the step as completed. Is passed to child components.
+     * @property {PropTypes.bool} completed - Mark the step as completed. Is passed to child components.
      */
     completed: PropTypes.bool,
     /**
-     * Mark the step as disabled, will also disable the button if
+     * @property {PropTypes.bool} disabled - Mark the step as disabled, will also disable the button if
      * `StepButton` is a child of `Step`. Is passed to child components.
      */
     disabled: PropTypes.bool,
@@ -49,7 +49,7 @@ class Step extends Component {
      */
     last: PropTypes.bool,
     /**
-     * Override the inline-style of the root element.
+     * @property {PropTypes.object} style - Override the inline-style of the root element.
      */
     style: PropTypes.object,
   };

@@ -1,3 +1,275 @@
+/**
+ * 
+ * #Menu
+ * [Menus](#) allow you to take an action by selecting from a list revealed upon opening a temporary, new sheet of material. A Menu is typically used in a [Popover](#).
+ * 
+ * #Examples
+ * 
+ * ##Simple examples
+ * Two simple examples. The menu widths adjusts to accommodate the content in keyline increments.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * import Menu from 'material-ui/Menu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * const style = {
+ *   display: 'inline-block',
+ *   margin: '16px 32px 16px 0',
+ * };
+ * 
+ * const MenuExampleSimple = () => (
+ *   <div>
+ *     <Paper style={style}>
+ *       <Menu>
+ *         <MenuItem primaryText="Maps" />
+ *         <MenuItem primaryText="Books" />
+ *         <MenuItem primaryText="Flights" />
+ *         <MenuItem primaryText="Apps" />
+ *       </Menu>
+ *     </Paper>
+ *     <Paper style={style}>
+ *       <Menu>
+ *         <MenuItem primaryText="Refresh" />
+ *         <MenuItem primaryText="Help &amp; feedback" />
+ *         <MenuItem primaryText="Settings" />
+ *         <MenuItem primaryText="Sign out" />
+ *       </Menu>
+ *     </Paper>
+ *   </div>
+ * );
+ * 
+ * export default MenuExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ##Disabled items
+ * The disabled property disables a MenuItem. Menu supports a more compact vertical spacing using the desktop property. The [Divider](#) can be used to separate MenuItems.
+ *
+ * ```js
+ * import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * import Menu from 'material-ui/Menu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * import Divider from 'material-ui/Divider';
+ * 
+ * const style = {
+ *   display: 'inline-block',
+ *   margin: '16px 32px 16px 0',
+ * };
+ * 
+ * const MenuExampleDisable = () => (
+ *   <div>
+ *     <Paper style={style}>
+ *       <Menu desktop={true}>
+ *         <MenuItem primaryText="Back" />
+ *         <MenuItem primaryText="Forward" disabled={true} />
+ *         <Divider />
+ *         <MenuItem primaryText="Recently closed" disabled={true} />
+ *         <MenuItem primaryText="Google" disabled={true} />
+ *         <MenuItem primaryText="YouTube" />
+ *       </Menu>
+ *     </Paper>
+ *     <Paper style={style}>
+ *       <Menu desktop={true}>
+ *         <MenuItem primaryText="Undo" />
+ *         <MenuItem primaryText="Redo" disabled={true} />
+ *         <Divider />
+ *         <MenuItem primaryText="Cut" disabled={true} />
+ *         <MenuItem primaryText="Copy" disabled={true} />
+ *         <MenuItem primaryText="Paste" />
+ *       </Menu>
+ *     </Paper>
+ *   </div>
+ * );
+ * 
+ * export default MenuExampleDisable;
+ * 
+ * ```
+ * 
+ * &nbsp;
+ * ##Icons
+ * MenuItem supports icons through the leftIcon and rightIcon properties.
+ * 
+ * ```js
+ *  import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * import Menu from 'material-ui/Menu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
+ * import PersonAdd from 'material-ui/svg-icons/social/person-add';
+ * import ContentLink from 'material-ui/svg-icons/content/link';
+ * import Divider from 'material-ui/Divider';
+ * import ContentCopy from 'material-ui/svg-icons/content/content-copy';
+ * import Download from 'material-ui/svg-icons/file/file-download';
+ * import Delete from 'material-ui/svg-icons/action/delete';
+ * import FontIcon from 'material-ui/FontIcon';
+ * 
+ * const style = {
+ *   paper: {
+ *     display: 'inline-block',
+ *     float: 'left',
+ *     margin: '16px 32px 16px 0',
+ *   },
+ *   rightIcon: {
+ *     textAlign: 'center',
+ *     lineHeight: '24px',
+ *   },
+ * };
+ * 
+ * const MenuExampleIcons = () => (
+ *   <div>
+ *     <Paper style={style.paper}>
+ *       <Menu>
+ *         <MenuItem primaryText="Preview" leftIcon={<RemoveRedEye />} />
+ *         <MenuItem primaryText="Share" leftIcon={<PersonAdd />} />
+ *         <MenuItem primaryText="Get links" leftIcon={<ContentLink />} />
+ *         <Divider />
+ *         <MenuItem primaryText="Make a copy" leftIcon={<ContentCopy />} />
+ *         <MenuItem primaryText="Download" leftIcon={<Download />} />
+ *         <Divider />
+ *         <MenuItem primaryText="Remove" leftIcon={<Delete />} />
+ *       </Menu>
+ *     </Paper>
+ *     <Paper style={style.paper}>
+ *       <Menu>
+ *         <MenuItem primaryText="Clear Config" />
+ *         <MenuItem primaryText="New Config" rightIcon={<PersonAdd />} />
+ *         <MenuItem primaryText="Project" rightIcon={<FontIcon className="material-icons">settings</FontIcon>} />
+ *         <MenuItem
+ *           primaryText="Workspace"
+ *           rightIcon={
+ *             <FontIcon className="material-icons" style={{color: '#559'}}>settings</FontIcon>
+ *           }
+ *         />
+ *         <MenuItem primaryText="Paragraph" rightIcon={<b style={style.rightIcon}>¶</b>} />
+ *         <MenuItem primaryText="Section" rightIcon={<b style={style.rightIcon}>§</b>} />
+ *       </Menu>
+ *     </Paper>
+ *   </div>
+ * );
+ * 
+ * export default MenuExampleIcons;
+ * ```
+ * 
+ * &nbsp;
+ * ##Secondary text
+ * MenuItem supports a secondaryText property.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * import Menu from 'material-ui/Menu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * import Divider from 'material-ui/Divider';
+ * import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+ * 
+ * const style = {
+ *   display: 'inline-block',
+ *   float: 'left',
+ *   margin: '16px 32px 16px 0',
+ * };
+ * 
+ * const MenuExampleSecondary = () => (
+ *   <div>
+ *     <Paper style={style}>
+ *       <Menu desktop={true} width={256}>
+ *         <MenuItem primaryText="Bold" secondaryText="&#8984;B" />
+ *         <MenuItem primaryText="Italic" secondaryText="&#8984;I" />
+ *         <MenuItem primaryText="Underline" secondaryText="&#8984;U" />
+ *         <MenuItem primaryText="Strikethrough" secondaryText="Alt+Shift+5" />
+ *         <MenuItem primaryText="Superscript" secondaryText="&#8984;." />
+ *         <MenuItem primaryText="Subscript" secondaryText="&#8984;," />
+ *         <Divider />
+ *         <MenuItem primaryText="Paragraph styles" rightIcon={<ArrowDropRight />} />
+ *         <MenuItem primaryText="Align" rightIcon={<ArrowDropRight />} />
+ *         <MenuItem primaryText="Line spacing" rightIcon={<ArrowDropRight />} />
+ *         <MenuItem primaryText="Numbered list" rightIcon={<ArrowDropRight />} />
+ *         <MenuItem primaryText="List options" rightIcon={<ArrowDropRight />} />
+ *         <Divider />
+ *         <MenuItem primaryText="Clear formatting" secondaryText="&#8984;/" />
+ *       </Menu>
+ *     </Paper>
+ *     <Paper style={style}>
+ *       <Menu desktop={true} width={256}>
+ *         <MenuItem primaryText="Open" secondaryText="Cmd + O" />
+ *         <MenuItem primaryText="Paste in place" secondaryText="Shift + V" />
+ *         <MenuItem primaryText="Research" secondaryText="Opt + Shift + Cmd + I" />
+ *       </Menu>
+ *     </Paper>
+ *     <Paper style={style}>
+ *       <Menu desktop={true} width={256}>
+ *         <MenuItem primaryText="Open" secondaryText="&#8984;O" />
+ *         <MenuItem primaryText="Paste in place" secondaryText="&#8679;&#8984;V" />
+ *         <MenuItem primaryText="Research" secondaryText="&#8997;&#8679;&#8984;I" />
+ *       </Menu>
+ *     </Paper>
+ *   </div>
+ * );
+ * 
+ * export default MenuExampleSecondary;
+ * ```
+ * 
+ * &nbsp;
+ * ##Nested menus
+ * Cascading menus can be configured using the menuItems property of the MenuItem component.
+ * 
+ * ```js
+ *
+ *  import React from 'react';
+ * import Paper from 'material-ui/Paper';
+ * import Menu from 'material-ui/Menu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * import Divider from 'material-ui/Divider';
+ * import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+ * 
+ * const style = {
+ *   display: 'inline-block',
+ *   margin: '16px 32px 16px 0',
+ * };
+ * 
+ * const MenuExampleNested = () => (
+ *   <div>
+ *     <Paper style={style}>
+ *       <Menu desktop={true} width={320}>
+ *         <MenuItem primaryText="Single" insetChildren={true} />
+ *         <MenuItem primaryText="1.15" insetChildren={true} />
+ *         <MenuItem primaryText="Double" insetChildren={true} />
+ *         <MenuItem
+ *           primaryText="Custom: 1.2"
+ *           checked={true}
+ *           rightIcon={<ArrowDropRight />}
+ *           menuItems={[
+ *             <MenuItem
+ *               primaryText="Show"
+ *               rightIcon={<ArrowDropRight />}
+ *               menuItems={[
+ *                 <MenuItem primaryText="Show Level 2" />,
+ *                 <MenuItem primaryText="Grid lines" checked={true} />,
+ *                 <MenuItem primaryText="Page breaks" insetChildren={true} />,
+ *                 <MenuItem primaryText="Rules" checked={true} />,
+ *               ]}
+ *             />,
+ *             <MenuItem primaryText="Grid lines" checked={true} />,
+ *             <MenuItem primaryText="Page breaks" insetChildren={true} />,
+ *             <MenuItem primaryText="Rules" checked={true} />,
+ *           ]}
+ *         />
+ *         <Divider />
+ *         <MenuItem primaryText="Add space before paragraph" />
+ *         <MenuItem primaryText="Add space after paragraph" />
+ *         <Divider />
+ *         <MenuItem primaryText="Custom spacing..." />
+ *       </Menu>
+ *     </Paper>
+ *   </div>
+ * );
+ * 
+ * export default MenuExampleNested;
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';

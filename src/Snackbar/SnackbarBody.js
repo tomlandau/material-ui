@@ -98,15 +98,15 @@ export const SnackbarBody = (props, context) => {
 
 SnackbarBody.propTypes = {
   /**
-   * The label for the action on the snackbar.
+   * @property {PropTypes.node} action - The label for the action on the snackbar.
    */
   action: PropTypes.node,
   /**
-   * Override the inline-styles of the content element.
+   * @property {PropTypes.object} contentStyle - Override the inline-styles of the content element.
    */
   contentStyle: PropTypes.object,
   /**
-   * The message to be displayed.
+   * @property {PropTypes.node} message - The message to be displayed.
    *
    * (Note: If the message is an element or array, and the `Snackbar` may re-render while it is still open,
    * ensure that the same object remains as the `message` property if you want to avoid the `Snackbar` hiding and
@@ -114,7 +114,7 @@ SnackbarBody.propTypes = {
    */
   message: PropTypes.node.isRequired,
   /**
-   * Fired when the action button is touchtapped.
+   * @property {PropTypes.func} onActionTouchTap - Fired when the action button is touchtapped.
    *
    * @param {object} event Action button event.
    */
@@ -125,7 +125,7 @@ SnackbarBody.propTypes = {
    */
   open: PropTypes.bool.isRequired,
   /**
-   * Override the inline-styles of the root element.
+   * @property {PropTypes.object} style - Override the inline-styles of the root element.
    */
   style: PropTypes.object,
   /**

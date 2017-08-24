@@ -63,25 +63,25 @@ function getStyles(props, context) {
 class ToolbarGroup extends Component {
   static propTypes = {
     /**
-     * Can be any node or number of nodes.
+     * @property {PropTypes.node} children - Can be any node or number of nodes.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Set this to true for if the `ToolbarGroup` is the first child of `Toolbar`
+     * @property {PropTypes.bool} firstChild - Set this to true for if the `ToolbarGroup` is the first child of `Toolbar`
      * to prevent setting the left gap.
      */
     firstChild: PropTypes.bool,
     /**
-     * Set this to true for if the `ToolbarGroup` is the last child of `Toolbar`
+     * @property {PropTypes.bool} lastChild - Set this to true for if the `ToolbarGroup` is the last child of `Toolbar`
      * to prevent setting the right gap.
      */
     lastChild: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };
