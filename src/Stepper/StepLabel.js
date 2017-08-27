@@ -133,7 +133,7 @@ StepLabel.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * The icon displayed by the step label.
+   * @property {element|string|number} icon - The icon displayed by the step label.
    */
   icon: PropTypes.oneOfType([
     PropTypes.element,

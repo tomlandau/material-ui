@@ -162,7 +162,7 @@ class ListItem extends Component {
      */
     children: PropTypes.node,
     /**
-     *  - The element to use as the container for the ListItem. Either a string to
+     * @property {string|element} containerElement - The element to use as the container for the ListItem. Either a string to
      * use a DOM element or a ReactElement. This is useful for wrapping the
      * ListItem in a custom Link component. If a ReactElement is given, ensure
      * that it passes all of its given props through to the underlying DOM

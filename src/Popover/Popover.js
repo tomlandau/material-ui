@@ -392,7 +392,7 @@ class Popover extends Component {
      */
     open: PropTypes.bool,
     /**
-     * @property {} scrollableContainer - Represents the parent scrollable container.
+     * @property {object|string} scrollableContainer - Represents the parent scrollable container.
      * It can be an element or a string like `window`.
      */
     scrollableContainer: PropTypes.oneOfType([

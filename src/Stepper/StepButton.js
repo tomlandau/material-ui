@@ -47,7 +47,7 @@ class StepButton extends Component {
      */
     disabled: PropTypes.bool,
     /**
-     * The icon displayed by the step label.
+     * @property {element|string|number} icon - The icon displayed by the step label. {element|string}
      */
     icon: PropTypes.oneOfType([
       PropTypes.element,

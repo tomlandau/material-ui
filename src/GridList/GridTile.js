@@ -80,7 +80,7 @@ class GridTile extends Component {
      */
     cols: PropTypes.number,
     /**
-     * @property {} containerElement - Either a string used as tag name for the tile root element, or a ReactElement.
+     * @property {string|element} containerElement - Either a string used as tag name for the tile root element, or a ReactElement.
      * This is useful when you have, for example, a custom implementation of
      * a navigation link (that knows about your routes) and you want to use it as the primary tile action.
      * In case you pass a ReactElement, please ensure that it passes all props,

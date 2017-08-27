@@ -308,7 +308,7 @@ function getStyles(props) {
 class GridList extends Component {
   static propTypes = {
     /**
-     * @property {} cellHeight - Number of px for one cell height.
+     * @property {number|['auto']} cellHeight - Number of px for one cell height.
      * You can set `'auto'` if you want to let the children determine the height.
      */
     cellHeight: PropTypes.oneOfType([

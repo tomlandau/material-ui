@@ -481,7 +481,7 @@ class Slider extends Component {
      */
     axis: PropTypes.oneOf(['x', 'x-reverse', 'y', 'y-reverse']),
     /**
-     * @property {} defaultValue - The default value of the slider.
+     * @property {custom} defaultValue - The default value of the slider.
      */
     defaultValue: valueInRangePropType,
     /**
@@ -493,12 +493,12 @@ class Slider extends Component {
      */
     disabled: PropTypes.bool,
     /**
-     * @property {} max - The maximum value the slider can slide to on
+     * @property {custom} max - The maximum value the slider can slide to on
      * a scale from 0 to 1 inclusive. Cannot be equal to min.
      */
     max: minMaxPropType,
     /**
-     * @property {} min - The minimum value the slider can slide to on a scale
+     * @property {custom} min - The minimum value the slider can slide to on a scale
      * from 0 to 1 inclusive. Cannot be equal to max.
      */
     min: minMaxPropType,
@@ -547,7 +547,7 @@ class Slider extends Component {
      */
     style: PropTypes.object,
     /**
-     * @property {} value - The value of the slider.
+     * @property {custom} value - The value of the slider.
      */
     value: valueInRangePropType,
   };
