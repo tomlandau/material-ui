@@ -1,3 +1,92 @@
+/**
+ * 
+ * #Divider
+ * [Dividers](#) group and separate content within lists and page layouts. The divider is a thin rule, lightweight yet sufficient to distinguish content visually and spatially.
+ * 
+ * #Examples
+ * 
+ * ##Form divider
+ * Here, Divider is used to separate [TextField](#) components. It defaults to "full-bleed" (full width).
+ * 
+ * ```js
+ * import React from 'react';
+ * import Divider from 'material-ui/Divider';
+ * import Paper from 'material-ui/Paper';
+ * import TextField from 'material-ui/TextField';
+ * 
+ * const style = {
+ *   marginLeft: 20,
+ * };
+ * 
+ * const DividerExampleForm = () => (
+ *   <Paper zDepth={2}>
+ *     <TextField hintText="First name" style={style} underlineShow={false} />
+ *     <Divider />
+ *     <TextField hintText="Middle name" style={style} underlineShow={false} />
+ *     <Divider />
+ *     <TextField hintText="Last name" style={style} underlineShow={false} />
+ *     <Divider />
+ *     <TextField hintText="Email address" style={style} underlineShow={false} />
+ *     <Divider />
+ *   </Paper>
+ * );
+ * 
+ * export default DividerExampleForm;
+ * ```
+ * &nbsp;
+ * ##Inset divider
+ * The inset parameter allows the divider to align with inset content, such as inset [List](#) components.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Divider from 'material-ui/Divider';
+ * import {List, ListItem} from 'material-ui/List';
+ * import MobileTearSheet from '../../../MobileTearSheet';
+ * 
+ * const DividerExampleList = () => (
+ *   <MobileTearSheet height={250}>
+ *     <List>
+ *       <ListItem insetChildren={true} primaryText="Janet Perkins Bennet" />
+ *       <ListItem insetChildren={true} primaryText="Peter Carlsson" />
+ *     </List>
+ *     <Divider inset={true} />
+ *     <List>
+ *       <ListItem insetChildren={true} primaryText="Aaron Bennet" />
+ *       <ListItem insetChildren={true} primaryText="Abbey Christensen" />
+ *     </List>
+ *   </MobileTearSheet>
+ * );
+ * 
+ * export default DividerExampleList;
+ * ```
+ * 
+ * &nbsp;
+ * ##Menu divider
+ * Divider can also be used in [Menus](#).
+ * 
+ * ```js
+ * import React from 'react';
+ * import Divider from 'material-ui/Divider';
+ * import {Menu, MenuItem} from 'material-ui/Menu';
+ * 
+ * const style = {
+ *   // Without this, the menu overflows the CodeExample container.
+ *   float: 'left',
+ * };
+ * 
+ * const DividerExampleMenu = () => (
+ *   <Menu desktop={true} style={style}>
+ *     <MenuItem primaryText="Settings" />
+ *     <MenuItem primaryText="Help & feedback" />
+ *     <Divider />
+ *     <MenuItem primaryText="Sign out" />
+ *   </Menu>
+ * );
+ * 
+ * export default DividerExampleMenu;
+ * ```
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -33,11 +122,11 @@ Divider.muiName = 'Divider';
 
 Divider.propTypes = {
   /**
-   * If true, the `Divider` will be indented.
+   * @property {PropTypes.bool} inset - If true, the `Divider` will be indented.
    */
   inset: PropTypes.bool,
   /**
-   * Override the inline-styles of the root element.
+   * @property {PropTypes.object} style - Override the inline-styles of the root element.
    */
   style: PropTypes.object,
 };

@@ -1,3 +1,125 @@
+/**
+ * 
+ * #Drawer
+ * The [Drawer](#) slides in from the side. It is a common pattern found in Google apps and follows the keylines and metrics for lists.
+ * There are no examples for uncontrolled mode because an uncontrolled Drawer can only be opened with a swipe. The doc site has an uncontrolled Drawer. Swipe from the left on a touch device to see it.
+ * 
+ * #Examples
+ * 
+ * ##Docked example
+ * A simple controlled Drawer. The Drawer is docked by default, remaining open unless closed through the open prop.
+ * 
+ * ```js 
+ * import React from 'react';
+ * import Drawer from 'material-ui/Drawer';
+ * import MenuItem from 'material-ui/MenuItem';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class DrawerSimpleExample extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {open: false};
+ *   }
+ * 
+ *   handleToggle = () => this.setState({open: !this.state.open});
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           label="Toggle Drawer"
+ *           onClick={this.handleToggle}
+ *         />
+ *         <Drawer open={this.state.open}>
+ *           <MenuItem>Menu Item</MenuItem>
+ *           <MenuItem>Menu Item 2</MenuItem>
+ *         </Drawer>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ##Undocked example
+ * An undocked controlled Drawer with custom width. The Drawer can be cancelled by clicking the overlay or pressing the Esc key. It closes when an item is selected, handled by controlling the open prop.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Drawer from 'material-ui/Drawer';
+ * import MenuItem from 'material-ui/MenuItem';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class DrawerUndockedExample extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {open: false};
+ *   }
+ * 
+ *   handleToggle = () => this.setState({open: !this.state.open});
+ * 
+ *   handleClose = () => this.setState({open: false});
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           label="Open Drawer"
+ *           onClick={this.handleToggle}
+ *         />
+ *         <Drawer
+ *           docked={false}
+ *           width={200}
+ *           open={this.state.open}
+ *           onRequestChange={(open) => this.setState({open})}
+ *         >
+ *           <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
+ *           <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+ *         </Drawer>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ##Open secondary example
+ * The openSecondary prop allows the Drawer to open on the opposite side.
+ * 
+ * ```js
+ * import React from 'react';
+ * import Drawer from 'material-ui/Drawer';
+ * import AppBar from 'material-ui/AppBar';
+ * import RaisedButton from 'material-ui/RaisedButton';
+ * 
+ * export default class DrawerOpenRightExample extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {open: false};
+ *   }
+ * 
+ *   handleToggle = () => this.setState({open: !this.state.open});
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <RaisedButton
+ *           label="Toggle Drawer"
+ *           onClick={this.handleToggle}
+ *         />
+ *         <Drawer width={200} openSecondary={true} open={this.state.open} >
+ *           <AppBar title="AppBar" />
+ *         </Drawer>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
@@ -14,32 +136,32 @@ let openNavEventHandler = null;
 class Drawer extends Component {
   static propTypes = {
     /**
-     * The contents of the `Drawer`
+     * @property {PropTypes.node} children - The contents of the `Drawer`
      */
     children: PropTypes.node,
     /**
-     * The CSS class name of the root element.
+     * @property {PropTypes.string} className - The CSS class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * The CSS class name of the container element.
+     * @property {PropTypes.string} containerClassName - The CSS class name of the container element.
      */
     containerClassName: PropTypes.string,
     /**
-     * Override the inline-styles of the container element.
+     * @property {PropTypes.object} containerStyle - Override the inline-styles of the container element.
      */
     containerStyle: PropTypes.object,
     /**
-     * If true, swiping sideways when the `Drawer` is closed will not open it.
+     * @property {PropTypes.bool} disableSwipeToOpen - If true, swiping sideways when the `Drawer` is closed will not open it.
      */
     disableSwipeToOpen: PropTypes.bool,
     /**
-     * If true, the `Drawer` will be docked. In this state, the overlay won't show and
+     * @property {PropTypes.bool} docked - If true, the `Drawer` will be docked. In this state, the overlay won't show and
      * clicking on a menu item will not close the `Drawer`.
      */
     docked: PropTypes.bool,
     /**
-     * Callback function fired when the `open` state of the `Drawer` is requested to be changed.
+     * @property {PropTypes.func} onRequestChange - Callback function fired when the `open` state of the `Drawer` is requested to be changed.
      *
      * @param {boolean} open If true, the `Drawer` was requested to be opened.
      * @param {string} reason The reason for the open or close request. Possible values are
@@ -48,35 +170,35 @@ class Drawer extends Component {
      */
     onRequestChange: PropTypes.func,
     /**
-     * If true, the `Drawer` is opened.  Providing a value will turn the `Drawer`
+     * @property {PropTypes.bool} open - If true, the `Drawer` is opened.  Providing a value will turn the `Drawer`
      * into a controlled component.
      */
     open: PropTypes.bool,
     /**
-     * If true, the `Drawer` is positioned to open from the opposite side.
+     * @property {PropTypes.bool} openSecondary - If true, the `Drawer` is positioned to open from the opposite side.
      */
     openSecondary: PropTypes.bool,
     /**
-     * The CSS class name to add to the `Overlay` component that is rendered behind the `Drawer`.
+     * @property {PropTypes.string} overlayClassName - The CSS class name to add to the `Overlay` component that is rendered behind the `Drawer`.
      */
     overlayClassName: PropTypes.string,
     /**
-     * Override the inline-styles of the `Overlay` component that is rendered behind the `Drawer`.
+     * @property {PropTypes.object} overlayStyle - Override the inline-styles of the `Overlay` component that is rendered behind the `Drawer`.
      */
     overlayStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The width of the left most (or right most) area in pixels where the `Drawer` can be
+     * @property {PropTypes.number} swipeAreaWidth - The width of the left most (or right most) area in pixels where the `Drawer` can be
      * swiped open from. Setting this to `null` spans that area to the entire page
      * (**CAUTION!** Setting this property to `null` might cause issues with sliders and
      * swipeable `Tabs`: use at your own risk).
      */
     swipeAreaWidth: PropTypes.number,
     /**
-     * The width of the `Drawer` in pixels or percentage in string format ex. `50%` to fill
+     * @property {} width - The width of the `Drawer` in pixels or percentage in string format ex. `50%` to fill
      * half of the window or `100%` and so on. Defaults to using the values from theme.
      */
     width: PropTypes.oneOfType([
@@ -84,7 +206,7 @@ class Drawer extends Component {
       PropTypes.number,
     ]),
     /**
-     * The zDepth of the `Drawer`.
+     * @property {PropTypes.zDepth} zDepth - The zDepth of the `Drawer`.
      */
     zDepth: propTypes.zDepth,
 

@@ -1,3 +1,212 @@
+/**
+ * 
+ * #Icon Button
+ * 
+ * An [Icon Button](#) generates a button element around an icon. Also, focus styles will happen on tab but not on click. There are three ways to add an icon:
+ * 
+ * 1. For icon font stylesheets: Set the prop iconClassName to the classname for your icon. Certain icon fonts support ligatures, allowing the icon to be specified as a string. Refer to this [article](#) to learn more about including font icons in your project.
+ * 2. For SVG icons: Insert the SVG component as a child of icon buttons.
+ * 3. Alternative: You can also insert a [FontIcon](#) component as a child of IconButton. This is similar to how the iconClassName prop from method 1 is handled.
+ * 
+ * #Examples
+ * 
+ * ##Simple example
+ * An Icon Button using an icon specified with the iconClassName property, and a disabled example.
+ *
+ * ```js
+ * import React from 'react';
+ * import IconButton from 'material-ui/IconButton';
+ * 
+ * const IconButtonExampleSimple = () => (
+ *   <div>
+ *     <IconButton iconClassName="muidocs-icon-custom-github" />
+ *     <IconButton iconClassName="muidocs-icon-custom-github" disabled={true} />
+ *   </div>
+ * );
+ * 
+ * export default IconButtonExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ##Further examples
+ * An Icon Button using a nested [Font Icon](#), a nested [SVG Icon](#) and an icon font ligature.
+ * 
+ * ```js
+ * import React from 'react';
+ * import FontIcon from 'material-ui/FontIcon';
+ * import IconButton from 'material-ui/IconButton';
+ * import ActionHome from 'material-ui/svg-icons/action/home';
+ * 
+ * const IconButtonExampleComplex = () => (
+ *   <div>
+ *     <IconButton tooltip="Font Icon">
+ *       <FontIcon className="muidocs-icon-action-home" />
+ *     </IconButton>
+ * 
+ *     <IconButton tooltip="SVG Icon">
+ *       <ActionHome />
+ *     </IconButton>
+ * 
+ *     <IconButton
+ *       iconClassName="material-icons"
+ *       tooltip="Ligature"
+ *     >
+ *       home
+ *     </IconButton>
+ *   </div>
+ * );
+ * 
+ * export default IconButtonExampleComplex;
+ * ```
+ * 
+ * &nbsp;
+ * ##Size examples
+ * Examples of Icon Button in different sizes.
+ * 
+ * ```js
+ * import React from 'react';
+ * import IconButton from 'material-ui/IconButton';
+ * import ActionHome from 'material-ui/svg-icons/action/home';
+ * 
+ * const styles = {
+ *   smallIcon: {
+ *     width: 36,
+ *     height: 36,
+ *   },
+ *   mediumIcon: {
+ *     width: 48,
+ *     height: 48,
+ *   },
+ *   largeIcon: {
+ *     width: 60,
+ *     height: 60,
+ *   },
+ *   small: {
+ *     width: 72,
+ *     height: 72,
+ *     padding: 16,
+ *   },
+ *   medium: {
+ *     width: 96,
+ *     height: 96,
+ *     padding: 24,
+ *   },
+ *   large: {
+ *     width: 120,
+ *     height: 120,
+ *     padding: 30,
+ *   },
+ * };
+ * 
+ * const IconButtonExampleSize = () => (
+ *   <div>
+ *     <IconButton>
+ *       <ActionHome />
+ *     </IconButton>
+ * 
+ *     <IconButton
+ *       iconStyle={styles.smallIcon}
+ *       style={styles.small}
+ *     >
+ *       <ActionHome />
+ *     </IconButton>
+ * 
+ *     <IconButton
+ *       iconStyle={styles.mediumIcon}
+ *       style={styles.medium}
+ *     >
+ *       <ActionHome />
+ *     </IconButton>
+ * 
+ *     <IconButton
+ *       iconStyle={styles.largeIcon}
+ *       style={styles.large}
+ *     >
+ *       <ActionHome />
+ *     </IconButton>
+ *   </div>
+ * );
+ * 
+ * export default IconButtonExampleSize;
+ * ```
+ * 
+ * &nbsp;
+ * ##Tooltip examples
+ * Icon Buttons showing the available tooltip positions.
+ * 
+ * ```js
+ * import React from 'react';
+ * import IconButton from 'material-ui/IconButton';
+ * 
+ * const IconButtonExampleTooltip = () => (
+ *   <div>
+ *     <IconButton
+ *       iconClassName="muidocs-icon-custom-github" tooltip="bottom-right"
+ *       tooltipPosition="bottom-right"
+ *     />
+ *     <IconButton
+ *       iconClassName="muidocs-icon-custom-github" tooltip="bottom-center"
+ *       tooltipPosition="bottom-center"
+ *     />
+ *     <IconButton
+ *       iconClassName="muidocs-icon-custom-github" tooltip="bottom-left"
+ *       tooltipPosition="bottom-left"
+ *     />
+ *     <IconButton
+ *       iconClassName="muidocs-icon-custom-github" tooltip="top-right"
+ *       tooltipPosition="top-right"
+ *     />
+ *     <IconButton
+ *       iconClassName="muidocs-icon-custom-github" tooltip="top-center"
+ *       tooltipPosition="top-center"
+ *     />
+ *     <IconButton
+ *       iconClassName="muidocs-icon-custom-github" tooltip="top-left"
+ *       tooltipPosition="top-left"
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default IconButtonExampleTooltip;
+ * ```
+ * 
+ * &nbsp;
+ * ##Touch example
+ * The touch property adjusts the tooltip size for better visibility on mobile devices.
+ * 
+ * ```js
+ * import React from 'react';
+ * import IconButton from 'material-ui/IconButton';
+ * import ActionGrade from 'material-ui/svg-icons/action/grade';
+ * 
+ * const IconButtonExampleTouch = () => (
+ *   <div>
+ *     <IconButton tooltip="bottom-right" touch={true} tooltipPosition="bottom-right">
+ *       <ActionGrade />
+ *     </IconButton>
+ *     <IconButton tooltip="bottom-center" touch={true} tooltipPosition="bottom-center">
+ *       <ActionGrade />
+ *     </IconButton>
+ *     <IconButton tooltip="bottom-left" touch={true} tooltipPosition="bottom-left">
+ *       <ActionGrade />
+ *     </IconButton>
+ *     <IconButton tooltip="top-right" touch={true} tooltipPosition="top-right">
+ *       <ActionGrade />
+ *     </IconButton>
+ *     <IconButton tooltip="top-center" touch={true} tooltipPosition="top-center">
+ *       <ActionGrade />
+ *     </IconButton>
+ *     <IconButton tooltip="top-left" touch={true} tooltipPosition="top-left">
+ *       <ActionGrade />
+ *     </IconButton>
+ *   </div>
+ * );
+ * 
+ * export default IconButtonExampleTouch;
+ * ```
+ */
+
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
@@ -36,42 +245,42 @@ class IconButton extends Component {
 
   static propTypes = {
     /**
-     * Can be used to pass a `FontIcon` element as the icon for the button.
+     * @property {PropTypes.node} children - Can be used to pass a `FontIcon` element as the icon for the button.
      */
     children: PropTypes.node,
     /**
-     * The CSS class name of the root element.
+     * @property {PropTypes.string} className - The CSS class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * If true, the element's ripple effect will be disabled.
+     * @property {PropTypes.bool} disableTouchRipple - If true, the element's ripple effect will be disabled.
      */
     disableTouchRipple: PropTypes.bool,
     /**
-     * If true, the element will be disabled.
+     * @property {PropTypes.bool} disabled - If true, the element will be disabled.
      */
     disabled: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element when the component is hovered.
+     * @property {PropTypes.bool} hoveredStyle - Override the inline-styles of the root element when the component is hovered.
      */
     hoveredStyle: PropTypes.object,
     /**
-     * The URL to link to when the button is clicked.
+     * @property {PropTypes.string} href - The URL to link to when the button is clicked.
      */
     href: PropTypes.string,
     /**
-     * The CSS class name of the icon. Used for setting the icon with a stylesheet.
+     * @property {PropTypes.string} iconClassName - The CSS class name of the icon. Used for setting the icon with a stylesheet.
      */
     iconClassName: PropTypes.string,
     /**
-     * Override the inline-styles of the icon element.
+     * @property {PropTypes.object} iconStyle - Override the inline-styles of the icon element.
      * Note: you can specify iconHoverColor as a String inside this object.
      */
     iconStyle: PropTypes.object,
     /** @ignore */
     onBlur: PropTypes.func,
     /**
-     * Callback function fired when the button is touch-tapped.
+     * @property {PropTypes.func} onClick - Callback function fired when the button is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the button.
      */
@@ -79,7 +288,7 @@ class IconButton extends Component {
     /** @ignore */
     onFocus: PropTypes.func,
     /**
-     * Callback function fired when the element is focused or blurred by the keyboard.
+     * @property {PropTypes.func} onKeyboardFocus - Callback function fired when the element is focused or blurred by the keyboard.
      *
      * @param {object} event `focus` or `blur` event targeting the element.
      * @param {boolean} keyboardFocused Indicates whether the element is focused.
@@ -94,25 +303,25 @@ class IconButton extends Component {
     /** @ignore */
     onTouchStart: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The text to supply to the element's tooltip.
+     * @property {PropTypes.node} tooltip - The text to supply to the element's tooltip.
      */
     tooltip: PropTypes.node,
     /**
-     * The vertical and horizontal positions, respectively, of the element's tooltip.
+     * @property {PropTypes.cornersAndCenter} tooltipPosition - The vertical and horizontal positions, respectively, of the element's tooltip.
      * Possible values are: "bottom-center", "top-center", "bottom-right", "top-right",
      * "bottom-left", and "top-left".
      */
     tooltipPosition: propTypes.cornersAndCenter,
     /**
-     * Override the inline-styles of the tooltip element.
+     * @property {PropTypes.object} tooltipStyles - Override the inline-styles of the tooltip element.
      */
     tooltipStyles: PropTypes.object,
     /**
-     * If true, increase the tooltip element's size. Useful for increasing tooltip
+     * @property {PropTypes.bool} touch - If true, increase the tooltip element's size. Useful for increasing tooltip
      * readability on mobile devices.
      */
     touch: PropTypes.bool,

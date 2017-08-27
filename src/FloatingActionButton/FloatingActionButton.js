@@ -1,3 +1,48 @@
+/**
+ * 
+ * #Floating Action Button
+ * The [Floating Action Button](#) is used for frequently used functions.
+ * 
+ * #Examples
+ * Default size and mini FABs, in primary (default), secondary and disabled colors.
+ * 
+ * ```js
+ * import React from 'react';
+ * import FloatingActionButton from 'material-ui/FloatingActionButton';
+ * import ContentAdd from 'material-ui/svg-icons/content/add';
+ * 
+ * const style = {
+ *   marginRight: 20,
+ * };
+ * 
+ * const FloatingActionButtonExampleSimple = () => (
+ *   <div>
+ *     <FloatingActionButton style={style}>
+ *       <ContentAdd />
+ *     </FloatingActionButton>
+ *     <FloatingActionButton mini={true} style={style}>
+ *       <ContentAdd />
+ *     </FloatingActionButton>
+ *     <FloatingActionButton secondary={true} style={style}>
+ *       <ContentAdd />
+ *     </FloatingActionButton>
+ *     <FloatingActionButton mini={true} secondary={true} style={style}>
+ *       <ContentAdd />
+ *     </FloatingActionButton>
+ *     <FloatingActionButton disabled={true} style={style}>
+ *       <ContentAdd />
+ *     </FloatingActionButton>
+ *     <FloatingActionButton mini={true} disabled={true} style={style}>
+ *       <ContentAdd />
+ *     </FloatingActionButton>
+ *   </div>
+ * );
+ * 
+ * export default FloatingActionButtonExampleSimple;
+ * ```
+ * 
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
@@ -67,49 +112,49 @@ function getStyles(props, context) {
 class FloatingActionButton extends Component {
   static propTypes = {
     /**
-     * This value will override the default background color for the button.
+     * @property {PropTypes.string} backgroundColor - This value will override the default background color for the button.
      * However it will not override the default disabled background color.
      * This has to be set separately using the disabledColor attribute.
      */
     backgroundColor: PropTypes.string,
     /**
-     * This is what displayed inside the floating action button; for example, a SVG Icon.
+     * @property {PropTypes.node} children - This is what displayed inside the floating action button; for example, a SVG Icon.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Disables the button if set to true.
+     * @property {PropTypes.bool} disabled - Disables the button if set to true.
      */
     disabled: PropTypes.bool,
     /**
-     * This value will override the default background color for the button when it is disabled.
+     * @property {PropTypes.string} disabledColor - This value will override the default background color for the button when it is disabled.
      */
     disabledColor: PropTypes.string,
     /**
-     * The URL to link to when the button is clicked.
+     * @property {PropTypes.string} href - The URL to link to when the button is clicked.
      */
     href: PropTypes.string,
     /**
-     * The icon within the FloatingActionButton is a FontIcon component.
+     * @property {PropTypes.string} iconClassName - The icon within the FloatingActionButton is a FontIcon component.
      * This property is the classname of the icon to be displayed inside the button.
      * An alternative to adding an iconClassName would be to manually insert a
      * FontIcon component or custom SvgIcon component or as a child of FloatingActionButton.
      */
     iconClassName: PropTypes.string,
     /**
-     * This is the equivalent to iconClassName except that it is used for
+     * @property {PropTypes.object} iconStyle - This is the equivalent to iconClassName except that it is used for
      * overriding the inline-styles of the FontIcon component.
      */
     iconStyle: PropTypes.object,
     /**
-     * If true, the button will be a small floating action button.
+     * @property {PropTypes.bool} mini - If true, the button will be a small floating action button.
      */
     mini: PropTypes.bool,
     /**
-     * Callback function fired when the button is touch-tapped.
+     * @property {PropTypes.func} onClick - Callback function fired when the button is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the button.
      */
@@ -127,15 +172,15 @@ class FloatingActionButton extends Component {
     /** @ignore */
     onTouchStart: PropTypes.func,
     /**
-     * If true, the button will use the secondary button colors.
+     * @property {PropTypes.bool} secondary - If true, the button will use the secondary button colors.
      */
     secondary: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The zDepth of the underlying `Paper` component.
+     * @property {PropTypes.zDepth} zDepth - The zDepth of the underlying `Paper` component.
      */
     zDepth: propTypes.zDepth,
   };

@@ -318,50 +318,50 @@ function getStyles(props, context) {
 class Menu extends Component {
   static propTypes = {
     /**
-     * If true, the width of the menu will be set automatically
+     * @property {PropTypes.bool} autoWidth - If true, the width of the menu will be set automatically
      * according to the widths of its children,
      * using proper keyline increments (64px for desktop,
      * 56px otherwise).
      */
     autoWidth: PropTypes.bool,
     /**
-     * The content of the menu. This is usually used to pass `MenuItem`
+     * @property {PropTypes.node} children - The content of the menu. This is usually used to pass `MenuItem`
      * elements.
      */
     children: PropTypes.node,
     /**
-     * If true, the menu item will render with compact desktop styles.
+     * @property {PropTypes.bool} desktop - If true, the menu item will render with compact desktop styles.
      */
     desktop: PropTypes.bool,
     /**
-     * If true, the menu will not be auto-focused.
+     * @property {PropTypes.bool} disableAutoFocus - If true, the menu will not be auto-focused.
      */
     disableAutoFocus: PropTypes.bool,
     /**
-     * If true, the menu will be keyboard-focused initially.
+     * @property {PropTypes.bool} initiallyKeyboardFocused - If true, the menu will be keyboard-focused initially.
      */
     initiallyKeyboardFocused: PropTypes.bool,
     /**
-     * Override the inline-styles of the underlying `List` element.
+     * @property {PropTypes.object} listStyle - Override the inline-styles of the underlying `List` element.
      */
     listStyle: PropTypes.object,
     /**
-     * The maximum height of the menu in pixels. If specified,
+     * @property {PropTypes.number} maxHeight - The maximum height of the menu in pixels. If specified,
      * the menu will be scrollable if it is taller than the provided
      * height.
      */
     maxHeight: PropTypes.number,
     /**
-     * Override the inline-styles of menu items.
+     * @property {PropTypes.object} menuItemStyle - Override the inline-styles of menu items.
      */
     menuItemStyle: PropTypes.object,
     /**
-     * If true, `value` must be an array and the menu will support
+     * @property {PropTypes.bool} multiple - If true, `value` must be an array and the menu will support
      * multiple selections.
      */
     multiple: PropTypes.bool,
     /**
-     * Callback function fired when a menu item with `value` not
+     * @property {PropTypes.func} onChange - Callback function fired when a menu item with `value` not
      * equal to the current `value` of the menu is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the menu item.
@@ -370,16 +370,16 @@ class Menu extends Component {
      * it wasn't already selected) or omitted (if it was already selected).
      * Otherwise, the `value` of the menu item.
      */
-    onChange: PropTypes.func,
+    onChange: PropTypes.func, 
     /**
-     * Callback function fired when the menu is focused and the *Esc* key
+     * @property {PropTypes.func} onEscKeyDown - Callback function fired when the menu is focused and the *Esc* key
      * is pressed.
      *
      * @param {object} event `keydown` event targeting the menu.
      */
     onEscKeyDown: PropTypes.func,
     /**
-     * Callback function fired when a menu item is touch-tapped.
+     * @property {PropTypes.func} onItemTouchTap - Callback function fired when a menu item is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the menu item.
      * @param {object} menuItem The menu item.
@@ -389,7 +389,7 @@ class Menu extends Component {
     /** @ignore */
     onKeyDown: PropTypes.func,
     /**
-     * Callback function fired when the focus on a `MenuItem` is changed.
+     * @property {PropTypes.func} onMenuItemFocusChange - Callback function fired when the focus on a `MenuItem` is changed.
      * There will be some "duplicate" changes reported if two different
      * focusing event happen, for example if a `MenuItem` is focused via
      * the keyboard and then it is clicked on.
@@ -402,26 +402,26 @@ class Menu extends Component {
      */
     onMenuItemFocusChange: PropTypes.func,
     /**
-     * Override the inline-styles of selected menu items.
+     * @property {PropTypes.object} selectedMenuItemStyle - Override the inline-styles of selected menu items.
      */
     selectedMenuItemStyle: PropTypes.object,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * If `multiple` is true, an array of the `value`s of the selected
+     * @property {PropTypes.any} value - If `multiple` is true, an array of the `value`s of the selected
      * menu items. Otherwise, the `value` of the selected menu item.
      * If provided, the menu will be a controlled component.
      * This component also supports valueLink.
      */
     value: PropTypes.any,
     /**
-     * ValueLink for the menu's `value`.
+     * @property {PropTypes.object} valueLink - ValueLink for the menu's `value`.
      */
     valueLink: PropTypes.object,
     /**
-     * The width of the menu. If not specified, the menu's width
+     * @property {PropTypes.stringOrNumber} width - The width of the menu. If not specified, the menu's width
      * will be set according to the widths of its children, using
      * proper keyline increments (64px for desktop, 56px otherwise).
      */

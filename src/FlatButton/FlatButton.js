@@ -1,3 +1,127 @@
+/**
+ * #Flat Button
+ * [Flat Buttons](#) are used for general functions and reduce the amount of layering on the screen, making it more readable.
+ * 
+ * #Examples
+ * 
+ * ##Simple examples
+ * FlatButton with default color, primary, secondary and disabled props applied.
+ * 
+ * ```js
+ * import React from 'react';
+ * import FlatButton from 'material-ui/FlatButton';
+ * 
+ * const FlatButtonExampleSimple = () => (
+ *   <div>
+ *     <FlatButton label="Default" />
+ *     <FlatButton label="Primary" primary={true} />
+ *     <FlatButton label="Secondary" secondary={true} />
+ *     <FlatButton label="Disabled" disabled={true} />
+ *     <br />
+ *     <br />
+ *     <FlatButton label="Full width" fullWidth={true} />
+ *   </div>
+ * );
+ * 
+ * export default FlatButtonExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ##Complex examples
+ * The first example uses an input as a child component. The second example has an [SVG Icon](#), with the label positioned after. The final example uses a [Font Icon](#), and is wrapped in an anchor tag.
+ * 
+ * ```js
+ * import React from 'react';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import FontIcon from 'material-ui/FontIcon';
+ * import ActionAndroid from 'material-ui/svg-icons/action/android';
+ * 
+ * const styles = {
+ *   uploadButton: {
+ *     verticalAlign: 'middle',
+ *   },
+ *   uploadInput: {
+ *     cursor: 'pointer',
+ *     position: 'absolute',
+ *     top: 0,
+ *     bottom: 0,
+ *     right: 0,
+ *     left: 0,
+ *     width: '100%',
+ *     opacity: 0,
+ *   },
+ * };
+ * 
+ * const FlatButtonExampleComplex = () => (
+ *   <div>
+ *     <FlatButton
+ *       label="Choose an Image"
+ *       labelPosition="before"
+ *       style={styles.uploadButton}
+ *       containerElement="label"
+ *     >
+ *       <input type="file" style={styles.uploadInput} />
+ *     </FlatButton>
+ *     <FlatButton
+ *       label="Label before"
+ *       labelPosition="before"
+ *       primary={true}
+ *       icon={<ActionAndroid />}
+ *     />
+ *     <FlatButton
+ *       href="https://github.com/callemall/material-ui"
+ *       target="_blank"
+ *       label="GitHub Link"
+ *       secondary={true}
+ *       icon={<FontIcon className="muidocs-icon-custom-github" />}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default FlatButtonExampleComplex;
+ * ```
+ * 
+ * &nbsp;
+ * ##Icon examples
+ * Examples of Flat Buttons using an icon without a label. The first example uses an [SVG Icon](#), and has the default color. The second example shows how the icon and background color can be changed. The final example uses a [Font Icon](#), and is wrapped in an anchor tag.
+ * 
+ * ```js
+ * import React from 'react';
+ * import FlatButton from 'material-ui/FlatButton';
+ * import FontIcon from 'material-ui/FontIcon';
+ * import ActionAndroid from 'material-ui/svg-icons/action/android';
+ * import {fullWhite} from 'material-ui/styles/colors';
+ * 
+ * const style = {
+ *   margin: 12,
+ * };
+ * 
+ * const FlatButtonExampleIcon = () => (
+ *   <div>
+ *     <FlatButton
+ *       icon={<ActionAndroid />}
+ *       style={style}
+ *     />
+ *     <FlatButton
+ *       backgroundColor="#a4c639"
+ *       hoverColor="#8AA62F"
+ *       icon={<ActionAndroid color={fullWhite} />}
+ *       style={style}
+ *     />
+ *     <FlatButton
+ *       href="https://github.com/callemall/material-ui"
+ *       target="_blank"
+ *       secondary={true}
+ *       icon={<FontIcon className="muidocs-icon-custom-github" />}
+ *       style={style}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default FlatButtonExampleIcon;
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
@@ -18,11 +142,11 @@ class FlatButton extends Component {
 
   static propTypes = {
     /**
-     * Color of button when mouse is not hovering over it.
+     * @property {PropTypes.string} backgroundColor - Color of button when mouse is not hovering over it.
      */
     backgroundColor: PropTypes.string,
     /**
-     * This is what will be displayed inside the button.
+     * @property {PropTypes.node} children - This is what will be displayed inside the button.
      * If a label is specified, the text within the label prop will
      * be displayed. Otherwise, the component will expect children
      * which will then be displayed. (In our example,
@@ -32,11 +156,11 @@ class FlatButton extends Component {
      */
     children: PropTypes.node,
     /**
-     * The CSS class name of the root element.
+     * @property {PropTypes.string} className - The CSS class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * The element to use as the container for the FlatButton. Either a string to
+     * @property {} containerElement - The element to use as the container for the FlatButton. Either a string to
      * use a DOM element or a ReactElement. This is useful for wrapping the
      * FlatButton in a custom Link component. If a ReactElement is given, ensure
      * that it passes all of its given props through to the underlying DOM
@@ -47,52 +171,52 @@ class FlatButton extends Component {
       PropTypes.element,
     ]),
     /**
-     * If true, the element's ripple effect will be disabled.
+     * @property {PropTypes.bool} disableTouchRipple - If true, the element's ripple effect will be disabled.
      */
     disableTouchRipple: PropTypes.bool,
     /**
-     * Disables the button if set to true.
+     * @property {PropTypes.bool} disabled - Disables the button if set to true.
      */
     disabled: PropTypes.bool,
     /**
-     * If true, the button will take up the full width of its container.
+     * @property {PropTypes.bool} fullWidth - If true, the button will take up the full width of its container.
      */
     fullWidth: PropTypes.bool,
     /**
-     * Color of button when mouse hovers over.
+     * @property {PropTypes.string} hoverColor - Color of button when mouse hovers over.
      */
     hoverColor: PropTypes.string,
     /**
-     * The URL to link to when the button is clicked.
+     * @property {PropTypes.string} href - The URL to link to when the button is clicked.
      */
     href: PropTypes.string,
     /**
-     * Use this property to display an icon.
+     * @property {PropTypes.node} icon - Use this property to display an icon.
      */
     icon: PropTypes.node,
     /**
-     * Label for the button.
+     * @property {validateLabel} label - Label for the button.
      */
     label: validateLabel,
     /**
-     * Place label before or after the passed children.
+     * @property {['before','after']} labelPosition - Place label before or after the passed children.
      */
     labelPosition: PropTypes.oneOf([
       'before',
       'after',
     ]),
     /**
-     * Override the inline-styles of the button's label element.
+     * @property {PropTypes.object} labelStyle - Override the inline-styles of the button's label element.
      */
     labelStyle: PropTypes.object,
     /**
-     * Callback function fired when the button is touch-tapped.
+     * @property {PropTypes.func} onClick - Callback function fired when the button is touch-tapped.
      *
      * @param {object} event TouchTap event targeting the button.
      */
     onClick: PropTypes.func,
     /**
-     * Callback function fired when the element is focused or blurred by the keyboard.
+     * @property {PropTypes.func} onKeyboardFocus - Callback function fired when the element is focused or blurred by the keyboard.
      *
      * @param {object} event `focus` or `blur` event targeting the element.
      * @param {boolean} isKeyboardFocused Indicates whether the element is focused.
@@ -105,21 +229,21 @@ class FlatButton extends Component {
     /** @ignore */
     onTouchStart: PropTypes.func,
     /**
-     * If true, colors button according to
+     * @property {PropTypes.bool} primary - If true, colors button according to
      * primaryTextColor from the Theme.
      */
     primary: PropTypes.bool,
     /**
-     * Color for the ripple after button is clicked.
+     * @property {PropTypes.string} rippleColor - Color for the ripple after button is clicked.
      */
     rippleColor: PropTypes.string,
     /**
-     * If true, colors button according to secondaryTextColor from the theme.
+     * @property {PropTypes.bool} secondary - If true, colors button according to secondaryTextColor from the theme.
      * The primary prop has precendent if set to true.
      */
     secondary: PropTypes.bool,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
   };

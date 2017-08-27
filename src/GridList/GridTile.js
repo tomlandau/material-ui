@@ -61,26 +61,26 @@ function getStyles(props, context) {
 class GridTile extends Component {
   static propTypes = {
     /**
-     * An IconButton element to be used as secondary action target
+     * @property {PropTypes.element} actionIcon - An IconButton element to be used as secondary action target
      * (primary action target is the tile itself).
      */
     actionIcon: PropTypes.element,
     /**
-     * Position of secondary action IconButton.
+     * @property {['left', 'right']} actionPosition - Position of secondary action IconButton.
      */
     actionPosition: PropTypes.oneOf(['left', 'right']),
     /**
-     * Theoretically you can pass any node as children, but the main use case is to pass an img,
+     * @property {PropTypes.node} children - Theoretically you can pass any node as children, but the main use case is to pass an img,
      * in whichcase GridTile takes care of making the image "cover" available space
      * (similar to background-size: cover or to object-fit:cover).
      */
     children: PropTypes.node,
     /**
-     * Width of the tile in number of grid cells.
+     * @property {PropTypes.number} cols - Width of the tile in number of grid cells.
      */
     cols: PropTypes.number,
     /**
-     * Either a string used as tag name for the tile root element, or a ReactElement.
+     * @property {} containerElement - Either a string used as tag name for the tile root element, or a ReactElement.
      * This is useful when you have, for example, a custom implementation of
      * a navigation link (that knows about your routes) and you want to use it as the primary tile action.
      * In case you pass a ReactElement, please ensure that it passes all props,
@@ -91,36 +91,36 @@ class GridTile extends Component {
       PropTypes.element,
     ]),
     /**
-     * Height of the tile in number of grid cells.
+     * @property {PropTypes.number} rows - Height of the tile in number of grid cells.
      */
     rows: PropTypes.number,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * String or element serving as subtitle (support text).
+     * @property {PropTypes.node} subtitle - String or element serving as subtitle (support text).
      */
     subtitle: PropTypes.node,
     /**
-     * Override the inline-styles of the subtitle element.
+     * @property {PropTypes.object} subtitleStyle - Override the inline-styles of the subtitle element.
      */
     subtitleStyle: PropTypes.object,
     /**
-     * Title to be displayed on tile.
+     * @property {PropTypes.node} title - Title to be displayed on tile.
      */
     title: PropTypes.node,
     /**
-     * Style used for title bar background.
+     * @property {PropTypes.string} titleBackground - Style used for title bar background.
      * Useful for setting custom gradients for example
      */
     titleBackground: PropTypes.string,
     /**
-     * Position of the title bar (container of title, subtitle and action icon).
+     * @property {['top', 'bottom']} titlePosition - Position of the title bar (container of title, subtitle and action icon).
      */
     titlePosition: PropTypes.oneOf(['top', 'bottom']),
     /**
-     * Override the inline-styles of the title element.
+     * @property {PropTypes.object} titleStyle - Override the inline-styles of the title element.
      */
     titleStyle: PropTypes.object,
   };

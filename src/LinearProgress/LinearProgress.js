@@ -1,3 +1,69 @@
+/**
+ * 
+ * #Linear Progress
+ * [Linear Progress](#) bars fill from 0% to 100% to show the progress of a task. It also will animate to show there is a task waiting to be done.
+ * 
+ * #Examples
+ * 
+ * ##Indeterminate progress
+ * By default, the indicator animates continuously.
+ * ```js
+  
+ * import React from 'react';
+ * import LinearProgress from 'material-ui/LinearProgress';
+ *
+ * const LinearProgressExampleSimple = () => (
+ * <LinearProgress mode="indeterminate" />
+ * );
+ *
+ * export default LinearProgressExampleSimple;
+ * 
+ * ```
+ * 
+ * ##Determinate progress
+ * In determinate mode, the indicator adjusts to show the percentage complete, as a ratio of value: max-min.
+ * 
+ * ```js
+ * import React from 'react';
+ * import LinearProgress from 'material-ui/LinearProgress';
+ * 
+ * export default class LinearProgressExampleDeterminate extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ * 
+ *     this.state = {
+ *       completed: 0,
+ *     };
+ *   }
+ * 
+ *   componentDidMount() {
+ *     this.timer = setTimeout(() => this.progress(5), 1000);
+ *   }
+ * 
+ *   componentWillUnmount() {
+ *     clearTimeout(this.timer);
+ *   }
+ * 
+ *   progress(completed) {
+ *     if (completed > 100) {
+ *       this.setState({completed: 100});
+ *     } else {
+ *       this.setState({completed});
+ *       const diff = Math.random() * 10;
+ *       this.timer = setTimeout(() => this.progress(completed + diff), 1000);
+ *     }
+ *   }
+ * 
+ *   render() {
+ *     return (
+ *       <LinearProgress mode="determinate" value={this.state.completed} />
+ *     );
+ *   }
+ * }
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
@@ -66,29 +132,29 @@ function getStyles(props, context) {
 class LinearProgress extends Component {
   static propTypes = {
     /**
-     * The color of the progress bar, defaults to
+     * @property {PropTypes.string} color - color of the progress bar, defaults to
      * primary color of theme.
      */
     color: PropTypes.string,
     /**
-     * The max value of progress, only works in determinate mode.
+     * @property {PropTypes.number} max - max value of progress, only works in determinate mode.
      */
     max: PropTypes.number,
     /**
-     * The min value of progress, only works in determinate mode.
+     * @property {PropTypes.number} min - min value of progress, only works in determinate mode.
      */
     min: PropTypes.number,
     /**
-     * The mode of show your progress, indeterminate for when
+     * @property {['determinate', 'indeterminate']} mode - mode of show your progress, indeterminate for when
      * there is no value for progress.
      */
     mode: PropTypes.oneOf(['determinate', 'indeterminate']),
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * The value of progress, only works in determinate mode.
+     * @property {PropTypes.number} value - value of progress, only works in determinate mode.
      */
     value: PropTypes.number,
   };

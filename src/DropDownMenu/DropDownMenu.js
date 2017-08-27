@@ -1,3 +1,157 @@
+/**
+ * 
+ * #Drop Down Menu
+ * The DropDownMenu component is Material-UI's implementation of the [Textfield dropdown](#).
+ * 
+ * #Examples
+ * 
+ * ##Simple example
+ * DropDownMenu is implemented as a controlled component, with the current selection set through the value property.
+ * 
+ * ```js
+ * import React from 'react';
+ * import DropDownMenu from 'material-ui/DropDownMenu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * const styles = {
+ *   customWidth: {
+ *     width: 200,
+ *   },
+ * };
+ * 
+ * export default class DropDownMenuSimpleExample extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {value: 1};
+ *   }
+ * 
+ *   handleChange = (event, index, value) => this.setState({value});
+ * 
+ *   render() {
+ *     return (
+ *       <div>
+ *         <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+ *           <MenuItem value={1} primaryText="Never" />
+ *           <MenuItem value={2} primaryText="Every Night" />
+ *           <MenuItem value={3} primaryText="Weeknights" />
+ *           <MenuItem value={4} primaryText="Weekends" />
+ *           <MenuItem value={5} primaryText="Weekly" />
+ *         </DropDownMenu>
+ *         <br />
+ *         <DropDownMenu
+ *           value={this.state.value}
+ *           onChange={this.handleChange}
+ *           style={styles.customWidth}
+ *           autoWidth={false}
+ *         >
+ *           <MenuItem value={1} primaryText="Custom width" />
+ *           <MenuItem value={2} primaryText="Every Night" />
+ *           <MenuItem value={3} primaryText="Weeknights" />
+ *           <MenuItem value={4} primaryText="Weekends" />
+ *           <MenuItem value={5} primaryText="Weekly" />
+ *         </DropDownMenu>
+ *       </div>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ##Open Immediate example
+ * With openImmediately property set, the menu will open on mount.
+ * 
+ * ```js
+ * import React from 'react';
+ * import DropDownMenu from 'material-ui/DropDownMenu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * export default class DropDownMenuOpenImmediateExample extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {value: 2};
+ *   }
+ * 
+ *   handleChange = (event, index, value) => this.setState({value});
+ * 
+ *   render() {
+ *     return (
+ *       <DropDownMenu value={this.state.value} onChange={this.handleChange} openImmediately={true}>
+ *         <MenuItem value={1} primaryText="Never" />
+ *         <MenuItem value={2} primaryText="Every Night" />
+ *         <MenuItem value={3} primaryText="Weeknights" />
+ *         <MenuItem value={4} primaryText="Weekends" />
+ *         <MenuItem value={5} primaryText="Weekly" />
+ *       </DropDownMenu>
+ *     );
+ *   }
+ * }
+ * ```
+ * &nbsp;
+ * ##Long example
+ * With the maxHeight property set, the menu will be scrollable if the number of items causes the height to exceed this limit.
+ * 
+ * ```js
+ * import React from 'react';
+ * import DropDownMenu from 'material-ui/DropDownMenu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * const items = [];
+ * for (let i = 0; i < 100; i++ ) {
+ *   items.push(<MenuItem value={i} key={i} primaryText={`Item ${i}`} />);
+ * }
+ * 
+ * export default class DropDownMenuLongMenuExample extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {value: 10};
+ *   }
+ * 
+ *   handleChange = (event, index, value) => this.setState({value});
+ * 
+ *   render() {
+ *     return (
+ *       <DropDownMenu maxHeight={300} value={this.state.value} onChange={this.handleChange}>
+ *         {items}
+ *       </DropDownMenu>
+ *     );
+ *   }
+ * }
+ * ```
+ * 
+ * &nbsp;
+ * ##Label example
+ * 
+ * ```js
+ * import React from 'react';
+ * import DropDownMenu from 'material-ui/DropDownMenu';
+ * import MenuItem from 'material-ui/MenuItem';
+ * 
+ * export default class DropDownMenuLabeledExample extends React.Component {
+ * 
+ *   constructor(props) {
+ *     super(props);
+ *     this.state = {value: 2};
+ *   }
+ * 
+ *   handleChange = (event, index, value) => this.setState({value});
+ * 
+ *   render() {
+ *     return (
+ *       <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+ *         <MenuItem value={1} label="5 am - 12 pm" primaryText="Morning" />
+ *         <MenuItem value={2} label="12 pm - 5 pm" primaryText="Afternoon" />
+ *         <MenuItem value={3} label="5 pm - 9 pm" primaryText="Evening" />
+ *         <MenuItem value={4} label="9 pm - 5 am" primaryText="Night" />
+ *       </DropDownMenu>
+ *     );
+ *   }
+ * }
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
@@ -82,7 +236,7 @@ class DropDownMenu extends Component {
   // than just the parent.
   static propTypes = {
     /**
-     * This is the point on the anchor that the popover's
+     * @property {PropTypes.origin} anchorOrigin - This is the point on the anchor that the popover's
      * `targetOrigin` will attach to.
      * Options:
      * vertical: [top, center, bottom]
@@ -90,68 +244,68 @@ class DropDownMenu extends Component {
      */
     anchorOrigin: propTypes.origin,
     /**
-     * If true, the popover will apply transitions when
+     * @property {PropTypes.bool} animated - If true, the popover will apply transitions when
      * it gets added to the DOM.
      */
     animated: PropTypes.bool,
     /**
-     * Override the default animation component used.
+     * @property {PropTypes.func} animation - Override the default animation component used.
      */
     animation: PropTypes.func,
     /**
-     * The width will automatically be set according to the items inside the menu.
+     * @property {PropTypes.bool} autoWidth - The width will automatically be set according to the items inside the menu.
      * To control this width in css instead, set this prop to `false`.
      */
     autoWidth: PropTypes.bool,
     /**
-     * The `MenuItem`s to populate the `Menu` with. If the `MenuItems` have the
+     * @property {PropTypes.node} children - The `MenuItem`s to populate the `Menu` with. If the `MenuItems` have the
      * prop `label` that value will be used to render the representation of that
      * item within the field.
      */
     children: PropTypes.node,
     /**
-     * The css class name of the root element.
+     * @property {PropTypes.string} className - The css class name of the root element.
      */
     className: PropTypes.string,
     /**
-     * Disables the menu.
+     * @property {PropTypes.bool} disabled - Disables the menu.
      */
     disabled: PropTypes.bool,
     /**
-     * Overrides default `SvgIcon` dropdown arrow component.
+     * @property {PropTypes.node} iconButton - Overrides default `SvgIcon` dropdown arrow component.
      */
     iconButton: PropTypes.node,
     /**
-     * Overrides the styles of icon element.
+     * @property {PropTypes.object} iconStyle - Overrides the styles of icon element.
      */
     iconStyle: PropTypes.object,
     /**
-     * Overrides the styles of label when the `DropDownMenu` is inactive.
+     * @property {PropTypes.object} labelStyle - Overrides the styles of label when the `DropDownMenu` is inactive.
      */
     labelStyle: PropTypes.object,
     /**
-     * The style object to use to override underlying list style.
+     * @property {PropTypes.object} listStyle - The style object to use to override underlying list style.
      */
     listStyle: PropTypes.object,
     /**
-     * The maximum height of the `Menu` when it is displayed.
+     * @property {PropTypes.number} maxHeight - The maximum height of the `Menu` when it is displayed.
      */
     maxHeight: PropTypes.number,
     /**
-     * Override the inline-styles of menu items.
+     * @property {PropTypes.object} menuItemStyle - Override the inline-styles of menu items.
      */
     menuItemStyle: PropTypes.object,
     /**
-     * Overrides the styles of `Menu` when the `DropDownMenu` is displayed.
+     * @property {PropTypes.object} menuStyle - Overrides the styles of `Menu` when the `DropDownMenu` is displayed.
      */
     menuStyle: PropTypes.object,
     /**
-     * If true, `value` must be an array and the menu will support
+     * @property {PropTypes.bool} multiple - If true, `value` must be an array and the menu will support
      * multiple selections.
      */
     multiple: PropTypes.bool,
     /**
-     * Callback function fired when a menu item is clicked, other than the one currently selected.
+     * @property {PropTypes.func} onChange - Callback function fired when a menu item is clicked, other than the one currently selected.
      *
      * @param {object} event TouchTap event targeting the menu item that was clicked.
      * @param {number} key The index of the clicked menu item in the `children` collection.
@@ -162,19 +316,19 @@ class DropDownMenu extends Component {
      */
     onChange: PropTypes.func,
     /**
-     * Callback function fired when the menu is closed.
+     * @property {PropTypes.func} onClose - Callback function fired when the menu is closed.
      */
     onClose: PropTypes.func,
     /**
-     * Set to true to have the `DropDownMenu` automatically open on mount.
+     * @property {PropTypes.bool} openImmediately - Set to true to have the `DropDownMenu` automatically open on mount.
      */
     openImmediately: PropTypes.bool,
     /**
-     * Override the inline-styles of selected menu items.
+     * @property {PropTypes.object} selectedMenuItemStyle - Override the inline-styles of selected menu items.
      */
     selectedMenuItemStyle: PropTypes.object,
     /**
-     * Callback function fired when a menu item is clicked, other than the one currently selected.
+     * @property {PropTypes.func} selectionRenderer - Callback function fired when a menu item is clicked, other than the one currently selected.
      *
      * @param {any} value If `multiple` is true, the menu's `value`
      * array with either the menu item's `value` added (if
@@ -185,11 +339,11 @@ class DropDownMenu extends Component {
      */
     selectionRenderer: PropTypes.func,
     /**
-     * Override the inline-styles of the root element.
+     * @property {PropTypes.object} style - Override the inline-styles of the root element.
      */
     style: PropTypes.object,
     /**
-     * This is the point on the popover which will attach to
+     * @property {PropTypes.origin} targetOrigin - This is the point on the popover which will attach to
      * the anchor's origin.
      * Options:
      * vertical: [top, center, bottom]
@@ -197,11 +351,11 @@ class DropDownMenu extends Component {
      */
     targetOrigin: propTypes.origin,
     /**
-     * Overrides the inline-styles of the underline.
+     * @property {PropTypes.object} underlineStyle - Overrides the inline-styles of the underline.
      */
     underlineStyle: PropTypes.object,
     /**
-     * If `multiple` is true, an array of the `value`s of the selected
+     * @property {PropTypes.any} value - If `multiple` is true, an array of the `value`s of the selected
      * menu items. Otherwise, the `value` of the selected menu item.
      * If provided, the menu will be a controlled component.
      */

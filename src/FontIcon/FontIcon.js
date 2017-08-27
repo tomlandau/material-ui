@@ -1,3 +1,77 @@
+/**
+ * #Font Icon
+ * 
+ * This component will render any [icon](#) defined in any stylesheet included in your project. You can use sites like [IcoMoon](#) to generate custom font files, or use prebuilt fonts such as [Material icons](#) or [Font Awesome](#) either included in your project, or served from a public [Content Delivery Network](#).
+ *
+ * Refer to this [article](#) to learn how to use font icons from any of the above websites in your project.
+ *
+ * To use FontIcon, add the icon stylesheet to your project and reference the icon's class in the className prop. If the icon font supports ligatures, reference the font in the className and enclose the icon name in the FontIcon tag.
+ * 
+ * #Examples
+ * 
+ * ##Custom icon font
+ * This example uses a custom font (not part of Material-UI). The className defines the specific icon. The third example has a hoverColor defined.
+ * 
+ * ```js
+ * import React from 'react';
+ * import FontIcon from 'material-ui/FontIcon';
+ * import {blue500, red500, greenA200} from 'material-ui/styles/colors';
+ * 
+ * const iconStyles = {
+ *   marginRight: 24,
+ * };
+ * 
+ * const FontIconExampleSimple = () => (
+ *   <div>
+ *     <FontIcon
+ *       className="muidocs-icon-action-home"
+ *       style={iconStyles}
+ *     />
+ * 
+ *     <FontIcon
+ *       className="muidocs-icon-action-home"
+ *       style={iconStyles}
+ *       color={blue500}
+ *     />
+ * 
+ *     <FontIcon
+ *       className="muidocs-icon-action-home"
+ *       style={iconStyles}
+ *       color={red500}
+ *       hoverColor={greenA200}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default FontIconExampleSimple;
+ * ```
+ * 
+ * &nbsp;
+ * ##Public icon font
+ * This example uses the [Material icons font](#), referenced in the <head> of the docs site index page. The className defines the font, and the IconFont tag content defines the specific icon.
+ * 
+ * ```js
+ * import React from 'react';
+ * import FontIcon from 'material-ui/FontIcon';
+ * import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+ * 
+ * const iconStyles = {
+ *   marginRight: 24,
+ * };
+ * 
+ * const FontIconExampleIcons = () => (
+ *   <div>
+ *     <FontIcon className="material-icons" style={iconStyles}>home</FontIcon>
+ *     <FontIcon className="material-icons" style={iconStyles} color={red500}>flight_takeoff</FontIcon>
+ *     <FontIcon className="material-icons" style={iconStyles} color={yellow500}>cloud_download</FontIcon>
+ *     <FontIcon className="material-icons" style={iconStyles} color={blue500}>videogame_asset</FontIcon>
+ *   </div>
+ * );
+ * 
+ * export default FontIconExampleIcons;
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
