@@ -1,3 +1,75 @@
+/**
+ * #Toggle
+ * A [toggle switch](#) is used as an on/off control.
+ * 
+ * #Examples
+ * The second example is selected by default using the defaultToggled property. The third example is disabled using the disabled property. The final example uses the labelPosition property to position the label on the right.
+ *
+ * ```js
+ * 
+ * import React from 'react';
+ * import Toggle from 'material-ui/Toggle';
+ * 
+ * const styles = {
+ *   block: {
+ *     maxWidth: 250,
+ *   },
+ *   toggle: {
+ *     marginBottom: 16,
+ *   },
+ *   thumbOff: {
+ *     backgroundColor: '#ffcccc',
+ *   },
+ *   trackOff: {
+ *     backgroundColor: '#ff9d9d',
+ *   },
+ *   thumbSwitched: {
+ *     backgroundColor: 'red',
+ *   },
+ *   trackSwitched: {
+ *     backgroundColor: '#ff9d9d',
+ *   },
+ *   labelStyle: {
+ *     color: 'red',
+ *   },
+ * };
+ * 
+ * const ToggleExampleSimple = () => (
+ *   <div style={styles.block}>
+ *     <Toggle
+ *       label="Simple"
+ *       style={styles.toggle}
+ *     />
+ *     <Toggle
+ *       label="Toggled by default"
+ *       defaultToggled={true}
+ *       style={styles.toggle}
+ *     />
+ *     <Toggle
+ *       label="Disabled"
+ *       disabled={true}
+ *       style={styles.toggle}
+ *     />
+ *     <Toggle
+ *       label="Label on the right"
+ *       labelPosition="right"
+ *       style={styles.toggle}
+ *     />
+ *     <Toggle
+ *       label="Styling"
+ *       thumbStyle={styles.thumbOff}
+ *       trackStyle={styles.trackOff}
+ *       thumbSwitchedStyle={styles.thumbSwitched}
+ *       trackSwitchedStyle={styles.trackSwitched}
+ *       labelStyle={styles.labelStyle}
+ *     />
+ *   </div>
+ * );
+ * 
+ * export default ToggleExampleSimple;
+ * ```
+ */
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import transitions from '../styles/transitions';
